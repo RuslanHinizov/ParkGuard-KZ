@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Scrollbar stilleri */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* Alarm yanıp sönme */
+@keyframes alarmBlink {
+  0%, 100% { border-color: #ef4444; }
+  50% { border-color: transparent; }
+}
+.alarm-blink {
+  animation: alarmBlink 1s ease-in-out infinite;
+}

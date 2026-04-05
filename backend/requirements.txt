@@ -1,0 +1,19 @@
+# ParkGuard KZ — Python Bağımlılıkları
+# PyTorch CUDA 12.1: pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+
+torch==2.2.0+cu121
+torchvision==0.17.0+cu121
+ultralytics>=8.3.12
+fastapi==0.110.0
+uvicorn[standard]==0.29.0
+opencv-python-headless==4.9.0.80
+paddlepaddle-gpu==2.6.1
+paddleocr==2.7.3
+shapely==2.0.3
+redis==5.0.3
+numpy==1.26.4
+pydantic>=2.9.2
+python-multipart==0.0.9
+psutil==5.9.8
+python-dotenv==1.0.1
+nomeroff-net==4.0.1

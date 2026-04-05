@@ -1,0 +1,13 @@
+{
+  "cameras": {
+    "1": {
+      "violation_duration": 300
+    },
+    "2": {
+      "violation_duration": 300
+    },
+    "3": {
+      "violation_duration": 300
+    }
+  }
+}

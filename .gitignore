@@ -1,0 +1,49 @@
+# === KİMLİK BİLGİLERİ (ASLA commit'leme) ===
+.env
+
+# === PYTHON ===
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+backend/venv/
+*.egg-info/
+dist/
+build/
+
+# === MODEL DOSYALARI (büyük binary) ===
+backend/models/*.engine
+backend/models/*.onnx
+backend/models/*.pt
+backend/*.pt
+backend/*.onnx
+backend/*.engine
+
+# === CLAUDE CODE İÇ DOSYALARI ===
+CLAUDE_CODE_PROMPT_V2.md
+PROJECT_DOCUMENTATION_V2.md
+
+# === VERİ DOSYALARI ===
+backend/data/alarms.db
+backend/data/screenshots/
+
+# === NODE / FRONTEND ===
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# === IDE / EDITOR ===
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# === OS ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === CLAUDE CODE ===
+.claude/settings.local.json

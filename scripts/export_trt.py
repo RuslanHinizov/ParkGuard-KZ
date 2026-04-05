@@ -1,0 +1,71 @@
+"""
+export_trt.py — YOLOv8n TensorRT FP16 Export
+
+RTX 4060 Mobile için optimize edilmiş ayarlar:
+  - FP16: 2x hız, ~%1 accuracy kaybı
+  - batch=3: 3 kamera aynı anda
+  - imgsz=640: standart YOLO giriş boyutu
+  - workspace=6: 6GB VRAM (8GB'ın 75%'i)
+  - dynamic=False: sabit batch = daha hızlı kernel
+"""
+
+import sys
+import os
+from pathlib import Path
+
+# Backend dizinini path'e ekle
+backend_dir = Path(__file__).parent.parent / "backend"
+sys.path.insert(0, str(backend_dir))
+
+from ultralytics import YOLO
+
+MODELS_DIR = backend_dir / "models"
+MODELS_DIR.mkdir(parents=True, exist_ok=True)
+
+
+def main():
+    pt_path = MODELS_DIR / "yolov8n.pt"
+
+    # Model yoksa indir
+    if not pt_path.exists():
+        print("yolov8n.pt indiriliyor...")
+        model = YOLO("yolov8n.pt")
+        # İndirilen dosyayı models/ altına taşı
+        downloaded = Path("yolov8n.pt")
+        if downloaded.exists():
+            downloaded.rename(pt_path)
+    else:
+        model = YOLO(str(pt_path))
+
+    print("TensorRT FP16 export baslatiliyor...")
+    print(f"  Model: {pt_path}")
+    print(f"  Batch: 3 (3 kamera)")
+    print(f"  ImgSz: 640")
+    print(f"  FP16:  Evet")
+    print(f"  VRAM:  6GB workspace")
+    print()
+
+    model.export(
+        format="engine",
+        device=0,
+        half=True,
+        batch=3,
+        imgsz=640,
+        workspace=6,
+        simplify=True,
+        dynamic=False,
+    )
+
+    engine_path = MODELS_DIR / "yolov8n.engine"
+    if engine_path.exists():
+        size_mb = engine_path.stat().st_size / (1024 * 1024)
+        print(f"\nExport basarili!")
+        print(f"  Engine: {engine_path}")
+        print(f"  Boyut:  {size_mb:.1f} MB")
+    else:
+        print("\nUYARI: Engine dosyasi bulunamadi!")
+        print("TensorRT kurulu oldugundan emin olun.")
+
+
+if __name__ == "__main__":
+    main()

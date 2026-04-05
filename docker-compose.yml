@@ -1,0 +1,64 @@
+services:
+  # Redis — alarm pub/sub ve cache
+  redis:
+    image: redis:alpine
+    container_name: parkguard-redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    volumes:
+      - redis-data:/data
+    command: redis-server --appendonly yes
+
+  # MediaMTX — RTSP → HLS bridge (opsiyonel)
+  mediamtx:
+    image: bluenviron/mediamtx:latest
+    container_name: parkguard-mediamtx
+    ports:
+      - "8554:8554"   # RTSP
+      - "8888:8888"   # HLS
+      - "8889:8889"   # WebRTC
+    restart: unless-stopped
+    volumes:
+      - ./mediamtx/mediamtx.yml:/mediamtx.yml
+
+  # Backend — FastAPI + GPU inference
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: parkguard-backend
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    depends_on:
+      - redis
+    env_file:
+      - .env                          # CAMERA_1_URL, CAMERA_2_URL, CAMERA_3_URL
+    environment:
+      - REDIS_URL=redis://redis:6379  # Docker içi Redis adresi (.env'i override eder)
+    volumes:
+      - ./backend/data:/app/data          # alarm DB, zone JSON, settings
+      - ./backend/config.py:/app/config.py  # kamera URL'leri mount et
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  # Frontend — React + Nginx (reverse proxy)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: parkguard-frontend
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    depends_on:
+      - backend
+
+volumes:
+  redis-data:

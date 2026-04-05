@@ -1,0 +1,42 @@
+# MediaMTX — RTSP → HLS/WebRTC Bridge Konfigürasyonu
+# ParkGuard KZ için Hikvision kamera proxy
+
+# Genel ayarlar
+logLevel: info
+logDestinations: [stdout]
+
+# RTSP server
+rtsp: yes
+rtspAddress: :8554
+protocols: [tcp]
+
+# HLS server (tarayıcı için)
+hls: yes
+hlsAddress: :8888
+hlsSegmentDuration: 1s
+hlsPartDuration: 200ms
+hlsSegmentMaxSize: 50M
+
+# WebRTC server (düşük gecikme)
+webrtc: yes
+webrtcAddress: :8889
+
+# Kamera path tanımları
+paths:
+  cam1:
+    source: rtsp://admin:password@192.168.1.64:554/Streaming/Channels/101
+    sourceProtocol: tcp
+    sourceOnDemand: yes
+    sourceOnDemandCloseAfter: 30s
+
+  cam2:
+    source: rtsp://admin:password@192.168.1.65:554/Streaming/Channels/101
+    sourceProtocol: tcp
+    sourceOnDemand: yes
+    sourceOnDemandCloseAfter: 30s
+
+  cam3:
+    source: rtsp://admin:password@192.168.1.66:554/Streaming/Channels/101
+    sourceProtocol: tcp
+    sourceOnDemand: yes
+    sourceOnDemandCloseAfter: 30s
