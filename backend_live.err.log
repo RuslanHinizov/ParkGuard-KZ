@@ -1145,3 +1145,313 @@ INFO:     connection open
 [rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 25f7 expected=172b
 [hevc @ 000001b00a9f1300] The cu_qp_delta 123 is outside the valid range [-26, 25].
 [ WARN:0@1104.108] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 30094.567000 ms
+[hevc @ 000001b00a9efc40] Could not find ref with POC 4
+[rtsp @ 000001b00a9533c0] Undefined type (30)
+[h264 @ 000001b00538bd00] error while decoding MB 158 54, bytestream -5
+[h264 @ 000001b00a7767c0] error while decoding MB 61 41, bytestream -5
+[h264 @ 000001b00a775a00] error while decoding MB 94 51, bytestream -5
+[h264 @ 000001b00a776300] error while decoding MB 116 68, bytestream -7
+[rtsp @ 000001b00a9533c0] nal size exceeds length: 20787 1425
+[h264 @ 000001b00a7770c0] error while decoding MB 74 18, bytestream -7
+[h264 @ 000001b00538b880] error while decoding MB 58 76, bytestream -7
+[NULL @ 000001b005389d00] illegal POC type 5
+[h264 @ 000001b00a7767c0] illegal POC type 5
+[h264 @ 000001b00a7767c0] illegal POC type 5
+[h264 @ 000001b00a7767c0] illegal POC type 5
+[h264 @ 000001b00a7770c0] error while decoding MB 140 10, bytestream -9
+[h264 @ 000001b00538b880] error while decoding MB 27 64, bytestream -5
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 463e expected=383c
+[hevc @ 000001b00a9ef300] Could not find ref with POC 12
+[h264 @ 000001b00a778780] error while decoding MB 123 20, bytestream -11
+[h264 @ 000001b00a7790c0] error while decoding MB 69 31, bytestream -19
+[h264 @ 000001b00a7767c0] error while decoding MB 14 22, bytestream -5
+[h264 @ 000001b00a777e80] error while decoding MB 113 65, bytestream -21
+[NULL @ 000001b005389d00] SEI type 42 size 1680 truncated at 144
+[h264 @ 000001b00538b880] SEI type 42 size 1680 truncated at 133
+[h264 @ 000001b00a774c40] error while decoding MB 58 44, bytestream -7
+[h264 @ 000001b00a777e80] left block unavailable for requested intra4x4 mode -1
+[h264 @ 000001b00a777e80] error while decoding MB 0 27, bytestream 1117
+[h264 @ 000001b00a776c40] error while decoding MB 131 37, bytestream -7
+[h264 @ 000001b00a774c40] slice type 16 too large at 0
+[h264 @ 000001b00a774c40] decode_slice_header error
+[h264 @ 000001b00a774c40] no frame!
+[h264 @ 000001b00a7750c0] reference picture missing during reorder
+[h264 @ 000001b00a7750c0] Missing reference picture, default is 0
+[h264 @ 000001b00a7750c0] decode_slice_header error
+[h264 @ 000001b00a7767c0] reference picture missing during reorder
+[h264 @ 000001b00a7767c0] Missing reference picture, default is 65538
+[h264 @ 000001b00a778c40] error while decoding MB 69 30, bytestream -5
+[rtsp @ 000001b00a9533c0] nal size exceeds length: 51403 1425
+[h264 @ 000001b00a7790c0] cabac decode of qscale diff failed at 130 15
+[h264 @ 000001b00a7790c0] error while decoding MB 130 15, bytestream 717
+[NULL @ 000001b005389d00] missing picture in access unit with size 2864
+[h264 @ 000001b00a777e80] no frame!
+[h264 @ 000001b00a7750c0] error while decoding MB 88 13, bytestream -7
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 60be expected=5333
+[hevc @ 000001b00a9f0540] The cu_qp_delta -37 is outside the valid range [-26, 25].
+[hevc @ 000001b00a9eaec0] Could not find ref with POC 14
+[hevc @ 000001b00a9eaec0] Could not find ref with POC 12
+[h264 @ 000001b00a7770c0] error while decoding MB 23 75, bytestream -11
+[ WARN:0@1134.201] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 30090.082000 ms
+2026-04-07 12:52:38 [core.camera_manager] WARNING: Camera 2: frame alinamiyor, yeniden baglaniliyor...
+2026-04-07 12:52:38 [core.camera_manager] INFO: Camera 2: yeniden baglaniliyor...
+2026-04-07 12:52:47 [core.camera_manager] INFO: Camera 2 (Otopark-A): baglandi
+2026-04-07 12:52:55 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:52:55 [api.websocket] INFO: Stream client ayrildi: Kamera 2
+2026-04-07 12:52:55 [api.websocket] INFO: Stream client ayrildi: Kamera 3
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+2026-04-07 12:52:55 [api.websocket] INFO: Alarm client ayrildi
+INFO:     connection closed
+INFO:     ('127.0.0.1', 65381) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:52:58 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 61257) - "WebSocket /ws/stream/2" [accepted]
+2026-04-07 12:52:58 [api.websocket] INFO: Stream client baglandi: Kamera 2
+INFO:     connection open
+INFO:     ('127.0.0.1', 61516) - "WebSocket /ws/stream/3" [accepted]
+2026-04-07 12:52:59 [api.websocket] INFO: Stream client baglandi: Kamera 3
+INFO:     connection open
+INFO:     ('127.0.0.1', 53969) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:52:59 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+2026-04-07 12:53:05 [core.zone_manager] INFO: Bolge eklendi: ferf (Kamera 2)
+2026-04-07 12:53:05 [core.zone_manager] INFO: Bolge eklendi: ferf (Kamera 2)
+2026-04-07 12:53:06 [core.camera_manager] WARNING: Camera 2: frame alinamiyor, yeniden baglaniliyor...
+2026-04-07 12:53:06 [core.camera_manager] INFO: Camera 2: yeniden baglaniliyor...
+INFO:     ('127.0.0.1', 55046) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:53:10 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 55345) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:53:10 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+2026-04-07 12:53:10 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+INFO:     connection closed
+INFO:     ('127.0.0.1', 52096) - "WebSocket /ws/stream/2" [accepted]
+2026-04-07 12:53:11 [api.websocket] INFO: Stream client baglandi: Kamera 2
+INFO:     connection open
+INFO:     ('127.0.0.1', 64532) - "WebSocket /ws/stream/3" [accepted]
+2026-04-07 12:53:11 [api.websocket] INFO: Stream client baglandi: Kamera 3
+INFO:     connection open
+INFO:     ('127.0.0.1', 55329) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:53:12 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+INFO:     ('127.0.0.1', 55136) - "WebSocket /ws/stream/2" [accepted]
+2026-04-07 12:53:12 [api.websocket] INFO: Stream client baglandi: Kamera 2
+INFO:     connection open
+INFO:     ('127.0.0.1', 64972) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:53:13 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+INFO:     ('127.0.0.1', 61061) - "WebSocket /ws/stream/2" [accepted]
+2026-04-07 12:53:15 [api.websocket] INFO: Stream client baglandi: Kamera 2
+INFO:     connection open
+2026-04-07 12:53:17 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:53:17 [api.websocket] INFO: Stream client ayrildi: Kamera 2
+2026-04-07 12:53:17 [api.websocket] INFO: Stream client ayrildi: Kamera 3
+2026-04-07 12:53:17 [api.websocket] INFO: Alarm client ayrildi
+2026-04-07 12:53:17 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:53:17 [api.websocket] INFO: Stream client ayrildi: Kamera 2
+2026-04-07 12:53:17 [api.websocket] INFO: Stream client ayrildi: Kamera 3
+2026-04-07 12:53:17 [api.websocket] INFO: Alarm client ayrildi
+2026-04-07 12:53:17 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:53:17 [api.websocket] INFO: Stream client ayrildi: Kamera 2
+2026-04-07 12:53:17 [api.websocket] INFO: Stream client ayrildi: Kamera 3
+2026-04-07 12:53:17 [api.websocket] INFO: Alarm client ayrildi
+2026-04-07 12:53:17 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:53:17 [api.websocket] INFO: Stream client ayrildi: Kamera 2
+2026-04-07 12:53:17 [api.websocket] INFO: Stream client ayrildi: Kamera 3
+2026-04-07 12:53:17 [api.websocket] INFO: Alarm client ayrildi
+2026-04-07 12:53:17 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:53:17 [api.websocket] INFO: Stream client ayrildi: Kamera 2
+2026-04-07 12:53:17 [api.websocket] INFO: Stream client ayrildi: Kamera 3
+2026-04-07 12:53:17 [api.websocket] INFO: Alarm client ayrildi
+2026-04-07 12:53:17 [api.websocket] INFO: Alarm client ayrildi
+2026-04-07 12:53:17 [api.websocket] INFO: Stream client ayrildi: Kamera 2
+2026-04-07 12:53:17 [api.websocket] INFO: Stream client ayrildi: Kamera 2
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+2026-04-07 12:53:17 [api.websocket] INFO: Stats client ayrildi
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+2026-04-07 12:53:17 [api.websocket] INFO: Stats client ayrildi
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     ('127.0.0.1', 50694) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:53:17 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 62947) - "WebSocket /ws/stream/2" [accepted]
+2026-04-07 12:53:17 [api.websocket] INFO: Stream client baglandi: Kamera 2
+INFO:     connection open
+INFO:     ('127.0.0.1', 50473) - "WebSocket /ws/stream/3" [accepted]
+2026-04-07 12:53:18 [api.websocket] INFO: Stream client baglandi: Kamera 3
+INFO:     connection open
+INFO:     ('127.0.0.1', 50812) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:53:18 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+INFO:     ('127.0.0.1', 62675) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:53:20 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 61949) - "WebSocket /ws/stream/2" [accepted]
+2026-04-07 12:53:20 [api.websocket] INFO: Stream client baglandi: Kamera 2
+INFO:     connection open
+INFO:     ('127.0.0.1', 62636) - "WebSocket /ws/stream/3" [accepted]
+2026-04-07 12:53:21 [api.websocket] INFO: Stream client baglandi: Kamera 3
+INFO:     connection open
+INFO:     ('127.0.0.1', 50526) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:53:21 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+2026-04-07 12:53:24 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:53:24 [api.websocket] INFO: Stream client ayrildi: Kamera 2
+2026-04-07 12:53:24 [api.websocket] INFO: Stream client ayrildi: Kamera 3
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+2026-04-07 12:53:24 [api.websocket] INFO: Alarm client ayrildi
+INFO:     connection closed
+INFO:     ('127.0.0.1', 64949) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:53:27 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 59048) - "WebSocket /ws/stream/2" [accepted]
+2026-04-07 12:53:27 [api.websocket] INFO: Stream client baglandi: Kamera 2
+INFO:     connection open
+INFO:     ('127.0.0.1', 49693) - "WebSocket /ws/stream/3" [accepted]
+2026-04-07 12:53:27 [api.websocket] INFO: Stream client baglandi: Kamera 3
+INFO:     connection open
+INFO:     ('127.0.0.1', 51802) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:53:28 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+2026-04-07 12:53:32 [core.camera_manager] INFO: Camera 2 (Otopark-A): baglandi
+2026-04-07 12:53:33 [core.camera_manager] WARNING: Camera 2: frame alinamiyor, yeniden baglaniliyor...
+2026-04-07 12:53:33 [core.camera_manager] INFO: Camera 2: yeniden baglaniliyor...
+2026-04-07 12:53:33 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:53:33 [api.websocket] INFO: Stream client ayrildi: Kamera 2
+2026-04-07 12:53:33 [api.websocket] INFO: Stream client ayrildi: Kamera 3
+2026-04-07 12:53:33 [api.websocket] INFO: Alarm client ayrildi
+2026-04-07 12:53:33 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:53:33 [api.websocket] INFO: Stream client ayrildi: Kamera 2
+2026-04-07 12:53:33 [api.websocket] INFO: Stream client ayrildi: Kamera 3
+2026-04-07 12:53:33 [api.websocket] INFO: Alarm client ayrildi
+INFO:     ('127.0.0.1', 55218) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:53:33 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     ('127.0.0.1', 65422) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:53:33 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+2026-04-07 12:53:33 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+INFO:     connection closed
+INFO:     ('127.0.0.1', 59269) - "WebSocket /ws/stream/2" [accepted]
+2026-04-07 12:53:34 [api.websocket] INFO: Stream client baglandi: Kamera 2
+INFO:     connection open
+INFO:     ('127.0.0.1', 63242) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:53:34 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+INFO:     ('127.0.0.1', 57854) - "WebSocket /ws/stream/3" [accepted]
+2026-04-07 12:53:34 [api.websocket] INFO: Stream client baglandi: Kamera 3
+INFO:     connection open
+[h264 @ 000001b00a776300] error while decoding MB 104 87, bytestream -5
+[h264 @ 000001b00538b880] error while decoding MB 125 84, bytestream -5
+[NULL @ 000001b005389d00] missing picture in access unit with size 1432
+[h264 @ 000001b00a778780] no frame!
+[h264 @ 000001b00a777a00] left block unavailable for requested intra mode
+[h264 @ 000001b00a777a00] error while decoding MB 0 69, bytestream 897
+[h264 @ 000001b00a775a00] error while decoding MB 153 54, bytestream -7
+[h264 @ 000001b00a777540] error while decoding MB 153 22, bytestream -9
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 7b52 expected=6c96
+[hevc @ 000001b00a9f0540] CABAC_MAX_BIN : 7
+[hevc @ 000001b00a9f0540] The cu_qp_delta 1094995529 is outside the valid range [-26, 25].
+[hevc @ 000001b00a9eaec0] Could not find ref with POC 2
+[hevc @ 000001b00a9eaec0] Could not find ref with POC 0
+[h264 @ 000001b00a7770c0] error while decoding MB 73 89, bytestream -7
+[h264 @ 000001b00538b880] error while decoding MB 42 44, bytestream -5
+[h264 @ 000001b00a776c40] error while decoding MB 94 54, bytestream -7
+[rtsp @ 000001b00a9533c0] Undefined type (31)
+[rtsp @ 000001b00a9533c0] Undefined type (31)
+[NULL @ 000001b005389d00] sps_id 2 out of range
+[h264 @ 000001b00538bd00] error while decoding MB 57 22, bytestream -11
+[h264 @ 000001b00a7767c0] error while decoding MB 116 75, bytestream -5
+[h264 @ 000001b00a778780] error while decoding MB 37 87, bytestream -16
+[NULL @ 000001b005389d00] SEI type 213 size 1272 truncated at 896
+[h264 @ 000001b00a777e80] error while decoding MB 101 13, bytestream -7
+[h264 @ 000001b00a778c40] error while decoding MB 144 32, bytestream -11
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 96f5 expected=865c
+[hevc @ 000001b00a9ee580] Could not find ref with POC 16
+[h264 @ 000001b00a7767c0] error while decoding MB 55 14, bytestream -5
+[h264 @ 000001b00a778c40] error while decoding MB 7 67, bytestream -9
+[h264 @ 000001b00538bd00] error while decoding MB 156 42, bytestream -5
+[h264 @ 000001b00a7767c0] cabac decode of qscale diff failed at 58 29
+[h264 @ 000001b00a7767c0] error while decoding MB 58 29, bytestream 4571
+[NULL @ 000001b005389d00] SEI type 14 size 1352 truncated at 864
+[h264 @ 000001b00a777540] error while decoding MB 148 23, bytestream -7
+[h264 @ 000001b00a774c40] error while decoding MB 30 64, bytestream -7
+[rtsp @ 000001b00a9533c0] Undefined type (30)
+[rtsp @ 000001b00a9533c0] Undefined type (30)
+[NULL @ 000001b005389d00] illegal reordering_of_pic_nums_idc 16
+[h264 @ 000001b00a778780] no frame!
+[h264 @ 000001b00a777540] cabac decode of qscale diff failed at 129 24
+[h264 @ 000001b00a777540] error while decoding MB 129 24, bytestream 1213
+[h264 @ 000001b00a7767c0] error while decoding MB 36 89, bytestream -15
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq ba34 expected=ab51
+[hevc @ 000001b00a9f0540] Could not find ref with POC 12
+[h264 @ 000001b00a776c40] error while decoding MB 26 22, bytestream -7
+[h264 @ 000001b00a778780] error while decoding MB 47 34, bytestream -13
+[h264 @ 000001b00a7790c0] error while decoding MB 56 34, bytestream -5
+[h264 @ 000001b00a778780] error while decoding MB 55 33, bytestream -7
+[rtsp @ 000001b00a9533c0] nal size exceeds length: 18338 1425
+[h264 @ 000001b00a776c40] cabac decode of qscale diff failed at 100 13
+[h264 @ 000001b00a776c40] error while decoding MB 100 13, bytestream 427
+[NULL @ 000001b005389d00] SEI type 250 size 3240 truncated at 2680
+[h264 @ 000001b00a7767c0] error while decoding MB 133 14, bytestream -13
+[h264 @ 000001b00a7750c0] cabac decode of qscale diff failed at 42 42
+[h264 @ 000001b00a7750c0] error while decoding MB 42 42, bytestream -5
+[h264 @ 000001b00a775e80] error while decoding MB 94 82, bytestream -9
+[h264 @ 000001b00538bd00] error while decoding MB 79 14, bytestream -15
+[NULL @ 000001b005389d00] sps_id 2 out of range
+[h264 @ 000001b00a7767c0] sps_id 2 out of range
+[h264 @ 000001b00a7767c0] no frame!
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq d955 expected=cada
+[hevc @ 000001b00a9f1300] Could not find ref with POC 22
+[hevc @ 000001b00a9f1300] Could not find ref with POC 20
+[h264 @ 000001b02026-04-07 12:53:41 [core.camera_manager] INFO: Camera 2 (Otopark-A): baglandi
+2026-04-07 12:53:47 [core.zone_manager] INFO: Bolge eklendi: de (Kamera 1)
+INFO:     ('127.0.0.1', 50080) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:53:52 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 63337) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:53:52 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+2026-04-07 12:53:52 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+INFO:     connection closed
+INFO:     ('127.0.0.1', 53882) - "WebSocket /ws/stream/2" [accepted]
+2026-04-07 12:53:52 [api.websocket] INFO: Stream client baglandi: Kamera 2
+INFO:     connection open
+INFO:     ('127.0.0.1', 58532) - "WebSocket /ws/stream/3" [accepted]
+2026-04-07 12:53:53 [api.websocket] INFO: Stream client baglandi: Kamera 3
+INFO:     connection open
