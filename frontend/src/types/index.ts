@@ -103,5 +103,27 @@ export interface SystemHealth {
   cameras: Record<number, CameraStatus>;
 }
 
+// === CEZA (PENALTY) ===
+export interface Penalty {
+  id: string;
+  alarm_id: string;
+  plate: string;
+  camera_id: number | null;
+  zone_name: string;
+  duration_sec: number;
+  screenshot: string;
+  status: 'pending' | 'sent' | 'cancelled';
+  fine_amount: number;
+  created_at: string;
+  sent_at: string | null;
+  notes: string;
+}
+
+export interface PenaltyStats {
+  pending:   { count: number; total_amount: number };
+  sent:      { count: number; total_amount: number };
+  cancelled: { count: number; total_amount: number };
+}
+
 // === WS Bağlantı Durumu ===
 export type WSStatus = 'connecting' | 'connected' | 'disconnected';

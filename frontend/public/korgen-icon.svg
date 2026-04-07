@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .spin-slow { animation: spin 8s linear infinite; transform-origin: 50px 50px; }
+      .pulse-ring { animation: pulseRing 2.5s ease-in-out infinite; transform-origin: 50px 50px; }
+      .scan { animation: scan 3s ease-in-out infinite; transform-origin: 50px 50px; }
+      @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+      @keyframes pulseRing { 0%,100% { opacity:0.3; transform:scale(0.97); } 50% { opacity:0.8; transform:scale(1.03); } }
+      @keyframes scan { 0%,100% { opacity:0.2; } 50% { opacity:1; } }
+    </style>
+    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1a4fa0"/>
+      <stop offset="100%" stop-color="#0a2560"/>
+    </radialGradient>
+    <radialGradient id="lens" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4a9eff"/>
+      <stop offset="100%" stop-color="#1a6fd4"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Dış daire arka plan -->
+  <circle cx="50" cy="50" r="48" fill="url(#bg)" stroke="#1a6fd4" stroke-width="1.5"/>
+
+  <!-- Dönen dış çerçeve -->
+  <g class="spin-slow">
+    <circle cx="50" cy="50" r="42" fill="none" stroke="#2a7fd4" stroke-width="1" stroke-dasharray="6 4" opacity="0.6"/>
+  </g>
+
+  <!-- Dış halka -->
+  <circle cx="50" cy="50" r="36" fill="none" stroke="#1e5fb5" stroke-width="2"/>
+
+  <!-- Nabız halka -->
+  <circle cx="50" cy="50" r="30" fill="none" stroke="#2a8fff" stroke-width="1.5" class="pulse-ring" opacity="0.5"/>
+
+  <!-- Mercek gövdesi -->
+  <circle cx="50" cy="50" r="24" fill="url(#lens)" opacity="0.9"/>
+
+  <!-- İç mercek detayı -->
+  <circle cx="50" cy="50" r="18" fill="#0d3a8a"/>
+  <circle cx="50" cy="50" r="13" fill="#1a5fd4" opacity="0.8"/>
+
+  <!-- Merkez nokta -->
+  <circle cx="50" cy="50" r="6" fill="#4ab5ff"/>
+  <circle cx="50" cy="50" r="3" fill="white" opacity="0.9"/>
+
+  <!-- Tarama çizgisi -->
+  <line x1="26" y1="50" x2="74" y2="50" stroke="#4ab5ff" stroke-width="1" class="scan" opacity="0.7"/>
+
+  <!-- Köşe detayları (kamera köşeleri) -->
+  <path d="M14 28 L14 18 L24 18" fill="none" stroke="#2a9fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M76 18 L86 18 L86 28" fill="none" stroke="#2a9fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M86 72 L86 82 L76 82" fill="none" stroke="#2a9fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M24 82 L14 82 L14 72" fill="none" stroke="#2a9fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Parıltı -->
+  <circle cx="42" cy="42" r="4" fill="white" opacity="0.15"/>
+</svg>

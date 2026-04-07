@@ -36,7 +36,8 @@ export default function LogViewer() {
   const [connected, setConnected] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
 
-  const onMessage = useCallback((data: string) => {
+  const onMessage = useCallback((event: MessageEvent) => {
+    const data = typeof event === 'string' ? event : event.data;
     try {
       const msg = JSON.parse(data) as { entries: LogEntry[] };
       if (msg.entries?.length) {
@@ -54,7 +55,7 @@ export default function LogViewer() {
   const onOpen = useCallback(() => setConnected(true), []);
   const onClose = useCallback(() => setConnected(false), []);
 
-  useWebSocket('/ws/logs', { onMessage, onOpen, onClose });
+  useWebSocket({ url: '/ws/logs', onMessage, onOpen, onClose });
 
   // Auto-scroll to bottom when new entries arrive
   useEffect(() => {

@@ -1,0 +1,1147 @@
+2026-04-07 12:33:44 [core.zone_manager] INFO: 1 bolge yuklendi
+2026-04-07 12:33:44 [core.alarm_manager] INFO: Alarm DB hazir
+2026-04-07 12:33:44 [core.alarm_manager] INFO: Redis baglandi
+2026-04-07 12:33:44 [core.zone_manager] INFO: 1 bolge yuklendi
+2026-04-07 12:33:44 [core.alarm_manager] INFO: Alarm DB hazir
+2026-04-07 12:33:44 [core.alarm_manager] INFO: Redis baglandi
+INFO:     Started server process [29592]
+INFO:     Waiting for application startup.
+2026-04-07 12:33:44 [main] INFO: Process priority: HIGH
+2026-04-07 12:33:44 [core.camera_manager] INFO: Camera 1 (Giri\u015f Kap\u0131s\u0131): worker baslatildi
+2026-04-07 12:33:44 [core.camera_manager] INFO: Camera 2 (Otopark-A): worker baslatildi
+2026-04-07 12:33:44 [core.camera_manager] INFO: Camera 3 (Otopark-B): worker baslatildi
+2026-04-07 12:33:44 [core.camera_manager] INFO: 3 kamera baslatildi
+2026-04-07 12:33:44 [apscheduler.scheduler] INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-04-07 12:33:44 [apscheduler.scheduler] INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-04-07 12:33:44 [apscheduler.scheduler] INFO: Added job "daily_ai_report_job" to job store "default"
+2026-04-07 12:33:44 [apscheduler.scheduler] INFO: Added job "daily_anomaly_scan_job" to job store "default"
+2026-04-07 12:33:44 [apscheduler.scheduler] INFO: Scheduler started
+2026-04-07 12:33:44 [core.scheduler] INFO: Scheduler baslatildi (daily report: 00:00, anomaly scan: 01:00)
+2026-04-07 12:33:44 [main] INFO: ==================================================
+2026-04-07 12:33:44 [main] INFO: Korgen Vision baslatildi
+2026-04-07 12:33:44 [main] INFO: Kameralar: 3 adet
+2026-04-07 12:33:44 [main] INFO: API: http://0.0.0.0:8000
+2026-04-07 12:33:44 [main] INFO: Dashboard: http://localhost:5173
+2026-04-07 12:33:44 [main] INFO: ==================================================
+2026-04-07 12:33:44 [core.tracker] INFO: Tracker modeli yuklendi
+2026-04-07 12:33:44 [core.plate_ocr] INFO: nomeroff-net baslatiliyor...
+2026-04-07 12:33:46 [core.camera_manager] INFO: Camera 1 (Giri\u015f Kap\u0131s\u0131): baglandi
+C:\Users\rusla\Desktop\Project-university\ParkGuard KZ\backend\venv\lib\site-packages\nomeroff_net\pipes\number_plate_classificators\options_detector.py:261: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(path_to_model, map_location=torch.device('cpu'))
+C:\Users\rusla\Desktop\Project-university\ParkGuard KZ\backend\venv\lib\site-packages\lightning_lite\utilities\cloud_io.py:40: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  return torch.load(path_or_url, map_location=map_location)
+C:\Users\rusla\Desktop\Project-university\ParkGuard KZ\backend\venv\lib\site-packages\torchvision\models\_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Users\rusla\Desktop\Project-university\ParkGuard KZ\backend\venv\lib\site-packages\torchvision\models\_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=EfficientNet_B2_Weights.IMAGENET1K_V1`. You can also use `weights=EfficientNet_B2_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+C:\Users\rusla\Desktop\Project-university\ParkGuard KZ\backend\venv\lib\site-packages\nomeroff_net\pipes\number_plate_text_readers\base\ocr.py:305: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(path_to_model, map_location=torch.device('cpu'))
+2026-04-07 12:33:59 [core.camera_manager] INFO: Camera 2 (Otopark-A): baglandi
+C:\Users\rusla\Desktop\Project-university\ParkGuard KZ\backend\venv\lib\site-packages\torchvision\models\_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet18_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet18_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+2026-04-07 12:34:04 [core.camera_manager] INFO: Camera 3 (Otopark-B): baglandi
+2026-04-07 12:34:09 [core.plate_ocr] INFO: nomeroff-net hazir (KZ plaka modeli aktif)
+2026-04-07 12:34:09 [main] INFO: Inference loop baslatildi
+2026-04-07 12:34:09 [core.tracker] INFO: Kamera 1 icin ayri tracker olusturuldu
+2026-04-07 12:34:10 [core.tracker] INFO: Kamera 2 icin ayri tracker olusturuldu
+2026-04-07 12:34:10 [core.tracker] INFO: Kamera 3 icin ayri tracker olusturuldu
+C:\Users\rusla\Desktop\Project-university\ParkGuard KZ\backend\venv\lib\site-packages\nomeroff_net\nnmodels\numberplate_options_model.py:136: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
+  x1 = functional.softmax(x1)
+C:\Users\rusla\Desktop\Project-university\ParkGuard KZ\backend\venv\lib\site-packages\nomeroff_net\nnmodels\numberplate_options_model.py:137: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
+  x2 = functional.softmax(x2)
+C:\Users\rusla\Desktop\Project-university\ParkGuard KZ\backend\venv\lib\site-packages\nomeroff_net\pipes\number_plate_text_readers\base\ocr.py:262: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\torch\csrc\utils\tensor_new.cpp:281.)
+  pred_texts = decode_batch(torch.Tensor(net_out_value), self.label_converter)
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     ('127.0.0.1', 60388) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:34:14 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+INFO:     ('127.0.0.1', 64267) - "WebSocket /ws/stream/2" [accepted]
+2026-04-07 12:34:14 [api.websocket] INFO: Stream client baglandi: Kamera 2
+INFO:     connection open
+INFO:     ('127.0.0.1', 61664) - "WebSocket /ws/stream/3" [accepted]
+2026-04-07 12:34:15 [api.websocket] INFO: Stream client baglandi: Kamera 3
+INFO:     connection open
+INFO:     ('127.0.0.1', 60910) - "WebSocket /ws/stream/3" [accepted]
+2026-04-07 12:34:15 [api.websocket] INFO: Stream client baglandi: Kamera 3
+INFO:     connection open
+INFO:     ('127.0.0.1', 63681) - "WebSocket /ws/stream/2" [accepted]
+2026-04-07 12:34:17 [api.websocket] INFO: Stream client baglandi: Kamera 2
+INFO:     connection open
+INFO:     ('127.0.0.1', 49723) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:34:17 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 59566) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:34:18 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+INFO:     ('127.0.0.1', 54474) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:34:19 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+C:\Users\rusla\Desktop\Project-university\ParkGuard KZ\backend\venv\lib\site-packages\nomeroff_net\pipes\number_plate_text_readers\text_detector.py:110: UserWarning: Label 'ua_military' not in dict_keys([(1, 'eu_ua_2004'), (1, 'eu_ua_2015'), (1, 'eu_ua_1995'), (1, 'eu_ua_custom'), (1, 'xx_transit'), (1, 'eu'), (1, 'xx_unknown'), (1, 'ru'), (1, 'eu_ua_ordlo_lpr'), (1, 'eu_ua_ordlo_dpr'), (1, 'kz'), (1, 'kg'), (1, 'ge'), (1, 'su'), (1, 'am'), (1, 'by'), (2, 'eu_ua_2015'), (2, 'eu_ua_2004'), (2, 'eu_ua_1995'), (2, 'eu_ua_custom'), (2, 'xx_transit'), (2, 'eu'), (2, 'xx_unknown'), (2, 'ru'), (2, 'eu_ua_ordlo_lpr'), (2, 'eu_ua_ordlo_dpr'), (2, 'kz'), (2, 'kg'), (2, 'ge'), (2, 'am'), (2, 'by'), (3, 'eu_ua_2015'), (3, 'eu_ua_2004'), (3, 'eu_ua_1995'), (3, 'eu_ua_custom'), (3, 'xx_transit'), (3, 'eu'), (3, 'xx_unknown'), (3, 'ru'), (3, 'eu_ua_ordlo_lpr'), (3, 'eu_ua_ordlo_dpr'), (3, 'kz'), (3, 'kg'), (3, 'ge'), (3, 'am'), (3, 'by'), (2, 'su'), (2, 'military'), (3, 'su'), (3, 'military')])! Label changed on default 'eu_ua_2015'.
+  warnings.warn(f"Label '{label}' not in {self.detectors_map.keys()}! "
+C:\Users\rusla\Desktop\Project-university\ParkGuard KZ\backend\venv\lib\site-packages\nomeroff_net\pipes\number_plate_text_readers\text_detector.py:110: UserWarning: Label 'md' not in dict_keys([(1, 'eu_ua_2004'), (1, 'eu_ua_2015'), (1, 'eu_ua_1995'), (1, 'eu_ua_custom'), (1, 'xx_transit'), (1, 'eu'), (1, 'xx_unknown'), (1, 'ru'), (1, 'eu_ua_ordlo_lpr'), (1, 'eu_ua_ordlo_dpr'), (1, 'kz'), (1, 'kg'), (1, 'ge'), (1, 'su'), (1, 'am'), (1, 'by'), (2, 'eu_ua_2015'), (2, 'eu_ua_2004'), (2, 'eu_ua_1995'), (2, 'eu_ua_custom'), (2, 'xx_transit'), (2, 'eu'), (2, 'xx_unknown'), (2, 'ru'), (2, 'eu_ua_ordlo_lpr'), (2, 'eu_ua_ordlo_dpr'), (2, 'kz'), (2, 'kg'), (2, 'ge'), (2, 'am'), (2, 'by'), (3, 'eu_ua_2015'), (3, 'eu_ua_2004'), (3, 'eu_ua_1995'), (3, 'eu_ua_custom'), (3, 'xx_transit'), (3, 'eu'), (3, 'xx_unknown'), (3, 'ru'), (3, 'eu_ua_ordlo_lpr'), (3, 'eu_ua_ordlo_dpr'), (3, 'kz'), (3, 'kg'), (3, 'ge'), (3, 'am'), (3, 'by'), (2, 'su'), (2, 'military'), (3, 'su'), (3, 'military')])! Label changed on default 'eu_ua_2015'.
+  warnings.warn(f"Label '{label}' not in {self.detectors_map.keys()}! "
+2026-04-07 12:34:40 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+INFO:     connection closed
+2026-04-07 12:34:40 [api.websocket] INFO: Stream client ayrildi: Kamera 2
+2026-04-07 12:34:40 [api.websocket] INFO: Stream client ayrildi: Kamera 3
+INFO:     connection closed
+INFO:     connection closed
+2026-04-07 12:34:42 [core.alarm_manager] INFO: ALARM: Kamera 1 | ss | Plaka yok
+INFO:     ('127.0.0.1', 64334) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:34:43 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 64414) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:34:45 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 60387) - "WebSocket /ws/stream/3" [accepted]
+2026-04-07 12:34:45 [api.websocket] INFO: Stream client baglandi: Kamera 3
+INFO:     connection open
+2026-04-07 12:34:46 [core.camera_manager] WARNING: Camera 2: frame alinamiyor, yeniden baglaniliyor...
+2026-04-07 12:34:46 [core.camera_manager] INFO: Camera 2: yeniden baglaniliyor...
+INFO:     ('127.0.0.1', 64565) - "WebSocket /ws/stream/2" [accepted]
+2026-04-07 12:34:47 [api.websocket] INFO: Stream client baglandi: Kamera 2
+INFO:     connection open
+INFO:     ('127.0.0.1', 64110) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:34:49 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+2026-04-07 12:34:53 [core.camera_manager] INFO: Camera 2 (Otopark-A): baglandi
+2026-04-07 12:35:05 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+INFO:     connection closed
+2026-04-07 12:35:05 [api.websocket] INFO: Alarm client ayrildi
+INFO:     connection closed
+INFO:     ('127.0.0.1', 59571) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:35:09 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 49156) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:35:10 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+2026-04-07 12:35:21 [core.camera_manager] WARNING: Camera 2: frame alinamiyor, yeniden baglaniliyor...
+2026-04-07 12:35:21 [core.camera_manager] INFO: Camera 2: yeniden baglaniliyor...
+INFO:     ('127.0.0.1', 59026) - "WebSocket /ws/stats" [accepted]
+2026-04-07 12:35:24 [api.websocket] INFO: Stats client baglandi
+INFO:     connection open
+2026-04-07 12:35:26 [core.penalty_manager] INFO: Penalty DB hazir
+INFO:     ('127.0.0.1', 64160) - "WebSocket /ws/stats" [accepted]
+2026-04-07 12:35:27 [api.websocket] INFO: Stats client baglandi
+INFO:     connection open
+2026-04-07 12:35:29 [core.camera_manager] INFO: Camera 2 (Otopark-A): baglandi
+INFO:     ('127.0.0.1', 50859) - "WebSocket /ws/stats" [accepted]
+2026-04-07 12:35:30 [api.websocket] INFO: Stats client baglandi
+INFO:     connection open
+INFO:     ('127.0.0.1', 51405) - "WebSocket /ws/logs" [accepted]
+INFO:     connection open
+INFO:     connection closed
+2026-04-07 12:35:33 [api.websocket] INFO: Stats client ayrildi
+INFO:     ('127.0.0.1', 62557) - "WebSocket /ws/logs" [accepted]
+INFO:     connection open
+INFO:     ('127.0.0.1', 61412) - "WebSocket /ws/stats" [accepted]
+2026-04-07 12:35:35 [api.websocket] INFO: Stats client baglandi
+INFO:     connection open
+INFO:     connection closed
+2026-04-07 12:35:36 [httpx] INFO: HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+INFO:     ('127.0.0.1', 63144) - "WebSocket /ws/logs" [accepted]
+INFO:     connection open
+2026-04-07 12:35:38 [httpx] INFO: HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2026-04-07 12:35:51 [core.alarm_manager] INFO: ALARM: Kamera 1 | ss | Plaka yok
+INFO:     ('127.0.0.1', 59404) - "WebSocket /ws/logs" [accepted]
+INFO:     connection open
+INFO:     ('127.0.0.1', 65191) - "WebSocket /ws/logs" [accepted]
+INFO:     connection open
+2026-04-07 12:36:00 [httpx] INFO: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+INFO:     connection closed
+2026-04-07 12:36:01 [core.camera_manager] WARNING: Camera 2: frame alinamiyor, yeniden baglaniliyor...
+2026-04-07 12:36:01 [core.camera_manager] INFO: Camera 2: yeniden baglaniliyor...
+2026-04-07 12:36:02 [httpx] INFO: HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+INFO:     ('127.0.0.1', 53384) - "WebSocket /ws/logs" [accepted]
+INFO:     connection open
+2026-04-07 12:36:04 [httpx] INFO: HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2026-04-07 12:36:12 [core.camera_manager] INFO: Camera 2 (Otopark-A): baglandi
+2026-04-07 12:36:14 [httpx] INFO: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+INFO:     ('127.0.0.1', 56394) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:36:24 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 53418) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:36:25 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+INFO:     ('127.0.0.1', 49667) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:36:27 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 58078) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:36:27 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+2026-04-07 12:36:39 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+INFO:     connection closed
+2026-04-07 12:36:39 [api.websocket] INFO: Alarm client ayrildi
+INFO:     connection closed
+INFO:     ('127.0.0.1', 62933) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:36:42 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 62986) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:36:42 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+INFO:     ('127.0.0.1', 54478) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:36:43 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+INFO:     ('127.0.0.1', 58611) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:36:44 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 49752) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:36:44 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 57773) - "WebSocket /ws/stream/3" [accepted]
+2026-04-07 12:36:44 [api.websocket] INFO: Stream client baglandi: Kamera 3
+INFO:     connection open
+INFO:     ('127.0.0.1', 53962) - "WebSocket /ws/stream/2" [accepted]
+2026-04-07 12:36:45 [api.websocket] INFO: Stream client baglandi: Kamera 2
+INFO:     connection open
+INFO:     ('127.0.0.1', 56776) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:36:46 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+INFO:     ('127.0.0.1', 64562) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:36:47 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 59008) - "WebSocket /ws/stream/2" [accepted]
+2026-04-07 12:36:48 [api.websocket] INFO: Stream client baglandi: Kamera 2
+INFO:     connection open
+INFO:     ('127.0.0.1', 60204) - "WebSocket /ws/stream/3" [accepted]
+2026-04-07 12:36:48 [api.websocket] INFO: Stream client baglandi: Kamera 3
+INFO:     connection open
+2026-04-07 12:36:56 [core.camera_manager] WARNING: Camera 2: frame alinamiyor, yeniden baglaniliyor...
+2026-04-07 12:36:56 [core.camera_manager] INFO: Camera 2: yeniden baglaniliyor...
+INFO:     ('127.0.0.1', 64716) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:37:09 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 61375) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:37:09 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+2026-04-07 12:37:09 [api.websocket] INFO: Stream client ayrildi: Kamera 3
+INFO:     connection closed
+2026-04-07 12:37:09 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:37:09 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:37:09 [api.websocket] INFO: Stream client ayrildi: Kamera 2
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+2026-04-07 12:37:11 [core.camera_manager] INFO: Camera 2 (Otopark-A): baglandi
+INFO:     ('127.0.0.1', 57330) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:37:12 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 65097) - "WebSocket /ws/stream/3" [accepted]
+2026-04-07 12:37:12 [api.websocket] INFO: Stream client baglandi: Kamera 3
+INFO:     connection open
+INFO:     ('127.0.0.1', 60891) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:37:13 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 61265) - "WebSocket /ws/stream/2" [accepted]
+2026-04-07 12:37:14 [api.websocket] INFO: Stream client baglandi: Kamera 2
+INFO:     connection open
+2026-04-07 12:37:20 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+INFO:     connection closed
+2026-04-07 12:37:21 [api.websocket] INFO: Alarm client ayrildi
+INFO:     connection closed
+INFO:     ('127.0.0.1', 53462) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:37:24 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 54533) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:37:24 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+2026-04-07 12:37:41 [core.camera_manager] WARNING: Camera 2: frame alinamiyor, yeniden baglaniliyor...
+2026-04-07 12:37:41 [core.camera_manager] INFO: Camera 2: yeniden baglaniliyor...
+2026-04-07 12:37:57 [core.camera_manager] INFO: Camera 2 (Otopark-A): baglandi
+INFO:     ('127.0.0.1', 54228) - "WebSocket /ws/stats" [accepted]
+2026-04-07 12:38:01 [api.websocket] INFO: Stats client baglandi
+INFO:     connection open
+INFO:     ('127.0.0.1', 51951) - "WebSocket /ws/stats" [accepted]
+2026-04-07 12:38:02 [api.websocket] INFO: Stats client baglandi
+INFO:     connection open
+INFO:     connection closed
+2026-04-07 12:38:03 [api.websocket] INFO: Stats client ayrildi
+INFO:     ('127.0.0.1', 51902) - "WebSocket /ws/stats" [accepted]
+2026-04-07 12:38:04 [api.websocket] INFO: Stats client baglandi
+INFO:     connection open
+2026-04-07 12:38:09 [api.websocket] INFO: Stats client ayrildi
+INFO:     connection closed
+INFO:     ('127.0.0.1', 50977) - "WebSocket /ws/stats" [accepted]
+2026-04-07 12:38:12 [api.websocket] INFO: Stats client baglandi
+INFO:     connection open
+INFO:     ('127.0.0.1', 55306) - "WebSocket /ws/stats" [accepted]
+2026-04-07 12:38:14 [api.websocket] INFO: Stats client baglandi
+INFO:     connection open
+2026-04-07 12:38:15 [core.camera_manager] WARNING: Camera 2: frame alinamiyor, yeniden baglaniliyor...
+INFO:     ('127.0.0.1', 54827) - "WebSocket /ws/stats" [accepted]
+2026-04-07 12:38:15 [api.websocket] INFO: Stats client baglandi
+INFO:     connection open
+2026-04-07 12:38:15 [core.camera_manager] INFO: Camera 2: yeniden baglaniliyor...
+INFO:     connection closed
+2026-04-07 12:38:17 [api.websocket] INFO: Stats client ayrildi
+INFO:     ('127.0.0.1', 51913) - "WebSocket /ws/stats" [accepted]
+2026-04-07 12:38:17 [api.websocket] INFO: Stats client baglandi
+INFO:     connection open
+2026-04-07 12:38:22 [core.camera_manager] INFO: Camera 2 (Otopark-A): baglandi
+INFO:     ('127.0.0.1', 60763) - "WebSocket /ws/logs" [accepted]
+INFO:     connection open
+INFO:     ('127.0.0.1', 51092) - "WebSocket /ws/logs" [accepted]
+INFO:     connection open
+2026-04-07 12:38:27 [api.websocket] INFO: Stats client ayrildi
+INFO:     connection closed
+INFO:     connection closed
+INFO:     ('127.0.0.1', 53567) - "WebSocket /ws/logs" [accepted]
+INFO:     connection open
+INFO:     ('127.0.0.1', 52188) - "WebSocket /ws/stats" [accepted]
+2026-04-07 12:38:30 [api.websocket] INFO: Stats client baglandi
+INFO:     connection open
+INFO:     connection closed
+2026-04-07 12:38:43 [httpx] INFO: HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+INFO:     ('127.0.0.1', 58440) - "WebSocket /ws/logs" [accepted]
+INFO:     connection open
+2026-04-07 12:38:45 [httpx] INFO: HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2026-04-07 12:38:47 [httpx] INFO: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-04-07 12:38:48 [core.camera_manager] WARNING: Camera 2: frame alinamiyor, yeniden baglaniliyor...
+2026-04-07 12:38:48 [core.camera_manager] INFO: Camera 2: yeniden baglaniliyor...
+2026-04-07 12:38:59 [core.camera_manager] INFO: Camera 2 (Otopark-A): baglandi
+2026-04-07 12:39:06 [httpx] INFO: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-04-07 12:39:26 [core.camera_manager] WARNING: Camera 2: frame alinamiyor, yeniden baglaniliyor...
+2026-04-07 12:39:26 [core.camera_manager] INFO: Camera 2: yeniden baglaniliyor...
+2026-04-07 12:39:30 [httpx] INFO: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-04-07 12:39:36 [core.camera_manager] INFO: Camera 2 (Otopark-A): baglandi
+[hevc @ 000001b005389400] Could not find ref with POC 28
+[hevc @ 000001b00538af40] Duplicate POC in a sequence: 12.
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 51d1 expected=441f
+[hevc @ 000001b00a9eea00] Could not find ref with POC 4
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 8b35 expected=7c15
+[hevc @ 000001b00a9ef7c0] Could not find ref with POC 0
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq b625 expected=a5dc
+[hevc @ 000001b00a9eea00] The cu_qp_delta 38 is outside the valid range [-26, 25].
+[hevc @ 000001b00a9eee80] Could not find ref with POC 28
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq d9f5 expected=cb4e
+[hevc @ 000001b00a9eca00] Could not find ref with POC 4
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq fa0e expected=eb92
+[hevc @ 000001b00a9eca00] Could not find ref with POC 10
+[hevc @ 000001b00a9eca00] Could not find ref with POC 8
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 1e49 expected=1067
+[hevc @ 000001b00a9eaec0] Could not find ref with POC 8
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 42e6 expected=33ce
+[hevc @ 000001b00a9ef300] Could not find ref with POC 4
+[hevc @ 000001b00a9eb340] The cu_qp_delta 122 is outside the valid range [-26, 25].
+[hevc @ 000001b00a9f1c40] Could not find ref with POC 16
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 68d4 expected=5b2b
+[hevc @ 000001b00a9efc40] Non-matching NAL types of the VCL NALUs: 19 1
+[hevc @ 000001b00a9f0540] Could not find ref with POC 4
+[hevc @ 000001b00a9ed7c0] Could not find ref with POC 18
+[hevc @ 000001b00a9ed7c0] Could not find ref with POC 16
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 941a expected=8641
+[hevc @ 000001b00a9eea00] Could not find ref with POC 24
+[hevc @ 000001b00a9ee580] Non-matching NAL types of the VCL NALUs: 19 1
+[rtsp @ 000001b00a7821c0] RTP: PT=60: bad cseq bb23 expected=a31a
+[hevc @ 000001b00538a640] The cu_qp_delta -35 is outside the valid range [-26, 25].
+[hevc @ 000001b005388ac0] Could not find ref with POC 40
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq bcb6 expected=af19
+[hevc @ 000001b00a9eca00] Could not find ref with POC 0
+[hevc @ 000001b00a9ed340] Could not find ref with POC 10
+[hevc @ 000001b00a9ed340] Could not find ref with POC 8
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq ded9 expected=d15c
+[hevc @ 000001b00a9eee80] Could not find ref with POC 36
+[hevc @ 000001b00a9eea00] The cu_qp_delta 30 is outside the valid range [-26, 25].
+[hevc @ 000001b00a9eea00] Non-matching NAL types of the VCL NALUs: 19 1
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq fcef expected=eeb9
+[hevc @ 000001b00a9f0e80] Could not find ref with POC 0
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 27d3 expected=1a2b
+[hevc @ 000001b00a9ee580] The cu_qp_delta -41 is outside the valid range [-26, 25].
+[hevc @ 000001b00a9ee580] Non-matching NAL types of the VCL NALUs: 19 1
+[hevc @ 000001b00a9eea00] Could not find ref with POC 4
+[hevc @ 000001b00538b400] Could not find ref with POC 8
+[hevc @ 000001b005389d00] Could not find ref with POC 32
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 512b expected=4300
+[hevc @ 000001b00a9eb340] Could not find ref with POC 4
+[hevc @ 000001b005389d00] Could not find ref with POC 26
+[hevc @ 000001b005389d00] Could not find ref with POC 24
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 766a expected=68f8
+[hevc @ 000001b00a9f1300] Non-matching NAL types of the VCL NALUs: 19 1
+[hevc @ 000001b00a9efc40] Could not find ref with POC 2
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 9c8c expected=8f28
+[hevc @ 000001b00a9eea00] Could not find ref with POC 22
+[hevc @ 000001b00a9eea00] Could not find ref with POC 20
+[hevc @ 000001b00a9ee580] Non-matching NAL types of the VCL NALUs: 19 1
+[hevc @ 000001b005388ac0] Could not find ref with POC 0
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq c6ad expected=b742
+[hevc @ 000001b00a9f0540] Could not find ref with POC 4
+[hevc @ 000001b00a9ea580] Could not find ref with POC 28
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq f600 expected=e811
+[hevc @ 000001b00a9eca00] Could not find ref with POC 8
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 1647 expected=088d
+[he2026-04-07 12:40:24 [core.camera_manager] WARNING: Camera 2: frame alinamiyor, yeniden baglaniliyor...
+2026-04-07 12:40:24 [core.camera_manager] INFO: Camera 2: yeniden baglaniliyor...
+INFO:     ('127.0.0.1', 53686) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:40:42 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 49670) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:40:42 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+2026-04-07 12:40:42 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+INFO:     connection closed
+INFO:     ('127.0.0.1', 51981) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:40:42 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+INFO:     ('127.0.0.1', 55350) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:40:45 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 56534) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:40:45 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+2026-04-07 12:40:48 [core.camera_manager] INFO: Camera 2 (Otopark-A): baglandi
+2026-04-07 12:41:15 [core.alarm_manager] INFO: ALARM: Kamera 1 | ss | Plaka yok
+2026-04-07 12:41:22 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+INFO:     connection closed
+2026-04-07 12:41:22 [api.websocket] INFO: Alarm client ayrildi
+INFO:     connection closed
+2026-04-07 12:41:25 [core.camera_manager] WARNING: Camera 2: frame alinamiyor, yeniden baglaniliyor...
+2026-04-07 12:41:25 [core.camera_manager] INFO: Camera 2: yeniden baglaniliyor...
+INFO:     ('127.0.0.1', 62391) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:41:26 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 62403) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:41:26 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+INFO:     ('127.0.0.1', 55422) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:41:30 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 57744) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:41:30 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+2026-04-07 12:41:30 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+INFO:     connection closed
+INFO:     ('127.0.0.1', 61154) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:41:31 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+2026-04-07 12:41:32 [core.camera_manager] INFO: Camera 2 (Otopark-A): baglandi
+INFO:     ('127.0.0.1', 58253) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:41:33 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 51738) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:41:33 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+2026-04-07 12:41:53 [core.camera_manager] WARNING: Camera 2: frame alinamiyor, yeniden baglaniliyor...
+2026-04-07 12:41:53 [core.camera_manager] INFO: Camera 2: yeniden baglaniliyor...
+2026-04-07 12:42:01 [core.camera_manager] INFO: Camera 2 (Otopark-A): baglandi
+2026-04-07 12:42:36 [core.camera_manager] WARNING: Camera 2: frame alinamiyor, yeniden baglaniliyor...
+2026-04-07 12:42:36 [core.camera_manager] INFO: Camera 2: yeniden baglaniliyor...
+2026-04-07 12:42:48 [core.camera_manager] INFO: Camera 2 (Otopark-A): baglandi
+2026-04-07 12:43:03 [core.camera_manager] WARNING: Camera 2: frame alinamiyor, yeniden baglaniliyor...
+2026-04-07 12:43:03 [core.camera_manager] INFO: Camera 2: yeniden baglaniliyor...
+2026-04-07 12:43:22 [core.camera_manager] INFO: Camera 2 (Otopark-A): baglandi
+2026-04-07 12:43:55 [core.camera_manager] WARNING: Camera 2: frame alinamiyor, yeniden baglaniliyor...
+2026-04-07 12:43:55 [core.camera_manager] INFO: Camera 2: yeniden baglaniliyor...
+vc @ 000001b00a9efc40] The cu_qp_delta 35 is outside the valid range [-26, 25].
+[hevc @ 000001b00a9efc40] Non-matching NAL types of the VCL NALUs: 19 1
+[hevc @ 000001b00a9f0540] Could not find ref with POC 4
+[hevc @ 000001b00538b400] Could not find ref with POC 24
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 357d expected=278b
+[hevc @ 000001b00a9ece80] Could not find ref with POC 4
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 5ebd expected=5075
+[hevc @ 000001b00a9efc40] Could not find ref with POC 0
+[hevc @ 000001b005388f80] Could not find ref with POC 20
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 7a1c expected=6ca3
+[hevc @ 000001b00a9eca00] The cu_qp_delta -65 is outside the valid range [-26, 25].
+[hevc @ 000001b00a9eca00] Non-matching NAL types of the VCL NALUs: 19 1
+[hevc @ 000001b00a9ee0c0] Could not find ref with POC 12
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 9916 expected=8971
+[hevc @ 000001b00a9eee80] Could not find ref with POC 16
+[hevc @ 000001b00538a1c0] Could not find ref with POC 38
+[hevc @ 000001b00538a1c0] Could not find ref with POC 36
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq bd93 expected=aecd
+[hevc @ 000001b00a9ee0c0] Could not find ref with POC 4
+[rtsp @ 000001b08a486b00] RTP: PT=60: bad cseq bca9 expected=aa51
+[hevc @ 000001b00a9f1780] The cu_qp_delta 34 is outside the valid range [-26, 25].
+[hevc @ 000001b00a9f1c40] Could not find ref with POC 22
+[hevc @ 000001b00a9f1c40] Could not find ref with POC 20
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq e3ea expected=d745
+[hevc @ 000001b00a9f0e80] The cu_qp_delta 27 is outside the valid range [-26, 25].
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq fc4a expected=edfd
+[hevc @ 000001b00a9ee580] Could not find ref with POC 12
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 1117 expected=01d3
+[hevc @ 000001b00a9ece80] Could not find ref with POC 0
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 2ba4 expected=1e12
+[hevc @ 000001b00a9ef7c0] Could not find ref with POC 0
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 424a expected=34c2
+[hevc @ 000001b00a9f00c0] The cu_qp_delta 27 is outside the valid range [-26, 25].
+[hevc @ 000001b00a9f00c0] Non-matching NAL types of the VCL NALUs: 19 1
+[hevc @ 000001b00a9f1300] Could not find ref with POC 22
+[hevc @ 000001b00a9f1300] Could not find ref with POC 20
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 5799 expected=4a12
+[hevc @ 000001b00a9f0e80] Could not find ref with POC 28
+[hevc @ 000001b00a9ef7c0] Non-matching NAL types of the VCL NALUs: 19 1
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 70fe expected=62af
+[hevc @ 000001b00a9ef7c0] Could not find ref with POC 8
+[hevc @ 000001b00a9ed340] Could not find ref with POC 24
+[hevc @ 000001b00a9f0a00] The cu_qp_delta -51 is outside the valid range [-26, 25].
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 9628 expected=8606
+[hevc @ 000001b00a9f0540] The cu_qp_delta 32 is outside the valid range [-26, 25].
+[hevc @ 000001b00a9eaec0] Could not find ref with POC 8
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq bb7c expected=ad12
+[hevc @ 000001b00a9ee580] Could not find ref with POC 4
+[hevc @ 000001b00a9ed7c0] Could not find ref with POC 30
+[hevc @ 000001b00a9ed7c0] Could not find ref with POC 28
+[hevc @ 000001b00a9ebc40] The cu_qp_delta 76 is outside the valid range [-26, 25].
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq dbe3 expected=cc88
+[hevc @ 000001b00a9ee580] CABAC_MAX_BIN : 7
+[hevc @ 000001b00a9ee580] The cu_qp_delta 1094995529 is outside the valid range [-26, 25].
+[hevc @ 000001b00a9eea00] Could not find ref with POC 4
+[hevc @ 000001b00538a1c0] Could not find ref with POC 32
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq f661 expected=e8dc
+[hevc @ 000001b00a9ec580] Could not find ref with POC 8
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 117e expected=016b
+[hevc @ 000001b00a9ee580] Could not find ref with POC 12
+[rtsp @ 000001b0a855bb80] RTP: PT=60: bad cseq 4e5c expected=3d3a
+[hevc @ 000001b00a9ec100] The cu_qp_delta 34 is outside the valid range [-26, 25].
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 35f0 expected=25e9
+[hevc @ 000001b00a9eea2026-04-07 12:44:12 [core.camera_manager] INFO: Camera 2 (Otopark-A): baglandi
+2026-04-07 12:44:45 [core.camera_manager] WARNING: Camera 2: frame alinamiyor, yeniden baglaniliyor...
+2026-04-07 12:44:45 [core.camera_manager] INFO: Camera 2: yeniden baglaniliyor...
+2026-04-07 12:44:56 [core.camera_manager] INFO: Camera 2 (Otopark-A): baglandi
+2026-04-07 12:45:12 [core.camera_manager] WARNING: Camera 2: frame alinamiyor, yeniden baglaniliyor...
+2026-04-07 12:45:12 [core.camera_manager] INFO: Camera 2: yeniden baglaniliyor...
+2026-04-07 12:45:33 [core.camera_manager] INFO: Camera 2 (Otopark-A): baglandi
+2026-04-07 12:45:33 [core.camera_manager] WARNING: Camera 2: frame alinamiyor, yeniden baglaniliyor...
+2026-04-07 12:45:33 [core.camera_manager] INFO: Camera 2: yeniden baglaniliyor...
+2026-04-07 12:45:40 [core.camera_manager] INFO: Camera 2 (Otopark-A): baglandi
+00] Could not find ref with POC 22
+[hevc @ 000001b00a9eea00] Could not find ref with POC 20
+[hevc @ 000001b005388f80] Could not find ref with POC 8
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 53ae expected=453c
+[hevc @ 000001b00a9ee580] Could not find ref with POC 0
+[hevc @ 000001b005389880] Could not find ref with POC 0
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 7431 expected=64e6
+[hevc @ 000001b00a9eca00] Could not find ref with POC 16
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 933e expected=84cc
+[hevc @ 000001b00a9eb340] Could not find ref with POC 4
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq b7f2 expected=a9d3
+[hevc @ 000001b00a9eca00] Could not find ref with POC 16
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq d70b expected=c988
+[hevc @ 000001b00a9eb340] Could not find ref with POC 0
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq f77b expected=e961
+[hevc @ 000001b00a9eee80] Could not find ref with POC 8
+[hevc @ 000001b00538aac0] Could not find ref with POC 0
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 1720 expected=09a6
+[hevc @ 000001b00a9eca00] The cu_qp_delta -32 is outside the valid range [-26, 25].
+[hevc @ 000001b00a9ee0c0] Could not find ref with POC 4
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 3285 expected=2354
+[hevc @ 000001b00a9eca00] The cu_qp_delta -33 is outside the valid range [-26, 25].
+[hevc @ 000001b00a9ee0c0] Could not find ref with POC 24
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 4bb1 expected=3da4
+[hevc @ 000001b00a9ec580] The cu_qp_delta -89 is outside the valid range [-26, 25].
+[hevc @ 000001b00a9eca00] Could not find ref with POC 16
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 6a91 expected=5b49
+[ WARN:0@772.999] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 30003.601000 ms
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 9a21 expected=8b56
+[hevc @ 000001b00a9ef300] Could not find ref with POC 2
+[hevc @ 000001b00a9ef300] Could not find ref with POC 0
+[ WARN:0@803.012] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 30001.103000 ms
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq ccd0 expected=bf52
+[hevc @ 000001b00a9ee580] Could not find ref with POC 42
+[hevc @ 000001b00a9ee580] Could not find ref with POC 40
+[hevc @ 000001b00a9ece80] The cu_qp_delta 33 is outside the valid range [-26, 25].
+[hevc @ 000001b00a9ece80] Non-matching NAL types of the VCL NALUs: 19 1
+[hevc @ 000001b005344cc0] Could not find ref with POC 2
+[hevc @ 000001b0052f1f40] Could not find ref with POC 32
+[hevc @ 000001b005344cc0] Could not find ref with POC 16
+[hevc @ 000001b002edbbc0] Could not find ref with POC 0
+[hevc @ 000001b005313e40] Could not find ref with POC 28
+[hevc @ 000001b00537db00] Could not find ref with POC 16
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq ea79 expected=db95
+[hevc @ 000001b00a9f1300] Could not find ref with POC 12
+[hevc @ 000001b0052bfc80] Could not find ref with POC 0
+[hevc @ 000001b005344cc0] Could not find ref with POC 36
+[hevc @ 000001b002e404c0] Could not find ref with POC 18
+[hevc @ 000001b002e404c0] Could not find ref with POC 16
+[ WARN:0@833.254] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 30095.286000 ms
+[hevc @ 000001b0052f1f40] Could not find ref with POC 4
+[hevc @ 000001b005313e40] Could not find ref with POC 32
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq ff92 expected=f1ef
+[hevc @ 000001b00a9eca00] Could not find ref with POC 8
+[hevc @ 000001b00a9ec580] Non-matching NAL types of the VCL NALUs: 19 1
+[hevc @ 000001b00537db00] Duplicate POC in a sequence: 5.
+[hevc @ 000001b005339d40] Could not find ref with POC 36
+[hevc @ 000001b005313e40] Could not find ref with POC 16
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 1b02 expected=0cef
+[hevc @ 000001b00a9f0540] Non-matching NAL types of the VCL NALUs: 19 1
+[hevc @ 000001b00a9eaec0] Could not find ref with POC 16
+[hevc @ 000001b0052bfc80] Could not find ref with POC 0
+[hevc @ 000001b0052d3040] Could not find ref with POC 20
+[ WARN:0@863.346] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 30089.752000 ms
+INFO:     ('127.0.0.1', 61816) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:48:14 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 57351) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:48:14 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+2026-04-07 12:48:14 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:48:14 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+INFO:     connection closed
+INFO:     connection closed
+INFO:     ('127.0.0.1', 50943) - "WebSocket /ws/stream/2" [accepted]
+2026-04-07 12:48:14 [api.websocket] INFO: Stream client baglandi: Kamera 2
+INFO:     connection open
+INFO:     ('127.0.0.1', 60466) - "WebSocket /ws/stream/3" [accepted]
+2026-04-07 12:48:15 [api.websocket] INFO: Stream client baglandi: Kamera 3
+INFO:     connection open
+INFO:     ('127.0.0.1', 57288) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:48:17 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 63523) - "WebSocket /ws/stream/2" [accepted]
+2026-04-07 12:48:17 [api.websocket] INFO: Stream client baglandi: Kamera 2
+INFO:     connection open
+INFO:     ('127.0.0.1', 60065) - "WebSocket /ws/stream/3" [accepted]
+2026-04-07 12:48:18 [api.websocket] INFO: Stream client baglandi: Kamera 3
+INFO:     connection open
+INFO:     ('127.0.0.1', 59242) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:48:19 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 62424) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:48:19 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 49673) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:48:19 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+2026-04-07 12:48:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:48:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:48:19 [api.websocket] INFO: Stream client ayrildi: Kamera 2
+2026-04-07 12:48:19 [api.websocket] INFO: Stream client ayrildi: Kamera 3
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     ('127.0.0.1', 58059) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:48:23 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 62705) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:48:23 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 64140) - "WebSocket /ws/stream/2" [accepted]
+2026-04-07 12:48:24 [api.websocket] INFO: Stream client baglandi: Kamera 2
+INFO:     connection open
+INFO:     ('127.0.0.1', 55222) - "WebSocket /ws/stream/3" [accepted]
+2026-04-07 12:48:24 [api.websocket] INFO: Stream client baglandi: Kamera 3
+INFO:     connection open
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 352f expected=25fd
+[hevc @ 000001b00a9ee580] Could not find ref with POC 12
+[hevc @ 000001b005372bc0] Could not find ref with POC 4
+[hevc @ 000001b0052e2fc0] Could not find ref with POC 32
+[hevc @ 000001b002e37200] Could not find ref with POC 10
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 4f0a expected=40d0
+[hevc @ 000001b00a9f00c0] Could not find ref with POC 16
+[rtsp @ 000001b002df2f00] Illegal temporal ID in RTP/HEVC packet
+[hevc @ 000001b00538b880] Could not find ref with POC 32
+[hevc @ 000001b00537db00] Could not find ref with POC 16
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 694b expected=5bd3
+[hevc @ 000001b00a9eaec0] The cu_qp_delta -89 is outside the valid range [-26, 25].
+[hevc @ 000001b00a9eaec0] Non-matching NAL types of the VCL NALUs: 19 1
+[hevc @ 000001b002e37200] Could not find ref with POC 0
+[ WARN:0@893.442] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 30092.363000 ms
+2026-04-07 12:49:00 [core.camera_manager] WARNING: Camera 1: frame alinamiyor, yeniden baglaniliyor...
+2026-04-07 12:49:00 [core.camera_manager] INFO: Camera 1: yeniden baglaniliyor...
+[hevc @ 000001b002e404c0] Could not find ref with POC 2
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 8832 expected=7aa5
+[hevc @ 000001b002edbbc0] Could not find ref with POC 2
+[hevc @ 000001b002edbbc0] Could not find ref with POC 0
+[hevc @ 000001b00a9eee80] The cu_qp_delta -29 is outside the valid range [-26, 25].
+[hevc @ 000001b00a9eee80] Non-matching NAL types of the VCL NALUs: 19 1
+[hevc @ 000001b00a9eb340] Could not find ref with POC 6
+[hevc @ 000001b00a9eb340] Could not find ref with POC 4
+[hevc @ 000001b005339d40] Could not find ref with POC 48
+[hevc @ 000001b005308ec0] Could not find ref with POC 14
+[hevc @ 000001b005308ec0] Could not find ref with POC 12
+[ WARN:0@923.530] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 30086.494000 ms
+2026-04-07 12:49:25 [core.camera_manager] INFO: Camera 1 (Giri\u015f Kap\u0131s\u0131): baglandi
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq b5bd expected=a68c
+[hevc @ 000001b00a9eca00] The cu_qp_delta -33 is outside the valid range [-26, 25].
+[h264 @ 000001b00a776300] error while decoding MB 74 44, bytestream -7
+[rtsp @ 000001b00a9533c0] nal size exceeds length: 10349 1425
+[h264 @ 000001b00a778780] error while decoding MB 96 66, bytestream -7
+[h264 @ 000001b00a7770c0] error while decoding MB 139 8, bytestream -7
+[h264 @ 000001b00538b880] error while decoding MB 27 54, bytestream -5
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq e3bb expected=d589
+[hevc @ 000001b00a9eee80] The cu_qp_delta -79 is outside the valid range [-26, 25].
+[hevc @ 000001b00a9eb340] Could not find ref with POC 4
+[h264 @ 000001b00a7767c0] error while decoding MB 136 7, bytestream -13
+[rtsp @ 000001b00a9533c0] Undefined type (31)
+[h264 @ 000001b00a777540] cabac decode of qscale diff failed at 67 44
+[h264 @ 000001b00a777540] error while decoding MB 67 44, bytestream 989
+[NULL @ 000001b005389d00] SEI type 196 size 1096 truncated at 984
+[h264 @ 000001b00a7790c0] SEI type 196 size 1096 truncated at 975
+[h264 @ 000001b00a776c40] error while decoding MB 102 65, bytestream -13
+[rtsp @ 000001b00a9533c0] nal size exceeds length: 10163 1425
+[h264 @ 000001b00a778780] cabac decode of qscale diff failed at 122 34
+[h264 @ 000001b00a778780] error while decoding MB 122 34, bytestream 825
+[NULL @ 000001b005389d00] SEI type 222 size 1728 truncated at 1456
+[ WARN:0@953.623] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 30090.457000 ms
+[h264 @ 000001b00a774c40] error while decoding MB 47 43, bytestream -7
+[h264 @ 000001b00a778780] error while decoding MB 138 78, bytestream -17
+[h264 @ 000001b00a7790c0] error while decoding MB 156 44, bytestream -7
+[h264 @ 000001b00a774c40] error while decoding MB 127 81, bytestream -5
+[h264 @ 000001b00a777540] error while decoding MB 7 64, bytestream -13
+[h264 @ 000001b00a776c40] error while decoding MB 90 61, bytestream -5
+[h264 @ 000001b00a776300] error while decoding MB 61 25, bytestream -11
+[h264 @ 000001b00a776300] non-existing PPS 2 referenced
+[h264 @ 000001b00a776300] decode_slice_header error
+[h264 @ 000001b00a775e80] error while decoding MB 22 45, bytestream -7
+[h264 @ 000001b00a7790c0] error while decoding MB 92 70, bytestream -17
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 0336 expected=f3ea
+[hevc @ 000001b00a9eaec0] The cu_qp_delta -28 is outside the valid range [-26, 25].
+[hevc @ 000001b00a9ec580] Could not find ref with POC 6
+[h264 @ 000001b00a775a00] error while decoding MB 15 44, bytestream -5
+[h264 @ 000001b00538b880] error while decoding MB 124 71, bytestream -11
+[NULL @ 000001b005389d00] missing picture in access unit with size 1432
+[h264 @ 000001b00a778780] no frame!
+[h264 @ 000001b00a7790c0] error while decoding MB 59 26, bytestream -5
+[h264 @ 000001b00a778c40] error while decoding MB 61 34, bytestream -7
+[h264 @ 000001b00538bd00] cabac decode of qscale diff failed at 101 25
+[h264 @ 000001b00538bd00] error while decoding MB 101 25, bytestream -5
+[rtsp @ 000001b00a9533c0] Undefined type (30)
+[h264 @ 000001b00a7750c0] left block unavailable for requested intra mode
+[h264 @ 000001b00a7750c0] error while decoding MB 0 36, bytestream 423
+[NULL @ 000001b005389d00] sps_id 1 out of range
+[h264 @ 000001b00a776300] sps_id 1 out of range
+[h264 @ 000001b00a778780] error while decoding MB 143 21, bytestream -7
+[h264 @ 000001b00a7770c0] error while decoding MB 27 47, bytestream -7
+[rtsp @ 000001b00a9533c0] Undefined type (30)
+[rtsp @ 000001b00a9533c0] nal size exceeds length: 12808 1425
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 2205 expected=126a
+[h264 @ 000001b00a7767c0] error while decoding MB 66 44, bytestream -5
+[hevc @ 000001b00a9eca00] The cu_qp_delta -38 is outside the valid range [-26, 25].
+[h264 @ 000001b00538bd00] error while decoding MB 38 56, bytestream -5
+[h264 @ 000001b00a7767c0] cabac decode of qscale diff failed at 34 63
+[h264 @ 000001b00a7767c0] error while decoding MB 34 63, bytestream -7
+[h264 @ 000001b00a777540] error while decoding MB 122 78, bytestream -7
+[ WARN:0@983.714] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 30090.238000 ms
+2026-04-07 12:50:15 [core.alarm_manager] INFO: ALARM: Kamera 1 | ss | Plaka yok
+2026-04-07 12:50:18 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+INFO:     connection closed
+2026-04-07 12:50:18 [api.websocket] INFO: Alarm client ayrildi
+INFO:     connection closed
+INFO:     ('127.0.0.1', 49300) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:50:21 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 58405) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:50:22 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+[h264 @ 000001b00a775a00] error while decoding MB 27 22, bytestream -9
+[h264 @ 000001b00a778780] error while decoding MB 145 32, bytestream -5
+[h264 @ 000001b00a777a00] cabac decode of qscale diff failed at 94 8
+[h264 @ 000001b00a777a00] error while decoding MB 94 8, bytestream 595
+[h264 @ 000001b00a778c40] error while decoding MB 131 58, bytestream 99
+[h264 @ 000001b00538bd00] error while decoding MB 143 24, bytestream -5
+[h264 @ 000001b00a778780] error while decoding MB 88 71, bytestream -5
+[h264 @ 000001b00a777e80] error while decoding MB 126 24, bytestream -9
+[h264 @ 000001b00a776c40] error while decoding MB 43 42, bytestream -7
+[h264 @ 000001b00a7767c0] cabac decode of qscale diff failed at 77 45
+[h264 @ 000001b00a7767c0] error while decoding MB 77 45, bytestream -5
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 42ed expected=36a1
+[rtsp @ 000001b00a9533c0] Undefined type (30)
+[h264 @ 000001b00a776c40] error while decoding MB 157 41, bytestream -5
+[h264 @ 000001b00a778c40] error while decoding MB 26 23, bytestream -5
+[h264 @ 000001b00538bd00] cabac decode of qscale diff failed at 37 26
+[h264 @ 000001b00538bd00] error while decoding MB 37 26, bytestream 611
+[NULL @ 000001b005389d00] missing picture in access unit with size 4296
+[h264 @ 000001b00a775a00] no frame!
+[h264 @ 000001b00a776300] cabac decode of qscale diff failed at 27 31
+[h264 @ 000001b00a776300] error while decoding MB 27 31, bytestream -3
+[h264 @ 000001b00a777a00] error while decoding MB 48 69, bytestream -25
+[h264 @ 000001b00538bd00] error while decoding MB 4 45, bytestream -5
+[h264 @ 000001b00a7790c0] error while decoding MB 71 50, bytestream -5
+[h264 @ 000001b00a776c40] error while decoding MB 43 45, bytestream -5
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 5f39 expected=5131
+[hevc @ 000001b00a9ec580] Could not find ref with POC 2
+[hevc @ 000001b00a9ec580] Could not find ref with POC 0
+[h264 @ 000001b00a778c40] error while decoding MB 117 22, bytestream -7
+[h264 @ 000001b00a7750c0] error while decoding MB 129 57, bytestream -5
+[h264 @ 000001b00a777540] error while decoding MB 134 13, bytestream -11
+[ WARN:0@1013.809] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 30091.105000 ms
+[h264 @ 000001b00a776c40] error while decoding MB 97 19, bytestream -11
+[h264 @ 000001b00a776300] cabac decode of qscale diff failed at 61 55
+[h264 @ 000001b00a776300] error while decoding MB 61 55, bytestream -3
+[h264 @ 000001b00a777540] error while decoding MB 45 26, bytestream -7
+[h264 @ 000001b00a774c40] error while decoding MB 100 35, bytestream -11
+[NULL @ 000001b005389d00] sps_id 1 out of range
+[h264 @ 000001b00a777a00] error while decoding MB 25 24, bytestream -9
+[h264 @ 000001b00a774c40] error while decoding MB 143 61, bytestream 231
+[NULL @ 000001b005389d00] SEI type 75 size 1984 truncated at 1160
+[h264 @ 000001b00a777a00] error while decoding MB 52 46, bytestream -5
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 7ea5 expected=7017
+[hevc @ 000001b00a9ee580] Could not find ref with POC 12
+[h264 @ 000001b00a7790c0] error while decoding MB 59 37, bytestream -7
+[h264 @ 000001b00a7750c0] error while decoding MB 59 41, bytestream -7
+[h264 @ 000001b00a778c40] error while decoding MB 93 42, bytestream -9
+[h264 @ 000001b00538b880] error while decoding MB 39 5, bytestream -5
+[rtsp @ 000001b00a9533c0] Undefined type (31)
+[h264 @ 000001b00a7750c0] error while decoding MB 148 56, bytestream -7
+[h264 @ 000001b00a7770c0] error while decoding MB 142 5, bytestream -7
+[h264 @ 000001b00a7770c0] A non-intra slice in an IDR NAL unit.
+[h264 @ 000001b00a7770c0] decode_slice_header error
+[rtsp @ 000001b00a9533c0] nal size exceeds length: 51035 1425
+[h264 @ 000001b00a775e80] reference picture missing during reorder
+[h264 @ 000001b00a775e80] Missing reference picture, default is 2
+[h264 @ 000001b00538bd00] error while decoding MB 16 79, bytestream -13
+[h264 @ 000001b00a7750c0] error while decoding MB 56 47, bytestream -5
+[h264 @ 000001b00a778780] error while decoding MB 27 23, bytestream -5
+[h264 @ 000001b00a777e80] error while decoding MB 93 45, bytestream -9
+[h264 @ 000001b00a774c40] cabac decode of qscale diff failed at 30 45
+[h264 @ 000001b00a774c40] error while decoding MB 30 45, bytestream -5
+[h264 @ 000001b00a775e80] error while decoding MB 157 77, bytestream -7
+[h264 @ 000001b00538bd00] error while decoding MB 99 63, bytestream -11
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 9e3c expected=8fc1
+[hevc @ 000001b00a9f1300] Could not find ref with POC 10
+[hevc @ 000001b00a9f1300] Could not find ref with POC 8
+[rtsp @ 000001b00a9533c0] Undefined type (31)
+[h264 @ 000001b00a777540] error while decoding MB 83 65, bytestream -5
+[h264 @ 000001b00a775a00] error while decoding MB 76 35, bytestream -5
+[NULL @ 000001b005389d00] non-existing PPS 7 referenced
+[h264 @ 000001b00a776c40] slice type 32 too large at 0
+[h264 @ 000001b00a776c40] decode_slice_header error
+[h264 @ 000001b00a776c40] no frame!
+[NULL @ 000001b005389d00] illegal POC type 6
+[h264 @ 000001b00a774c40] illegal POC type 6
+[h264 @ 000001b00a774c40] illegal POC type 6
+[h264 @ 000001b00a774c40] illegal POC type 6
+[h264 @ 000001b00a774c40] reference picture missing during reorder
+[h264 @ 000001b00a774c40] Missing reference picture, default is 2
+[ WARN:0@1043.910] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 30097.633000 ms
+INFO:     ('127.0.0.1', 52187) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:51:10 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 56993) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:51:10 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+2026-04-07 12:51:10 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+INFO:     connection closed
+INFO:     ('127.0.0.1', 60455) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:51:11 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+INFO:     ('127.0.0.1', 57647) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:51:13 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 57565) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:51:13 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+2026-04-07 12:51:13 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+INFO:     connection closed
+INFO:     ('127.0.0.1', 60294) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:51:13 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+INFO:     ('127.0.0.1', 62934) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:51:14 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 56014) - "WebSocket /ws/stream/2" [accepted]
+2026-04-07 12:51:15 [api.websocket] INFO: Stream client baglandi: Kamera 2
+INFO:     connection open
+INFO:     ('127.0.0.1', 56535) - "WebSocket /ws/stream/3" [accepted]
+2026-04-07 12:51:15 [api.websocket] INFO: Stream client baglandi: Kamera 3
+INFO:     connection open
+INFO:     ('127.0.0.1', 53703) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:51:16 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+INFO:     ('127.0.0.1', 62936) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:51:17 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 62942) - "WebSocket /ws/stream/2" [accepted]
+2026-04-07 12:51:17 [api.websocket] INFO: Stream client baglandi: Kamera 2
+INFO:     connection open
+INFO:     ('127.0.0.1', 56319) - "WebSocket /ws/stream/3" [accepted]
+2026-04-07 12:51:18 [api.websocket] INFO: Stream client baglandi: Kamera 3
+INFO:     connection open
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+INFO:     connection closed
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 2
+2026-04-07 12:51:19 [api.websocket] INFO: Alarm client ayrildi
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 3
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 2
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 3
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:51:19 [api.websocket] INFO: Alarm client ayrildi
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:51:19 [api.websocket] INFO: Alarm client ayrildi
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:51:19 [api.websocket] INFO: Alarm client ayrildi
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:51:19 [api.websocket] INFO: Alarm client ayrildi
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 2
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 3
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 3
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 2
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:51:19 [api.websocket] INFO: Alarm client ayrildi
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:51:19 [api.websocket] INFO: Alarm client ayrildi
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:51:19 [api.websocket] INFO: Alarm client ayrildi
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:51:19 [api.websocket] INFO: Alarm client ayrildi
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+INFO:     connection closed
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 2
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 3
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 2
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 3
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:51:19 [api.websocket] INFO: Alarm client ayrildi
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:51:19 [api.websocket] INFO: Alarm client ayrildi
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:51:19 [api.websocket] INFO: Alarm client ayrildi
+2026-04-07 12:51:19 [api.websocket] INFO: Alarm client ayrildi
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 2
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 3
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 2
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 3
+INFO:     ('127.0.0.1', 50550) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     ('127.0.0.1', 57293) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+INFO:     connection closed
+2026-04-07 12:51:19 [api.websocket] INFO: Stats client ayrildi
+2026-04-07 12:51:19 [api.websocket] INFO: Stats client ayrildi
+INFO:     ('127.0.0.1', 57713) - "WebSocket /ws/stream/2" [accepted]
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client baglandi: Kamera 2
+INFO:     connection open
+INFO:     ('127.0.0.1', 53484) - "WebSocket /ws/stream/3" [accepted]
+2026-04-07 12:51:19 [api.websocket] INFO: Stream client baglandi: Kamera 3
+INFO:     connection open
+INFO:     ('127.0.0.1', 54858) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:51:19 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+2026-04-07 12:51:19 [api.websocket] INFO: Stats client ayrildi
+2026-04-07 12:51:19 [api.websocket] INFO: Stats client ayrildi
+2026-04-07 12:51:19 [api.websocket] INFO: Stats client ayrildi
+2026-04-07 12:51:19 [api.websocket] INFO: Stats client ayrildi
+2026-04-07 12:51:19 [api.websocket] INFO: Stats client ayrildi
+INFO:     ('127.0.0.1', 57997) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:51:22 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 63380) - "WebSocket /ws/stream/2" [accepted]
+2026-04-07 12:51:22 [api.websocket] INFO: Stream client baglandi: Kamera 2
+INFO:     connection open
+INFO:     ('127.0.0.1', 59543) - "WebSocket /ws/stream/3" [accepted]
+2026-04-07 12:51:22 [api.websocket] INFO: Stream client baglandi: Kamera 3
+INFO:     connection open
+INFO:     ('127.0.0.1', 49757) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:51:22 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+INFO:     ('127.0.0.1', 56108) - "WebSocket /ws/stats" [accepted]
+2026-04-07 12:51:27 [api.websocket] INFO: Stats client baglandi
+INFO:     connection open
+INFO:     ('127.0.0.1', 51542) - "WebSocket /ws/stats" [accepted]
+2026-04-07 12:51:27 [api.websocket] INFO: Stats client baglandi
+2026-04-07 12:51:27 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+2026-04-07 12:51:27 [api.websocket] INFO: Stream client ayrildi: Kamera 2
+2026-04-07 12:51:27 [api.websocket] INFO: Stream client ayrildi: Kamera 3
+INFO:     connection closed
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+2026-04-07 12:51:27 [api.websocket] INFO: Alarm client ayrildi
+INFO:     connection closed
+INFO:     connection closed
+2026-04-07 12:51:29 [api.websocket] INFO: Stats client ayrildi
+INFO:     ('127.0.0.1', 50647) - "WebSocket /ws/stats" [accepted]
+2026-04-07 12:51:30 [api.websocket] INFO: Stats client baglandi
+INFO:     connection open
+INFO:     ('127.0.0.1', 57094) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:51:30 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 65187) - "WebSocket /ws/stream/2" [accepted]
+2026-04-07 12:51:30 [api.websocket] INFO: Stream client baglandi: Kamera 2
+INFO:     connection open
+INFO:     ('127.0.0.1', 59260) - "WebSocket /ws/stream/3" [accepted]
+2026-04-07 12:51:31 [api.websocket] INFO: Stream client baglandi: Kamera 3
+INFO:     connection open
+INFO:     ('127.0.0.1', 65509) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:51:31 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+INFO:     ('127.0.0.1', 65290) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:51:36 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 64262) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:51:36 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     connection closed
+2026-04-07 12:51:36 [api.websocket] INFO: Stream client ayrildi: Kamera 1
+INFO:     connection closed
+INFO:     ('127.0.0.1', 53253) - "WebSocket /ws/stream/2" [accepted]
+2026-04-07 12:51:36 [api.websocket] INFO: Stream client baglandi: Kamera 2
+INFO:     connection open
+2026-04-07 12:51:36 [api.websocket] INFO: Stats client ayrildi
+INFO:     ('127.0.0.1', 49671) - "WebSocket /ws/stream/3" [accepted]
+2026-04-07 12:51:36 [api.websocket] INFO: Stream client baglandi: Kamera 3
+INFO:     connection open
+INFO:     ('127.0.0.1', 57625) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:51:37 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+[h264 @ 000001b00a778c40] cabac decode of qscale diff failed at 22 85
+[h264 @ 000001b00a778c40] error while decoding MB 22 85, bytestream 447
+[h264 @ 000001b00538b880] error while decoding MB 19 17, bytestream -7
+[h264 @ 000001b00a778780] error while decoding MB 34 14, bytestream -9
+[h264 @ 000001b00a778c40] error while decoding MB 29 62, bytestream -21
+[h264 @ 000001b00538b880] error while decoding MB 104 33, bytestream -5
+[h264 @ 000001b00a774c40] error while decoding MB 98 87, bytestream -9
+[h264 @ 000001b00a777540] error while decoding MB 16 75, bytestream -5
+[h264 @ 000001b00a774c40] error while decoding MB 40 55, bytestream -11
+[h264 @ 000001b00a775e80] error while decoding MB 146 68, bytestream -5
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq b9dd expected=ac1a
+[hevc @ 000001b00a9ef300] Could not find ref with POC 36
+[hevc @ 000001b00a9eb340] The cu_qp_delta -27 is outside the valid range [-26, 25].
+[hevc @ 000001b00a9eb340] Non-matching NAL types of the VCL NALUs: 19 1
+[h264 @ 000001b00a7750c0] slice type 17 too large at 13
+[h264 @ 000001b00a7750c0] decode_slice_header error
+[h264 @ 000001b00a7767c0] reference picture missing during reorder
+[h264 @ 000001b00a7767c0] Missing reference picture, default is 65570
+[h264 @ 000001b00a777540] error while decoding MB 111 55, bytestream -5
+[h264 @ 000001b00a775a00] error while decoding MB 117 22, bytestream -5
+[h264 @ 000001b00a778780] error while decoding MB 11 15, bytestream -11
+[h264 @ 000001b00a777e80] error while decoding MB 153 22, bytestream -5
+[h264 @ 000001b00a7750c0] error while decoding MB 54 20, bytestream -5
+[h264 @ 000001b00a778c40] error while decoding MB 103 14, bytestream -7
+[h264 @ 000001b00a777e80] error while decoding MB 65 55, bytestream -5
+[h264 @ 000001b00a7767c0] error while decoding MB 123 35, bytestream -5
+[h264 @ 000001b00a777e80] cabac decode of qscale diff failed at 44 24
+[h264 @ 000001b00a777e80] error while decoding MB 44 24, bytestream -3
+[h264 @ 000001b00a777e80] error while decoding MB 83 23, bytestream -7
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq d765 expected=c78d
+[hevc @ 000001b00a9ef300] Non-matching NAL types of the VCL NALUs: 19 1
+[hevc @ 000001b00a9ef7c0] Could not find ref with POC 8
+[h264 @ 000001b00a7750c0] error while decoding MB 82 69, bytestream -7
+[h264 @ 000001b00a776300] error while decoding MB 117 42, bytestream -5
+[h264 @ 000001b00a777540] error while decoding MB 144 9, bytestream -5
+[h264 @ 000001b00a776300] error while decoding MB 111 22, bytestream -13
+[ WARN:0@1074.010] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 30096.310000 ms
+INFO:     ('127.0.0.1', 55456) - "WebSocket /ws/stream/1" [accepted]
+2026-04-07 12:51:39 [api.websocket] INFO: Stream client baglandi: Kamera 1
+INFO:     connection open
+INFO:     ('127.0.0.1', 60056) - "WebSocket /ws/stream/2" [accepted]
+2026-04-07 12:51:39 [api.websocket] INFO: Stream client baglandi: Kamera 2
+INFO:     connection open
+INFO:     ('127.0.0.1', 54571) - "WebSocket /ws/stream/3" [accepted]
+2026-04-07 12:51:39 [api.websocket] INFO: Stream client baglandi: Kamera 3
+INFO:     connection open
+INFO:     ('127.0.0.1', 61239) - "WebSocket /ws/alarms" [accepted]
+2026-04-07 12:51:40 [api.websocket] INFO: Alarm client baglandi
+INFO:     connection open
+INFO:     ('127.0.0.1', 51803) - "WebSocket /ws/stats" [accepted]
+2026-04-07 12:51:40 [api.websocket] INFO: Stats client baglandi
+INFO:     connection open
+[h264 @ 000001b00538bd00] cabac decode of qscale diff failed at 148 57
+[h264 @ 000001b00538bd00] error while decoding MB 148 57, bytestream -5
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq ebb7 expected=de4e
+[hevc @ 000001b00a9ef7c0] Could not find ref with POC 6
+[hevc @ 000001b00a9ef7c0] Could not find ref with POC 4
+[h264 @ 000001b00a776300] error while decoding MB 83 48, bytestream -13
+[h264 @ 000001b00a7750c0] error while decoding MB 103 43, bytestream -9
+[rtsp @ 000001b00a9533c0] Undefined type (31)
+[h264 @ 000001b00a7790c0] error while decoding MB 29 62, bytestream -5
+[h264 @ 000001b00a776c40] error while decoding MB 16 23, bytestream -5
+[rtsp @ 000001b00a9533c0] Undefined type (31)
+[h264 @ 000001b00a7767c0] left block unavailable for requested intra4x4 mode -1
+[h264 @ 000001b00a7767c0] error while decoding MB 0 66, bytestream 449
+[h264 @ 000001b00538b880] error while decoding MB 64 31, bytestream -5
+[h264 @ 000001b00a777a00] error while decoding MB 15 66, bytestream -7
+[h264 @ 000001b00a7790c0] error while decoding MB 78 74, bytestream -11
+[h264 @ 000001b00a7767c0] error while decoding MB 114 14, bytestream -11
+[h264 @ 000001b00a7770c0] error while decoding MB 14 80, bytestream -9
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 061f expected=f886
+[hevc @ 000001b00a9ee0c0] Could not find ref with POC 8
+[h264 @ 000001b00a777a00] error while decoding MB 50 21, bytestream -11
+[h264 @ 000001b00a777540] error while decoding MB 8 12, bytestream -7
+[NULL @ 000001b005389d00] sps_id 1 out of range
+[h264 @ 000001b00a775a00] slice type 32 too large at 1835007
+[h264 @ 000001b00a775a00] decode_slice_header error
+[h264 @ 000001b00a775a00] no frame!
+[NULL @ 000001b005389d00] pps_id 3199971767 out of range
+[h264 @ 000001b00a776c40] slice type 32 too large at 1835007
+[h264 @ 000001b00a776c40] decode_slice_header error
+[h264 @ 000001b00a776c40] no frame!
+[h264 @ 000001b00a777a00] error while decoding MB 17 22, bytestream -11
+[NULL @ 000001b005389d00] SEI type 13 size 1808 truncated at 944
+[h264 @ 000001b00a777e80] error while decoding MB 29 82, bytestream -13
+[h264 @ 000001b00a7750c0] error while decoding MB 28 47, bytestream -11
+[h264 @ 000001b00a777540] error while decoding MB 99 19, bytestream -11
+[h264 @ 000001b00a776c40] error while decoding MB 22 35, bytestream -9
+[h264 @ 000001b00a778c40] error while decoding MB 90 14, bytestream -5
+[h264 @ 000001b00538b880] error while decoding MB 47 6, bytestream -7
+[rtsp @ 000001b002eae640] RTP: PT=60: bad cseq 25f7 expected=172b
+[hevc @ 000001b00a9f1300] The cu_qp_delta 123 is outside the valid range [-26, 25].
+[ WARN:0@1104.108] global cap_ffmpeg_impl.hpp:453 _opencv_ffmpeg_interrupt_callback Stream timeout triggered after 30094.567000 ms

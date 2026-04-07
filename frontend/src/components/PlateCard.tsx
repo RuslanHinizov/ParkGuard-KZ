@@ -1,11 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useStore } from '../store/useStore';
 import { useTranslation } from '../i18n/useTranslation';
-import type { Alarm } from '../types';
+import type { Alarm, Penalty } from '../types';
 
 const API_BASE = '/api';
 
-function timeAgo(dateStr: string, minutesAgo: string, hoursAgo: string, daysAgo: string, justNow: string): string {
+function timeAgo(
+  dateStr: string,
+  minutesAgo: string,
+  hoursAgo: string,
+  daysAgo: string,
+  justNow: string
+): string {
   const diff = Date.now() - new Date(dateStr).getTime();
   const mins = Math.floor(diff / 60000);
   if (mins < 1) return justNow;
@@ -19,12 +25,70 @@ interface PlateCardProps {
   alarm: Alarm;
 }
 
+const PENALTY_CLS: Record<string, string> = {
+  pending: 'bg-yellow-900/60 text-yellow-300 border-yellow-700',
+  sent: 'bg-green-900/60  text-green-300  border-green-700',
+  cancelled: 'bg-gray-700/60   text-gray-400   border-gray-600',
+};
+
 export default function PlateCard({ alarm }: PlateCardProps) {
   const resolveAlarm = useStore((s) => s.resolveAlarm);
   const removeAlarm = useStore((s) => s.removeAlarm);
   const { t } = useTranslation();
+
   const [showScreenshot, setShowScreenshot] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [penalty, setPenalty] = useState<Penalty | null>(null);
+  const [sendingFine, setSendingFine] = useState(false);
+
+  useEffect(() => {
+    if (!alarm.plate) {
+      setPenalty(null);
+      return;
+    }
+
+    fetch(`${API_BASE}/penalties?limit=1&alarm_id=${encodeURIComponent(alarm.id)}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setPenalty((data.penalties as Penalty[])[0] ?? null);
+      })
+      .catch(() => setPenalty(null));
+  }, [alarm.id, alarm.plate]);
+
+  const handleSendFine = async () => {
+    if (!penalty) return;
+
+    setSendingFine(true);
+    try {
+      const res = await fetch(`${API_BASE}/penalties/${penalty.id}/send`, { method: 'POST' });
+      if (res.ok) {
+        const data = await res.json();
+        setPenalty((prev) =>
+          prev ? { ...prev, status: 'sent', sent_at: data.sent_at ?? prev.sent_at } : prev
+        );
+      }
+    } catch {
+      // noop
+    }
+    setSendingFine(false);
+  };
+
+  const handleCancelFine = async () => {
+    if (!penalty) return;
+
+    try {
+      const res = await fetch(`${API_BASE}/penalties/${penalty.id}/cancel`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reason: 'Operator cancel' }),
+      });
+      if (res.ok) {
+        setPenalty((prev) => (prev ? { ...prev, status: 'cancelled' } : prev));
+      }
+    } catch {
+      // noop
+    }
+  };
 
   const isActive = alarm.status === 'active';
 
@@ -33,7 +97,7 @@ export default function PlateCard({ alarm }: PlateCardProps) {
     t('plate.minutes_ago'),
     t('plate.hours_ago'),
     t('plate.days_ago'),
-    t('plate.just_now'),
+    t('plate.just_now')
   );
 
   const handleResolve = async () => {
@@ -42,9 +106,11 @@ export default function PlateCard({ alarm }: PlateCardProps) {
       const res = await fetch(`${API_BASE}/alarms/${alarm.id}/resolve`, {
         method: 'PUT',
       });
-      if (res.ok) resolveAlarm(alarm.id);
+      if (res.ok) {
+        resolveAlarm(alarm.id);
+      }
     } catch {
-      // hata
+      // noop
     }
     setLoading(false);
   };
@@ -52,9 +118,11 @@ export default function PlateCard({ alarm }: PlateCardProps) {
   const handleDelete = async () => {
     try {
       const res = await fetch(`${API_BASE}/alarms/${alarm.id}`, { method: 'DELETE' });
-      if (res.ok) removeAlarm(alarm.id);
+      if (res.ok) {
+        removeAlarm(alarm.id);
+      }
     } catch {
-      // hata
+      // noop
     }
   };
 
@@ -79,7 +147,9 @@ export default function PlateCard({ alarm }: PlateCardProps) {
         </div>
         <div className="text-right text-xs text-gray-400">
           <div>{ago}</div>
-          <div className="mt-1">{alarm.duration_sec} {t('plate.in_zone')}</div>
+          <div className="mt-1">
+            {alarm.duration_sec} {t('plate.in_zone')}
+          </div>
         </div>
       </div>
 
@@ -88,7 +158,9 @@ export default function PlateCard({ alarm }: PlateCardProps) {
           {t(`camera.${alarm.camera_id}` as Parameters<typeof t>[0])}
         </span>
         <span className="bg-gray-700 px-1.5 py-0.5 rounded">{alarm.zone_name}</span>
-        <span className="bg-gray-700 px-1.5 py-0.5 rounded capitalize">{alarm.vehicle_class}</span>
+        <span className="bg-gray-700 px-1.5 py-0.5 rounded capitalize">
+          {alarm.vehicle_class}
+        </span>
       </div>
 
       {showScreenshot && (
@@ -101,7 +173,26 @@ export default function PlateCard({ alarm }: PlateCardProps) {
         </div>
       )}
 
-      <div className="flex items-center gap-2">
+      {penalty && (
+        <div
+          className={`flex items-center justify-between rounded px-2 py-1 mb-2 border text-xs ${PENALTY_CLS[penalty.status] ?? ''}`}
+        >
+          <span className="font-medium">
+            {penalty.status === 'pending'
+              ? t('penalty.status_pending')
+              : penalty.status === 'sent'
+                ? t('penalty.status_sent')
+                : penalty.status === 'cancelled'
+                  ? t('penalty.status_cancelled')
+                  : penalty.status}
+          </span>
+          <span className="font-mono font-bold">
+            {penalty.fine_amount.toLocaleString('ru-RU')} ₸
+          </span>
+        </div>
+      )}
+
+      <div className="flex items-center gap-2 flex-wrap">
         <button
           onClick={() => setShowScreenshot(!showScreenshot)}
           className="text-xs px-2 py-1 rounded bg-gray-700 hover:bg-gray-600 text-gray-300"
@@ -117,6 +208,24 @@ export default function PlateCard({ alarm }: PlateCardProps) {
           >
             {loading ? '...' : t('plate.resolve')}
           </button>
+        )}
+
+        {penalty?.status === 'pending' && (
+          <>
+            <button
+              onClick={handleSendFine}
+              disabled={sendingFine}
+              className="text-xs px-2 py-1 rounded bg-orange-700 hover:bg-orange-600 text-white disabled:opacity-50 font-medium"
+            >
+              {sendingFine ? '...' : t('penalty.btn_send_fine')}
+            </button>
+            <button
+              onClick={handleCancelFine}
+              className="text-xs px-2 py-1 rounded bg-gray-700 hover:bg-gray-600 text-gray-400 hover:text-white"
+            >
+              {t('penalty.btn_cancel')}
+            </button>
+          </>
         )}
 
         <button

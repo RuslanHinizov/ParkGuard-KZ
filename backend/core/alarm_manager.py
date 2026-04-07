@@ -159,6 +159,15 @@ class AlarmManager:
             threshold = settings_mgr.get_camera_violation_duration(camera_id)
 
             if duration >= threshold and not self.violations[track_id]["alarm_sent"]:
+                # Beyaz liste kontrolü
+                viol_plate = self.violations[track_id].get("plate")
+                if viol_plate:
+                    from core.whitelist_manager import whitelist_mgr
+                    if whitelist_mgr.is_whitelisted(viol_plate.get("text", "")):
+                        logger.info(f"Whitelist: {viol_plate['text']} — alarm atlandı")
+                        self.violations[track_id]["alarm_sent"] = True
+                        return None
+
                 alarm = self._create_alarm(track_id, duration)
                 self.violations[track_id]["alarm_sent"] = True
                 self.cooldowns[track_id] = now
@@ -233,16 +242,48 @@ class AlarmManager:
             f"ALARM: Kamera {det['camera_id']} | {zone['name']} | {plate_text}"
         )
 
+        # Plaka tespit edilmişse ceza kuyruğuna otomatik ekle
+        if alarm["plate"]:
+            threading.Thread(
+                target=self._add_to_penalty_queue,
+                args=(alarm,),
+                daemon=True,
+            ).start()
+
         return alarm
 
+    def _add_to_penalty_queue(self, alarm: dict) -> None:
+        """Alarm'ı ceza kuyruğuna ekle (arka plan thread'inde)."""
+        try:
+            from core.penalty_manager import penalty_mgr
+            penalty_mgr.add_to_queue(alarm)
+        except Exception as e:
+            logger.error(f"Ceza kuyrugu ekleme hatasi: {e}")
+
     def _save_screenshot_sync(self, path: Path, frame: np.ndarray, bbox: list[int]) -> None:
-        """Alarm frame'ini diske kaydet (arka plan thread'inde çalışır)."""
+        """Alarm frame'ini diske kaydet — araç bölgesini kırpılmış olarak kaydeder."""
         try:
             path.parent.mkdir(parents=True, exist_ok=True)
-            annotated = frame.copy()
             x1, y1, x2, y2 = bbox
-            cv2.rectangle(annotated, (x1, y1), (x2, y2), (0, 0, 255), 3)
-            cv2.imwrite(str(path), annotated, [cv2.IMWRITE_JPEG_QUALITY, 90])
+            h, w = frame.shape[:2]
+
+            # Araç etrafına %40 padding ekle (en az 80px)
+            pad_x = max(int((x2 - x1) * 0.4), 80)
+            pad_y = max(int((y2 - y1) * 0.4), 80)
+            cx1 = max(0, x1 - pad_x)
+            cy1 = max(0, y1 - pad_y)
+            cx2 = min(w, x2 + pad_x)
+            cy2 = min(h, y2 + pad_y)
+
+            cropped = frame[cy1:cy2, cx1:cx2].copy()
+            # Kırpılmış koordinatlara göre bbox çiz
+            cv2.rectangle(
+                cropped,
+                (x1 - cx1, y1 - cy1),
+                (x2 - cx1, y2 - cy1),
+                (0, 0, 255), 3,
+            )
+            cv2.imwrite(str(path), cropped, [cv2.IMWRITE_JPEG_QUALITY, 90])
         except Exception as e:
             logger.error(f"Screenshot kaydedilemedi ({path}): {e}")
 

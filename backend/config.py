@@ -72,8 +72,8 @@ NMS_IOU = 0.45
 VEHICLE_CLASSES = [2, 3, 5, 7]         # car, motorcycle, bus, truck
 
 # === OCR AYARLARI ===
-OCR_EVERY_N_FRAMES = 10        # Her 10 frame'de bir OCR
-OCR_CONF_THRESHOLD = 0.70      # Altında reddet
+OCR_EVERY_N_FRAMES = 5         # Her 5 frame'de bir OCR
+OCR_CONF_THRESHOLD = 0.45      # Altında reddet
 OCR_MAX_QUEUE = 50
 
 # === ALARM AYARLARI ===

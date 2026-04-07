@@ -9,10 +9,20 @@ import ZoneEditor from './components/ZoneEditor';
 import StatsChart from './components/StatsChart';
 import Settings from './components/Settings';
 import LogViewer from './components/LogViewer';
+import ChatPanel from './components/ChatPanel';
+import PlateHistory from './components/PlateHistory';
+import GalleryPanel from './components/GalleryPanel';
+import ReportPanel from './components/ReportPanel';
+import WhitelistPanel from './components/WhitelistPanel';
+import CameraHealth from './components/CameraHealth';
+import QuickSearch from './components/QuickSearch';
+import AnomalyBadge from './components/AnomalyBadge';
+import PenaltyPanel from './components/PenaltyPanel';
 
 export default function App() {
   const activeTab = useStore((s) => s.activeTab);
   const setActiveTab = useStore((s) => s.setActiveTab);
+  const setSelectedPlateQuery = useStore((s) => s.setSelectedPlateQuery);
   const language = useStore((s) => s.language);
   const setLanguage = useStore((s) => s.setLanguage);
   const alarms = useStore((s) => s.alarms);
@@ -23,15 +33,21 @@ export default function App() {
   const TABS = [
     { key: 'live' as const,     label: t('nav.live') },
     { key: 'alarms' as const,   label: t('nav.alarms') },
+    { key: 'plates' as const,   label: t('nav.plates') },
+    { key: 'gallery' as const,  label: t('nav.gallery') },
     { key: 'zones' as const,    label: t('nav.zones') },
     { key: 'stats' as const,    label: t('nav.stats') },
-    { key: 'settings' as const, label: t('nav.settings') },
-    { key: 'logs' as const,     label: t('nav.logs') },
+    { key: 'reports' as const,   label: t('nav.reports') },
+    { key: 'penalties' as const, label: t('nav.penalties') },
+    { key: 'settings' as const,  label: t('nav.settings') },
+    { key: 'logs' as const,      label: t('nav.logs') },
+    { key: 'chat' as const,      label: t('nav.chat') },
   ];
 
   const LANGS: { code: Lang; flag: string }[] = [
     { code: 'ru', flag: '🇷🇺' },
     { code: 'kk', flag: '🇰🇿' },
+    { code: 'en', flag: '🇬🇧' },
   ];
 
   return (
@@ -40,12 +56,19 @@ export default function App() {
       <header className="bg-gray-900 border-b border-gray-800 px-4 py-3">
         <div className="max-w-[1920px] mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <h1 className="text-xl font-bold tracking-tight">
-              <span className="text-blue-500">ParkGuard</span>{' '}
-              <span className="text-gray-400">KZ</span>
-            </h1>
-            <span className="text-xs bg-gray-800 px-2 py-0.5 rounded text-gray-400">
-              v2.0
+            {/* Korgen Vision Logo */}
+            <img src="/korgen-icon.svg" alt="Korgen Vision" className="w-9 h-9" />
+            <div>
+              <h1 className="text-lg font-bold tracking-widest leading-none">
+                <span className="text-blue-400">KORGEN</span>{' '}
+                <span className="text-white">VISION</span>
+              </h1>
+              <p className="text-[10px] text-gray-500 tracking-wider leading-none mt-0.5">
+                МОНИТОРИНГ ПАРКОВОК
+              </p>
+            </div>
+            <span className="text-xs bg-blue-950 border border-blue-800 px-2 py-0.5 rounded text-blue-400">
+              v1.0
             </span>
           </div>
 
@@ -71,8 +94,15 @@ export default function App() {
             ))}
           </nav>
 
-          {/* Dil seçici + Saat */}
+          {/* Arama + Anomali + Dil + Saat */}
           <div className="flex items-center gap-4">
+            <QuickSearch
+              onNavigate={(plate) => {
+                setSelectedPlateQuery(plate);
+                setActiveTab('plates');
+              }}
+            />
+            <AnomalyBadge />
             {/* Dil butonları */}
             <div className="flex gap-1">
               {LANGS.map(({ code, flag }) => (
@@ -115,9 +145,25 @@ export default function App() {
 
         {activeTab === 'stats' && <StatsChart />}
 
-        {activeTab === 'settings' && <Settings />}
+        {activeTab === 'plates' && <PlateHistory />}
+
+        {activeTab === 'gallery' && <GalleryPanel />}
+
+        {activeTab === 'reports' && <ReportPanel />}
+
+        {activeTab === 'penalties' && <PenaltyPanel />}
+
+        {activeTab === 'settings' && (
+          <div className="space-y-6">
+            <Settings />
+            <CameraHealth />
+            <WhitelistPanel />
+          </div>
+        )}
 
         {activeTab === 'logs' && <LogViewer />}
+
+        {activeTab === 'chat' && <ChatPanel />}
       </main>
     </div>
   );

@@ -1,0 +1,181 @@
+Loading C:\Users\rusla\Desktop\Project-university\ParkGuard KZ\backend\models\yolov8n.engine for TensorRT inference...
+[04/07/2026-12:34:09] [TRT] [I] Loaded engine size: 8 MiB
+[04/07/2026-12:34:09] [TRT] [I] [MemUsageChange] TensorRT-managed allocation in IExecutionContext creation: CPU +0, GPU +18, now: CPU 0, GPU 24 (MiB)
+Loading C:\Users\rusla\Desktop\Project-university\ParkGuard KZ\backend\models\yolov8n.engine for TensorRT inference...
+[04/07/2026-12:34:10] [TRT] [W] WARNING The logger passed into createInferRuntime differs from one already registered for an existing builder, runtime, or refitter. So the current new logger is ignored, and TensorRT will use the existing one which is returned by nvinfer1::getLogger() instead.
+[04/07/2026-12:34:10] [TRT] [I] Loaded engine size: 8 MiB
+[04/07/2026-12:34:10] [TRT] [I] [MemUsageChange] TensorRT-managed allocation in IExecutionContext creation: CPU +1, GPU +19, now: CPU 1, GPU 49 (MiB)
+Loading C:\Users\rusla\Desktop\Project-university\ParkGuard KZ\backend\models\yolov8n.engine for TensorRT inference...
+[04/07/2026-12:34:10] [TRT] [W] WARNING The logger passed into createInferRuntime differs from one already registered for an existing builder, runtime, or refitter. So the current new logger is ignored, and TensorRT will use the existing one which is returned by nvinfer1::getLogger() instead.
+[04/07/2026-12:34:10] [TRT] [I] Loaded engine size: 8 MiB
+[04/07/2026-12:34:10] [TRT] [I] [MemUsageChange] TensorRT-managed allocation in IExecutionContext creation: CPU +0, GPU +18, now: CPU 1, GPU 73 (MiB)
+INFO:     127.0.0.1:64838 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50610 - "GET /api/system/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55297 - "GET /api/alarms/e8da7ebf-ee72-4369-8f9f-ef188965a2e6/screenshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50176 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56382 - "GET /api/alarms?limit=20&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58967 - "GET /api/alarms?limit=20&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65173 - "GET /api/plates/top HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49670 - "GET /api/plates/top HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59416 - "GET /api/alarms?limit=20&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51702 - "GET /api/alarms?limit=20&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55815 - "GET /api/plates/top HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63106 - "GET /api/plates/top HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59860 - "GET /api/gallery?page=1&per_page=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54090 - "GET /api/zones HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54092 - "GET /api/system/snapshot/1?t=1775547312848 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62142 - "GET /api/gallery?page=1&per_page=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63774 - "GET /api/zones HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54412 - "GET /api/gallery?page=1&per_page=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51408 - "GET /api/gallery?page=1&per_page=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54999 - "GET /api/alarms/e8da7ebf-ee72-4369-8f9f-ef188965a2e6/screenshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56011 - "GET /api/zones HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56013 - "GET /api/system/snapshot/1?t=1775547322749 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58417 - "GET /api/zones HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57536 - "GET /api/stats/today HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57539 - "GET /api/stats/hourly HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57540 - "GET /api/stats/cameras HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53170 - "GET /api/stats/today HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62504 - "GET /api/stats/hourly HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54249 - "GET /api/stats/cameras HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54025 - "GET /api/reports HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62932 - "GET /api/reports HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57025 - "GET /api/penalties/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57026 - "GET /api/penalties?limit=20&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55116 - "GET /api/penalties/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55117 - "GET /api/penalties?limit=20&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62392 - "GET /api/settings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62393 - "GET /api/whitelist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64440 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52657 - "GET /api/settings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57776 - "GET /api/whitelist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63193 - "GET /api/chat/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57476 - "GET /api/chat/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54492 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60585 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58793 - "GET /api/chat/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55253 - "GET /api/chat/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58270 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61227 - "GET /api/alarms?limit=20&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61140 - "GET /api/alarms?limit=20&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52131 - "GET /api/alarms?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59162 - "GET /api/alarms?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55569 - "GET /api/alarms/dd23eb9e-9cbc-4811-87e6-25e6739ce729/screenshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50997 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59262 - "GET /api/alarms/e8da7ebf-ee72-4369-8f9f-ef188965a2e6/screenshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60617 - "GET /api/alarms?limit=20&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59358 - "GET /api/alarms?limit=20&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51484 - "GET /api/alarms?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50720 - "GET /api/alarms?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65373 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65067 - "GET /api/alarms?limit=20&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49987 - "GET /api/alarms?limit=20&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65211 - "GET /api/plates/top HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51341 - "GET /api/plates/top HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51123 - "GET /api/gallery?page=1&per_page=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62394 - "GET /api/gallery?page=1&per_page=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56993 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50511 - "GET /api/zones HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56995 - "GET /api/system/snapshot/1?t=1775547447525 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62391 - "GET /api/zones HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56576 - "POST /api/zones HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:64979 - "POST /api/zones HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:51071 - "POST /api/zones HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:52650 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51947 - "GET /api/stats/hourly HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51948 - "GET /api/stats/today HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51949 - "GET /api/stats/cameras HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51132 - "GET /api/stats/hourly HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50413 - "GET /api/stats/today HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51287 - "GET /api/stats/cameras HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57940 - "GET /api/reports HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63147 - "GET /api/reports HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61546 - "GET /api/penalties?limit=20&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61547 - "GET /api/penalties/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59163 - "GET /api/penalties?limit=20&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59165 - "GET /api/penalties/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55309 - "GET /api/settings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55310 - "GET /api/whitelist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60314 - "GET /api/settings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56999 - "GET /api/whitelist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61947 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54232 - "GET /api/chat/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54636 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54237 - "GET /api/chat/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58159 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58849 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58357 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52260 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51048 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52880 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53687 - "GET /api/alarms?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52624 - "GET /api/alarms?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62695 - "PUT /api/alarms/e8da7ebf-ee72-4369-8f9f-ef188965a2e6/resolve HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54573 - "PUT /api/alarms/dd23eb9e-9cbc-4811-87e6-25e6739ce729/resolve HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65287 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63138 - "GET /api/alarms/9521a0d3-4348-453f-8e4c-2e0c395017cc/screenshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53762 - "GET /api/alarms?limit=20&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59993 - "GET /api/alarms?limit=20&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52516 - "GET /api/alarms/9521a0d3-4348-453f-8e4c-2e0c395017cc/screenshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56120 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57575 - "GET /api/plates/top HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53553 - "GET /api/plates/top HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59765 - "GET /api/alarms?limit=20&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50062 - "GET /api/alarms?limit=20&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55424 - "GET /api/alarms?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58369 - "GET /api/alarms?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50401 - "GET /api/alarms/9521a0d3-4348-453f-8e4c-2e0c395017cc/screenshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65348 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54955 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59859 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50392 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57896 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62934 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62471 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51691 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57221 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58465 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56993 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60496 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64060 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53593 - "GET /api/alarms?limit=20&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57324 - "GET /api/alarms?limit=20&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56062 - "GET /api/alarms/cdcf4da2-2939-4afe-8551-38fa06869cfb/screenshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55592 - "GET /api/alarms/9521a0d3-4348-453f-8e4c-2e0c395017cc/screenshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54644 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61242 - "GET /api/plates/top HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50592 - "GET /api/plates/top HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63871 - "GET /api/gallery?page=1&per_page=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58967 - "GET /api/gallery?page=1&per_page=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49675 - "GET /api/zones HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55591 - "GET /api/system/snapshot/1?t=1775548229665 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61919 - "GET /api/alarms/cdcf4da2-2939-4afe-8551-38fa06869cfb/screenshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60146 - "GET /api/zones HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64303 - "DELETE /api/zones/78915a37-f4ae-4ba8-af18-42c8423f0fba HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63324 - "POST /api/zones HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:53615 - "POST /api/zones HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:56459 - "POST /api/zones HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:62171 - "POST /api/zones HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:50515 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53970 - "POST /api/zones HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:57438 - "POST /api/zones HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:52190 - "GET /api/alarms?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61727 - "GET /api/alarms?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64390 - "GET /api/zones HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56383 - "GET /api/system/snapshot/1?t=1775548270557 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52424 - "GET /api/zones HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57648 - "GET /api/alarms?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49987 - "GET /api/alarms?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50552 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50553 - "GET /api/alarms?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57295 - "GET /api/anomalies/count HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57297 - "GET /api/alarms?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56109 - "GET /api/settings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56110 - "GET /api/whitelist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58169 - "GET /api/settings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52232 - "GET /api/whitelist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65292 - "GET /api/alarms?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53611 - "GET /api/alarms?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51620 - "GET /api/alarms/cdcf4da2-2939-4afe-8551-38fa06869cfb/screenshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58969 - "GET /api/alarms/9521a0d3-4348-453f-8e4c-2e0c395017cc/screenshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64372 - "GET /api/anomalies/count HTTP/1.1" 200 OK

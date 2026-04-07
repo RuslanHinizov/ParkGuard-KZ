@@ -35,7 +35,8 @@ from core.tracker import VehicleTracker
 from core.zone_manager import ZoneManager
 from core.plate_ocr import PlateOCR
 from core.alarm_manager import AlarmManager
-from api.routes import alarms, zones, stats, stream, settings
+from api.routes import alarms, zones, stats, stream, settings, chat, whitelist, reports, plates, gallery, anomalies, penalties
+from core.scheduler import start_scheduler, stop_scheduler
 from api.websocket import ws_manager
 from config import (
     HOST, PORT, OCR_EVERY_N_FRAMES, CAMERAS,
@@ -181,8 +182,11 @@ async def lifespan(app: FastAPI):
     # Inference döngüsünü arka planda çalıştır
     inference_task = asyncio.create_task(inference_loop())
 
+    # Zamanlı görevleri başlat (AI rapor, anomali tarama)
+    start_scheduler()
+
     logger.info("=" * 50)
-    logger.info("ParkGuard KZ baslatildi")
+    logger.info("Korgen Vision baslatildi")
     logger.info(f"Kameralar: {len(CAMERAS)} adet")
     logger.info(f"API: http://{HOST}:{PORT}")
     logger.info(f"Dashboard: http://localhost:5173")
@@ -192,15 +196,16 @@ async def lifespan(app: FastAPI):
 
     # === KAPANIŞ ===
     inference_task.cancel()
+    stop_scheduler()
     camera_mgr.stop_all()
-    logger.info("ParkGuard KZ durduruldu")
+    logger.info("Korgen Vision durduruldu")
 
 
 # === FASTAPI UYGULAMASI ===
 app = FastAPI(
-    title="ParkGuard KZ",
-    description="Yaslis Park Tespit Sistemi API",
-    version="2.0",
+    title="Korgen Vision",
+    description="Korgen Vision — Parking Violation Monitoring System API",
+    version="1.0",
     lifespan=lifespan,
 )
 
@@ -225,16 +230,25 @@ app.include_router(alarms.router, prefix="/api")
 app.include_router(zones.router, prefix="/api")
 app.include_router(stats.router, prefix="/api")
 app.include_router(settings.router, prefix="/api")
+app.include_router(chat.router, prefix="/api")
+app.include_router(whitelist.router, prefix="/api")
+app.include_router(reports.router, prefix="/api")
+app.include_router(plates.router, prefix="/api")
+app.include_router(gallery.router, prefix="/api")
+app.include_router(anomalies.router, prefix="/api")
+app.include_router(penalties.router, prefix="/api")
 app.include_router(stream.router)
 
 
 @app.get("/")
 async def root():
+    from core.night_detector import get_night_status
     return {
-        "name": "ParkGuard KZ",
-        "version": "2.0",
+        "name": "Korgen Vision",
+        "version": "1.0",
         "status": "running",
         "cameras": len(CAMERAS),
+        "night_mode": get_night_status(),
     }
 
 

@@ -2,6 +2,17 @@ import { create } from 'zustand';
 import type { Alarm, Zone, SystemStats, TodayStats, WSStatus } from '../types';
 import type { Lang } from '../i18n/translations';
 
+// Dil tercihini localStorage'dan oku (varsayılan: Rusça)
+function getSavedLang(): Lang {
+  try {
+    const saved = localStorage.getItem('korgen_lang');
+    if (saved === 'ru' || saved === 'kk' || saved === 'en') return saved;
+  } catch {
+    // localStorage erişim hatası
+  }
+  return 'ru';
+}
+
 interface AppState {
   // Alarmlar
   alarms: Alarm[];
@@ -39,8 +50,10 @@ interface AppState {
   toggleSound: () => void;
 
   // Seçili sekme
-  activeTab: 'live' | 'alarms' | 'zones' | 'stats' | 'settings' | 'logs';
-  setActiveTab: (tab: 'live' | 'alarms' | 'zones' | 'stats' | 'settings' | 'logs') => void;
+  activeTab: 'live' | 'alarms' | 'zones' | 'stats' | 'settings' | 'logs' | 'chat' | 'plates' | 'gallery' | 'reports' | 'penalties';
+  setActiveTab: (tab: 'live' | 'alarms' | 'zones' | 'stats' | 'settings' | 'logs' | 'chat' | 'plates' | 'gallery' | 'reports' | 'penalties') => void;
+  selectedPlateQuery: string;
+  setSelectedPlateQuery: (plate: string) => void;
 
   // Dil
   language: Lang;
@@ -104,8 +117,17 @@ export const useStore = create<AppState>((set) => ({
   // Tab
   activeTab: 'live',
   setActiveTab: (tab) => set({ activeTab: tab }),
+  selectedPlateQuery: '',
+  setSelectedPlateQuery: (plate) => set({ selectedPlateQuery: plate }),
 
-  // Dil (varsayılan Rusça)
-  language: 'ru',
-  setLanguage: (lang) => set({ language: lang }),
+  // Dil — localStorage'dan yükle, değişince kaydet
+  language: getSavedLang(),
+  setLanguage: (lang) => {
+    try {
+      localStorage.setItem('korgen_lang', lang);
+    } catch {
+      // localStorage erişim hatası
+    }
+    set({ language: lang });
+  },
 }));

@@ -1,43 +1,51 @@
 """
-tracker.py — Araç Takip Modülü (ByteTrack)
+tracker.py - Arac Takip Modulu (ByteTrack)
 
-AMAÇ: Her kamera için ayrı ByteTrack tracker.
-      Araçlara benzersiz track_id ata.
-      Ultralytics built-in tracker kullanılır.
+AMAC: Her kamera icin ayri ByteTrack tracker.
+      Araclara benzersiz track_id ata.
+      Ultralytics built-in tracker kullanilir.
 
 ByteTrack neden:
-  - SORT'tan daha iyi: düşük confidence tespitleri de kullanır
-  - Occlusion (araç arkasına geçme) durumunda ID kaybetmez
-  - Ultralytics ile entegre — ek bağımlılık yok
+  - SORT'tan daha iyi: dusuk confidence tespitleri de kullanir
+  - Occlusion durumunda ID kaybetmez
+  - Ultralytics ile entegre
 """
 
 import logging
 import numpy as np
 from ultralytics import YOLO
-from config import MODELS_DIR, DETECTION_CONF, NMS_IOU, VEHICLE_CLASSES, IMGSZ
+from config import MODEL_PATH, MODELS_DIR, DETECTION_CONF, NMS_IOU, VEHICLE_CLASSES, IMGSZ
 
 logger = logging.getLogger(__name__)
 
 
 class VehicleTracker:
-    """Her kamera için ayrı tracker tutar."""
+    """Her kamera icin ayri tracker tutar."""
 
     def __init__(self):
-        self.model: YOLO | None = None
+        self.model_path: str | None = None
+        self.models: dict[int, YOLO] = {}
         self._load_model()
 
     def _load_model(self) -> None:
-        engine_path = MODELS_DIR / "yolov8n.engine"
+        engine_path = (MODELS_DIR.parent / MODEL_PATH).resolve()
         if engine_path.exists():
-            self.model = YOLO(str(engine_path))
+            self.model_path = str(engine_path)
         else:
-            pt_path = MODELS_DIR / "yolov8n.pt"
-            self.model = YOLO(str(pt_path))
+            self.model_path = str(engine_path.with_suffix(".pt"))
         logger.info("Tracker modeli yuklendi")
+
+    def _get_model(self, camera_id: int) -> YOLO:
+        model = self.models.get(camera_id)
+        if model is None:
+            model = YOLO(self.model_path, task="detect")
+            self.models[camera_id] = model
+            logger.info(f"Kamera {camera_id} icin ayri tracker olusturuldu")
+        return model
 
     def track(self, frames: dict) -> list[dict]:
         """
-        Her kamera frame'i için track yap.
+        Her kamera frame'i icin track yap.
 
         Args:
             frames: {camera_id: {"frame": np.ndarray, ...}}
@@ -52,13 +60,15 @@ class VehicleTracker:
 
         for cam_id, frame_data in frames.items():
             frame = frame_data["frame"]
+            model = self._get_model(cam_id)
 
-            results = self.model.track(
+            results = model.track(
                 frame,
                 persist=True,
                 conf=DETECTION_CONF,
                 iou=NMS_IOU,
                 classes=VEHICLE_CLASSES,
+                imgsz=IMGSZ,
                 verbose=False,
                 tracker="bytetrack.yaml",
             )

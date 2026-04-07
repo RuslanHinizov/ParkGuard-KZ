@@ -1,7 +1,7 @@
 {
   "cameras": {
     "1": {
-      "violation_duration": 300
+      "violation_duration": 30
     },
     "2": {
       "violation_duration": 300

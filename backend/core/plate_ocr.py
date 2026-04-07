@@ -86,8 +86,8 @@ class PlateOCR:
 
             # nomeroff-net pipeline: plaka bul + oku
             # Son eleman (confidences): per-karakter güven listesi
-            (_, _, _, _, _, texts, confidences) = self._unzip(
-                self._pipeline([crop])
+            texts, confidences = self._extract_nomeroff_outputs(
+                self._unzip(self._pipeline([crop]))
             )
 
             if not texts or not texts[0]:
@@ -124,6 +124,24 @@ class PlateOCR:
         except Exception as e:
             logger.error(f"nomeroff-net OCR hatasi: {e}")
             return None
+
+    def _extract_nomeroff_outputs(self, payload) -> tuple[list, list]:
+        texts = []
+        confidences = []
+
+        if isinstance(payload, dict):
+            texts = payload.get("texts") or payload.get("text") or []
+            confidences = payload.get("confidences") or payload.get("scores") or []
+            return texts, confidences
+
+        if isinstance(payload, (list, tuple)):
+            if len(payload) >= 2:
+                texts = payload[-2] or []
+                confidences = payload[-1] or []
+            elif len(payload) == 1:
+                texts = payload[0] or []
+
+        return texts, confidences
 
     def _read_paddle(self, vehicle_frame: np.ndarray, bbox: list[int]) -> dict | None:
         """PaddleOCR yedek ile plaka oku."""

@@ -152,6 +152,12 @@ class CameraWorker:
             tries = 0
             consecutive_failures = 0
 
+            # Video dosyası için FPS throttle (RTSP'de gerekmez)
+            is_file = not (self.url.startswith("rtsp://") or self.url.startswith("http"))
+            video_fps = cap.get(cv2.CAP_PROP_FPS) if is_file else 0.0
+            frame_interval = 1.0 / video_fps if video_fps > 0 else 0.0
+            last_frame_time = time.time()
+
             while self._running:
                 ret, frame = cap.read()
 
@@ -167,6 +173,16 @@ class CameraWorker:
                     continue
 
                 consecutive_failures = 0
+
+                # Video dosyasını orijinal FPS'inde oynat
+                if frame_interval > 0:
+                    now = time.time()
+                    elapsed = now - last_frame_time
+                    sleep_time = frame_interval - elapsed
+                    if sleep_time > 0:
+                        time.sleep(sleep_time)
+                    last_frame_time = time.time()
+
                 self.buffer.update(frame)
                 self.fps_counter.tick()
 

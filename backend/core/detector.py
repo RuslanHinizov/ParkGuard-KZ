@@ -16,7 +16,7 @@ import logging
 import time
 from ultralytics import YOLO
 from config import (
-    MODELS_DIR, BATCH_SIZE, IMGSZ, DETECTION_CONF,
+    MODEL_PATH, MODELS_DIR, BATCH_SIZE, IMGSZ, DETECTION_CONF,
     NMS_IOU, VEHICLE_CLASSES, GPU_DEVICE, GPU_WARMUP_ITERATIONS,
 )
 
@@ -33,7 +33,7 @@ class VehicleDetector:
     def _load_model(self) -> None:
         """TensorRT engine yükle. Yoksa otomatik export et."""
 
-        engine_path = MODELS_DIR / "yolov8n.engine"
+        engine_path = (MODELS_DIR.parent / MODEL_PATH).resolve()
 
         if not engine_path.exists():
             logger.info("TensorRT engine bulunamadi, export ediliyor...")
@@ -45,7 +45,7 @@ class VehicleDetector:
     def _export_engine(self) -> None:
         """YOLOv8n → TensorRT FP16 export."""
 
-        pt_path = MODELS_DIR / "yolov8n.pt"
+        pt_path = ((MODELS_DIR.parent / MODEL_PATH).resolve()).with_suffix(".pt")
         if not pt_path.exists():
             logger.info("yolov8n.pt indiriliyor...")
             YOLO("yolov8n.pt")  # otomatik indirir
