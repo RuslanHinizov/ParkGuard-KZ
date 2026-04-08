@@ -1,5 +1,5 @@
 """
-export_engine.py — YOLOv8n TensorRT FP16 Engine Oluştur
+export_engine.py — YOLOv8s TensorRT FP16 Engine Oluştur
 
 Sadece BİR KERE çalıştırılır. Engine oluşturulunca bu script'e gerek kalmaz.
 Engine oluşturma süresi: ~3-5 dakika (ilk seferinde uzun sürer, normaldir)
@@ -43,8 +43,8 @@ def main():
     from ultralytics import YOLO
 
     models_dir = Path(__file__).parent / "models"
-    pt_path = models_dir / "yolov8n.pt"
-    engine_path = models_dir / "yolov8n.engine"
+    pt_path = models_dir / "yolov8s.pt"
+    engine_path = models_dir / "yolov8s.engine"
 
     if engine_path.exists():
         logger.info(f"Engine zaten mevcut: {engine_path}")
@@ -52,8 +52,8 @@ def main():
         return
 
     if not pt_path.exists():
-        logger.info("yolov8n.pt bulunamadi, indiriliyor...")
-        YOLO("yolov8n.pt")
+        logger.info("yolov8s.pt bulunamadi, indiriliyor...")
+        YOLO("yolov8s.pt")
 
     logger.info("=" * 50)
     logger.info("TensorRT FP16 engine olusturuluyor...")
@@ -66,8 +66,8 @@ def main():
         device=0,
         half=True,       # FP16 — 2x hiz, minimal dogruluk kaybi
         batch=1,         # Tracker per-frame calisir
-        imgsz=640,
-        workspace=4,     # 4GB VRAM kullan (RTX 4060 icin ideal)
+        imgsz=960,
+        workspace=8,     # 4GB VRAM kullan (RTX 4060 icin ideal)
         simplify=True,
     )
 

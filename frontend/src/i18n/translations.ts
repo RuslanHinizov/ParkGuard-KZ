@@ -2,8 +2,8 @@ export type Lang = 'ru' | 'kk' | 'en';
 
 export type TranslationKey =
   // Навигация
-  | 'nav.live' | 'nav.alarms' | 'nav.zones' | 'nav.stats' | 'nav.settings'
-  | 'nav.logs' | 'nav.chat' | 'nav.plates' | 'nav.gallery' | 'nav.reports' | 'nav.penalties'
+  | 'nav.live' | 'nav.alarms' | 'nav.zones' | 'nav.settings'
+  | 'nav.logs' | 'nav.plates' | 'nav.gallery' | 'nav.penalties'
   // Камеры
   | 'camera.1' | 'camera.2' | 'camera.3'
   // Видео
@@ -80,13 +80,10 @@ export const translations: Record<Lang, Translations> = {
     'nav.live':      'Прямой эфир',
     'nav.alarms':    'Тревоги',
     'nav.zones':     'Зоны',
-    'nav.stats':     'Статистика',
     'nav.settings':  'Настройки',
     'nav.logs':      'Логи',
-    'nav.chat':      'AI Ассистент',
     'nav.plates':    'Номера',
     'nav.gallery':   'Галерея',
-    'nav.reports':   'Отчёты',
     'nav.penalties': 'Штрафы',
 
     // Камеры
@@ -270,13 +267,10 @@ export const translations: Record<Lang, Translations> = {
     'nav.live':      'Тікелей трансляция',
     'nav.alarms':    'Дабылдар',
     'nav.zones':     'Аймақтар',
-    'nav.stats':     'Статистика',
     'nav.settings':  'Параметрлер',
     'nav.logs':      'Журнал',
-    'nav.chat':      'AI Көмекші',
     'nav.plates':    'Нөмірлер',
     'nav.gallery':   'Галерея',
-    'nav.reports':   'Есептер',
     'nav.penalties': 'Айыппұлдар',
 
     // Камеры
@@ -460,13 +454,10 @@ export const translations: Record<Lang, Translations> = {
     'nav.live':      'Live Feed',
     'nav.alarms':    'Alarms',
     'nav.zones':     'Zones',
-    'nav.stats':     'Statistics',
     'nav.settings':  'Settings',
     'nav.logs':      'Logs',
-    'nav.chat':      'AI Assistant',
     'nav.plates':    'Plates',
     'nav.gallery':   'Gallery',
-    'nav.reports':   'Reports',
     'nav.penalties': 'Fines',
 
     // Cameras

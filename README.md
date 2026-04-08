@@ -309,7 +309,6 @@ python ..\scripts\test_cameras.py
 | POST | `/api/zones` | Yeni bölge oluştur |
 | PUT | `/api/zones/{id}` | Bölge güncelle |
 | DELETE | `/api/zones/{id}` | Bölge sil |
-| GET | `/api/stats/today` | Bugünün istatistikleri |
 | GET | `/api/system/health` | GPU, CPU, RAM, kamera durumları |
 | WS | `/ws/stream/{camera_id}` | Kamera video akışı (JPEG) |
 | WS | `/ws/alarms` | Gerçek zamanlı alarmlar |
@@ -641,7 +640,6 @@ python ..\scripts\test_cameras.py
 | POST | `/api/zones` | Создать зону |
 | PUT | `/api/zones/{id}` | Обновить зону |
 | DELETE | `/api/zones/{id}` | Удалить зону |
-| GET | `/api/stats/today` | Статистика за сегодня |
 | GET | `/api/system/health` | GPU, CPU, RAM, камеры |
 | WS | `/ws/stream/{camera_id}` | Видеопоток камеры (JPEG) |
 | WS | `/ws/alarms` | Тревоги в реальном времени |

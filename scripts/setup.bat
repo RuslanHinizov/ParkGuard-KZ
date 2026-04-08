@@ -28,12 +28,12 @@ echo [4/7] OCR kutuphaneleri yukleniyor...
 pip install paddlepaddle-gpu paddleocr
 pip install nomeroff-net==4.0.1
 
-:: YOLOv8n model indir
+:: YOLOv8s model indir
 echo.
-echo [5/7] YOLOv8n modeli indiriliyor...
-python -c "from ultralytics import YOLO; YOLO('yolov8n.pt')"
+echo [5/7] YOLOv8s modeli indiriliyor...
+python -c "from ultralytics import YOLO; YOLO('yolov8s.pt')"
 if not exist "models" mkdir models
-move yolov8n.pt models\ 2>nul
+move yolov8s.pt models\ 2>nul
 
 :: TensorRT export
 echo.

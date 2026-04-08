@@ -42,7 +42,7 @@ export default function Settings() {
         setTimeout(() => setSaved((prev) => ({ ...prev, [cameraId]: false })), 2000);
       }
     } catch {
-      // hata
+      // noop
     }
   };
 
@@ -62,54 +62,81 @@ export default function Settings() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto space-y-4">
-      <h2 className="text-xl font-bold">{t('settings.title')}</h2>
-
-      {CAMERA_IDS.map((camId) => (
-        <div key={camId} className="bg-gray-900 rounded-lg p-5">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="font-semibold text-base">
-              {t('settings.camera_section')} {camId} — {t(`camera.${camId}` as Parameters<typeof t>[0])}
-            </h3>
-            <button
-              onClick={() => handleSave(camId)}
-              className={`px-4 py-1.5 rounded text-sm font-medium transition-all ${
-                saved[camId]
-                  ? 'bg-green-700 text-green-200'
-                  : 'bg-blue-600 hover:bg-blue-500 text-white'
-              }`}
-            >
-              {saved[camId] ? t('settings.saved') : t('settings.save')}
-            </button>
-          </div>
-
-          <div className="space-y-3">
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-gray-400">{t('settings.violation_duration')}</span>
-              <span className="font-mono text-blue-400 font-semibold">
-                {formatDuration(durations[camId] ?? 300)}
-              </span>
-            </div>
-
-            <input
-              type="range"
-              min={30}
-              max={1800}
-              step={30}
-              value={durations[camId] ?? 300}
-              onChange={(e) =>
-                setDurations((prev) => ({ ...prev, [camId]: Number(e.target.value) }))
-              }
-              className="w-full accent-blue-500"
-            />
-
-            <div className="flex justify-between text-xs text-gray-600">
-              <span>30 {t('settings.seconds')}</span>
-              <span>30 {t('settings.minutes')}</span>
-            </div>
-          </div>
+    <section className="space-y-4">
+      <div className="flex items-end justify-between gap-3">
+        <div>
+          <h2 className="text-xl font-bold">{t('settings.title')}</h2>
+          <p className="text-sm text-gray-500 mt-1">
+            {CAMERA_IDS.length} {t('settings.camera_section').toLowerCase()}
+          </p>
         </div>
-      ))}
-    </div>
+        <div className="hidden xl:flex items-center gap-2 text-xs text-gray-500">
+          <span className="w-2 h-2 rounded-full bg-blue-500" />
+          <span>{t('settings.violation_duration')}</span>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+        {CAMERA_IDS.map((camId) => (
+          <div
+            key={camId}
+            className="bg-gray-900 border border-gray-800 rounded-xl p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.02)]"
+          >
+            <div className="flex items-start justify-between gap-4 mb-4">
+              <div>
+                <h3 className="font-semibold text-base">
+                  {t('settings.camera_section')} {camId} - {t(`camera.${camId}` as Parameters<typeof t>[0])}
+                </h3>
+                <p className="text-xs text-gray-500 mt-1">ID: {camId}</p>
+              </div>
+              <button
+                onClick={() => handleSave(camId)}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
+                  saved[camId]
+                    ? 'bg-green-700 text-green-200'
+                    : 'bg-blue-600 hover:bg-blue-500 text-white'
+                }`}
+              >
+                {saved[camId] ? t('settings.saved') : t('settings.save')}
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              <div className="rounded-lg border border-gray-800 bg-gray-950/60 p-3">
+                <div className="flex items-center justify-between text-sm gap-4">
+                  <span className="text-gray-400">{t('settings.violation_duration')}</span>
+                  <span className="font-mono text-blue-400 font-semibold text-right">
+                    {formatDuration(durations[camId] ?? 300)}
+                  </span>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <div className="flex justify-between text-xs text-gray-500">
+                  <span>30 {t('settings.seconds')}</span>
+                  <span>30 {t('settings.minutes')}</span>
+                </div>
+                <input
+                  type="range"
+                  min={30}
+                  max={1800}
+                  step={30}
+                  value={durations[camId] ?? 300}
+                  onChange={(e) =>
+                    setDurations((prev) => ({ ...prev, [camId]: Number(e.target.value) }))
+                  }
+                  className="w-full accent-blue-500"
+                />
+                <div className="grid grid-cols-3 gap-2 text-[11px] text-gray-500">
+                  <div className="rounded-md bg-gray-800/80 px-2 py-1 text-center">30s</div>
+                  <div className="rounded-md bg-gray-800/80 px-2 py-1 text-center">5m</div>
+                  <div className="rounded-md bg-gray-800/80 px-2 py-1 text-center">30m</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }

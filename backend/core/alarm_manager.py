@@ -32,6 +32,9 @@ from config import (
     DB_PATH, SCREENSHOTS_DIR,
     VIOLATION_MIN_DURATION_SEC, ALARM_COOLDOWN_SEC,
     REDIS_HOST, REDIS_PORT, REDIS_DB,
+    GENERIC_VEHICLE_LABEL,
+    OCR_REPLACE_MARGIN,
+    OCR_STICKY_CONFIDENCE,
 )
 from core.settings_manager import settings_mgr
 
@@ -74,6 +77,7 @@ class AlarmManager:
                     duration_sec INTEGER,
                     status TEXT DEFAULT 'active',
                     screenshot TEXT,
+                    plate_screenshot TEXT,
                     created_at TEXT NOT NULL,
                     resolved_at TEXT
                 )
@@ -82,6 +86,12 @@ class AlarmManager:
             conn.execute("CREATE INDEX IF NOT EXISTS idx_alarms_status ON alarms(status)")
             conn.execute("CREATE INDEX IF NOT EXISTS idx_alarms_plate ON alarms(plate)")
             conn.execute("CREATE INDEX IF NOT EXISTS idx_alarms_created ON alarms(created_at)")
+            columns = {
+                row[1]
+                for row in conn.execute("PRAGMA table_info(alarms)").fetchall()
+            }
+            if "plate_screenshot" not in columns:
+                conn.execute("ALTER TABLE alarms ADD COLUMN plate_screenshot TEXT")
             conn.commit()
         logger.info("Alarm DB hazir")
 
@@ -147,7 +157,8 @@ class AlarmManager:
                 }
             else:
                 # Plate güncellemesi (ilk seferde bulunamayabilir)
-                if plate and not self.violations[track_id].get("plate"):
+                current_plate = self.violations[track_id].get("plate")
+                if self._should_replace_plate(current_plate, plate):
                     self.violations[track_id]["plate"] = plate
                 # Detection güncelle (en güncel frame)
                 self.violations[track_id]["detection"] = detection
@@ -189,18 +200,30 @@ class AlarmManager:
         now_utc = datetime.utcnow()
         date_str = now_utc.strftime("%Y-%m-%d")
         filename = f"alarm_{alarm_id[:8]}.jpg"
+        plate_filename = f"alarm_{alarm_id[:8]}_plate.jpg"
         abs_screenshot_path = SCREENSHOTS_DIR / date_str / filename
+        abs_plate_screenshot_path = SCREENSHOTS_DIR / date_str / plate_filename
         # Göreceli path DB'de saklanır → Docker/Windows/Linux taşınabilirliği
         rel_screenshot_path = f"screenshots/{date_str}/{filename}"
+        rel_plate_screenshot_path = f"screenshots/{date_str}/{plate_filename}"
 
         # Frame kopyasını al (inference loop ilerleyecek, orijinal değişebilir)
         frame_copy = det["frame"].copy()
         bbox_copy = list(det["bbox"])
+        plate_copy = self._clone_plate_result(plate)
+        has_plate_crop = (
+            bool(plate_copy)
+            and isinstance(plate_copy.get("plate_crop"), np.ndarray)
+            and plate_copy["plate_crop"].size > 0
+        ) or (
+            bool(plate_copy)
+            and plate_copy.get("plate_bbox") is not None
+        )
 
         # Arka planda kaydet — inference loop'u bloklamaz
         threading.Thread(
-            target=self._save_screenshot_sync,
-            args=(abs_screenshot_path, frame_copy, bbox_copy),
+            target=self._save_images_sync,
+            args=(abs_screenshot_path, abs_plate_screenshot_path, frame_copy, bbox_copy, plate_copy),
             daemon=True,
         ).start()
 
@@ -210,12 +233,13 @@ class AlarmManager:
             "track_id": track_id,
             "plate": plate["text"] if plate else None,
             "plate_conf": plate["confidence"] if plate else None,
-            "vehicle_class": det.get("class_name", "car"),
+            "vehicle_class": det.get("class_name", GENERIC_VEHICLE_LABEL),
             "zone_id": zone["id"],
             "zone_name": zone["name"],
             "duration_sec": int(duration),
             "status": "active",
             "screenshot": rel_screenshot_path,
+            "plate_screenshot": rel_plate_screenshot_path if has_plate_crop else None,
             "created_at": now_utc.isoformat(),
             "resolved_at": None,
         }
@@ -260,10 +284,17 @@ class AlarmManager:
         except Exception as e:
             logger.error(f"Ceza kuyrugu ekleme hatasi: {e}")
 
-    def _save_screenshot_sync(self, path: Path, frame: np.ndarray, bbox: list[int]) -> None:
-        """Alarm frame'ini diske kaydet — araç bölgesini kırpılmış olarak kaydeder."""
+    def _save_images_sync(
+        self,
+        vehicle_path: Path,
+        plate_path: Path,
+        frame: np.ndarray,
+        bbox: list[int],
+        plate: dict | None,
+    ) -> None:
+        """Araç screenshot ve varsa plaka crop'ını kaydet."""
         try:
-            path.parent.mkdir(parents=True, exist_ok=True)
+            vehicle_path.parent.mkdir(parents=True, exist_ok=True)
             x1, y1, x2, y2 = bbox
             h, w = frame.shape[:2]
 
@@ -283,21 +314,93 @@ class AlarmManager:
                 (x2 - cx1, y2 - cy1),
                 (0, 0, 255), 3,
             )
-            cv2.imwrite(str(path), cropped, [cv2.IMWRITE_JPEG_QUALITY, 90])
+            cv2.imwrite(str(vehicle_path), cropped, [cv2.IMWRITE_JPEG_QUALITY, 90])
+
+            plate_crop = plate.get("plate_crop") if plate else None
+            if not (isinstance(plate_crop, np.ndarray) and plate_crop.size > 0) and plate:
+                plate_bbox = plate.get("plate_bbox")
+                if plate_bbox:
+                    vx1, vy1, vx2, vy2 = bbox
+                    px1, py1, px2, py2 = plate_bbox
+                    vehicle_crop = frame[max(0, vy1):min(h, vy2), max(0, vx1):min(w, vx2)]
+                    if vehicle_crop.size > 0:
+                        vh, vw = vehicle_crop.shape[:2]
+                        px1 = max(0, min(vw, px1))
+                        py1 = max(0, min(vh, py1))
+                        px2 = max(0, min(vw, px2))
+                        py2 = max(0, min(vh, py2))
+                        plate_crop = vehicle_crop[py1:py2, px1:px2].copy()
+
+            if isinstance(plate_crop, np.ndarray) and plate_crop.size > 0:
+                cv2.imwrite(str(plate_path), plate_crop, [cv2.IMWRITE_JPEG_QUALITY, 95])
         except Exception as e:
-            logger.error(f"Screenshot kaydedilemedi ({path}): {e}")
+            logger.error(f"Screenshot kaydedilemedi ({vehicle_path}): {e}")
+
+    def _clone_plate_result(self, plate: dict | None) -> dict | None:
+        if not plate:
+            return None
+        cloned = {}
+        for key, value in plate.items():
+            if isinstance(value, np.ndarray):
+                cloned[key] = value.copy()
+            elif isinstance(value, list):
+                cloned[key] = list(value)
+            else:
+                cloned[key] = value
+        return cloned
+
+    def _should_replace_plate(self, current: dict | None, candidate: dict | None) -> bool:
+        if not candidate:
+            return False
+        if not current:
+            return True
+        if current.get("text") == candidate.get("text"):
+            return self._plate_rank(candidate) >= self._plate_rank(current)
+
+        current_score = float(current.get("score", current.get("confidence", 0.0)))
+        candidate_score = float(candidate.get("score", candidate.get("confidence", 0.0)))
+        current_votes = int(current.get("votes", 1) or 1)
+        candidate_votes = int(candidate.get("votes", 1) or 1)
+
+        if (
+            current.get("stable")
+            and float(current.get("confidence", 0.0)) >= OCR_STICKY_CONFIDENCE
+            and candidate_score < current_score + OCR_REPLACE_MARGIN
+            and candidate_votes <= current_votes
+        ):
+            return False
+
+        return self._plate_rank(candidate) > self._plate_rank(current)
+
+    def _plate_rank(self, plate: dict | None) -> tuple:
+        if not plate:
+            return (0, 0, 0.0, 0.0, 0.0, 0)
+        return (
+            int(bool(plate.get("stable"))),
+            int(plate.get("votes", 1) or 1),
+            round(float(plate.get("score", plate.get("confidence", 0.0))), 4),
+            round(float(plate.get("confidence", 0.0)), 4),
+            round(float(plate.get("quality", 0.0)), 4),
+            int(plate.get("plate_area", 0) or 0),
+        )
 
     def _save_to_db(self, alarm: dict) -> None:
         """SQLite'a alarm kaydet."""
         try:
             with sqlite3.connect(str(DB_PATH)) as conn:
                 conn.execute(
-                    """INSERT INTO alarms VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                    """
+                    INSERT INTO alarms (
+                        id, camera_id, track_id, plate, plate_conf, vehicle_class,
+                        zone_id, zone_name, duration_sec, status, screenshot,
+                        plate_screenshot, created_at, resolved_at
+                    ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+                    """,
                     (
                         alarm["id"], alarm["camera_id"], alarm["track_id"],
                         alarm["plate"], alarm["plate_conf"], alarm["vehicle_class"],
                         alarm["zone_id"], alarm["zone_name"], alarm["duration_sec"],
-                        alarm["status"], alarm["screenshot"], alarm["created_at"],
+                        alarm["status"], alarm["screenshot"], alarm["plate_screenshot"], alarm["created_at"],
                         alarm["resolved_at"],
                     ),
                 )

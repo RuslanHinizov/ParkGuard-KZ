@@ -92,6 +92,31 @@ async def get_screenshot(alarm_id: str):
     )
 
 
+@router.get("/alarms/{alarm_id}/plate-screenshot")
+async def get_plate_screenshot(alarm_id: str):
+    """Alarm plaka crop dosyasını döndür."""
+    alarm_mgr = _get_alarm_manager()
+    alarm = alarm_mgr.get_alarm(alarm_id)
+    if not alarm:
+        raise HTTPException(status_code=404, detail="Alarm bulunamadi")
+
+    plate_screenshot = alarm.get("plate_screenshot")
+    if not plate_screenshot:
+        raise HTTPException(status_code=404, detail="Plate screenshot bulunamadi")
+
+    plate_screenshot_path = Path(plate_screenshot)
+    if not plate_screenshot_path.is_absolute():
+        plate_screenshot_path = DATA_DIR / plate_screenshot_path
+    if not plate_screenshot_path.exists():
+        raise HTTPException(status_code=404, detail="Plate screenshot bulunamadi")
+
+    return FileResponse(
+        path=str(plate_screenshot_path),
+        media_type="image/jpeg",
+        filename=f"alarm_{alarm_id[:8]}_plate.jpg",
+    )
+
+
 @router.delete("/alarms/{alarm_id}")
 async def delete_alarm(alarm_id: str):
     """Alarm sil."""

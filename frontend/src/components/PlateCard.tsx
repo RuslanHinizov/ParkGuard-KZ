@@ -164,12 +164,34 @@ export default function PlateCard({ alarm }: PlateCardProps) {
       </div>
 
       {showScreenshot && (
-        <div className="mb-2">
-          <img
-            src={`${API_BASE}/alarms/${alarm.id}/screenshot`}
-            alt="screenshot"
-            className="w-full rounded border border-gray-700"
-          />
+        <div className="mb-2 grid grid-cols-1 md:grid-cols-2 gap-2">
+          <div>
+            <div className="text-[11px] uppercase tracking-wide text-gray-400 mb-1">
+              Vehicle
+            </div>
+            <img
+              src={`${API_BASE}/alarms/${alarm.id}/screenshot`}
+              alt="vehicle screenshot"
+              className="w-full rounded border border-gray-700"
+            />
+          </div>
+
+          <div>
+            <div className="text-[11px] uppercase tracking-wide text-gray-400 mb-1">
+              Plate
+            </div>
+            {alarm.plate_screenshot ? (
+              <img
+                src={`${API_BASE}/alarms/${alarm.id}/plate-screenshot`}
+                alt="plate screenshot"
+                className="w-full rounded border border-gray-700 bg-gray-950"
+              />
+            ) : (
+              <div className="w-full h-full min-h-24 rounded border border-dashed border-gray-700 bg-gray-900/60 text-xs text-gray-500 flex items-center justify-center">
+                Plate crop unavailable
+              </div>
+            )}
+          </div>
         </div>
       )}
 

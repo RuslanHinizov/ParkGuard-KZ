@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { Alarm, Zone, SystemStats, TodayStats, WSStatus } from '../types';
+import type { Alarm, Zone, SystemStats, WSStatus } from '../types';
 import type { Lang } from '../i18n/translations';
 
 // Dil tercihini localStorage'dan oku (varsayılan: Rusça)
@@ -32,9 +32,6 @@ interface AppState {
   stats: SystemStats | null;
   setStats: (stats: SystemStats) => void;
 
-  todayStats: TodayStats | null;
-  setTodayStats: (stats: TodayStats) => void;
-
   // WebSocket durumları
   streamStatus: Record<number, WSStatus>;
   setStreamStatus: (camId: number, status: WSStatus) => void;
@@ -50,8 +47,8 @@ interface AppState {
   toggleSound: () => void;
 
   // Seçili sekme
-  activeTab: 'live' | 'alarms' | 'zones' | 'stats' | 'settings' | 'logs' | 'chat' | 'plates' | 'gallery' | 'reports' | 'penalties';
-  setActiveTab: (tab: 'live' | 'alarms' | 'zones' | 'stats' | 'settings' | 'logs' | 'chat' | 'plates' | 'gallery' | 'reports' | 'penalties') => void;
+  activeTab: 'live' | 'alarms' | 'zones' | 'settings' | 'logs' | 'plates' | 'gallery' | 'penalties';
+  setActiveTab: (tab: 'live' | 'alarms' | 'zones' | 'settings' | 'logs' | 'plates' | 'gallery' | 'penalties') => void;
   selectedPlateQuery: string;
   setSelectedPlateQuery: (plate: string) => void;
 
@@ -93,9 +90,6 @@ export const useStore = create<AppState>((set) => ({
   // Sistem
   stats: null,
   setStats: (stats) => set({ stats }),
-
-  todayStats: null,
-  setTodayStats: (stats) => set({ todayStats: stats }),
 
   // WebSocket
   streamStatus: {},

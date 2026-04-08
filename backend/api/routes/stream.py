@@ -1,31 +1,95 @@
-"""
-stream.py — WebSocket Stream Endpoints
-
-WS /ws/stream/{camera_id}  → Annotated frame binary stream
-WS /ws/alarms              → Gerçek zamanlı alarm JSON
-WS /ws/stats               → FPS + sistem metrikleri (her 2sn)
-"""
-
-import json
 import asyncio
+import json
 import logging
 import psutil
-from fastapi import APIRouter, WebSocket, WebSocketDisconnect
+from pathlib import Path
+
+from fastapi import APIRouter, HTTPException, Request, WebSocket, WebSocketDisconnect
+from fastapi.responses import FileResponse
+
 from api.websocket import ws_manager
+from config import (
+    CAMERAS,
+    DATA_DIR,
+    MEDIA_MTX_HLS_BASE_URL,
+    MEDIA_MTX_PATH_PREFIX,
+    MEDIA_MTX_RTSP_BASE_URL,
+    MEDIA_MTX_WEBRTC_BASE_URL,
+    VIDEO_STREAM_FALLBACK_MODE,
+    VIDEO_STREAM_MODE,
+)
+from core.system_metrics import get_gpu_metrics
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter(tags=["stream"])
 
 
+def _get_camera(camera_id: int) -> dict:
+    for camera in CAMERAS:
+        if camera["id"] == camera_id:
+            return camera
+    raise HTTPException(status_code=404, detail="Kamera bulunamadi")
+
+
+def _is_local_file_source(source: str) -> bool:
+    if not source:
+        return False
+    lowered = source.lower()
+    if lowered.startswith(("rtsp://", "rtsps://", "http://", "https://")):
+        return False
+    return Path(source).exists()
+
+
+def _join_url(base: str, suffix: str) -> str:
+    return f"{base.rstrip('/')}/{suffix.lstrip('/')}"
+
+
+@router.get("/api/stream/source/{camera_id}")
+async def get_stream_source(camera_id: int, request: Request):
+    camera = _get_camera(camera_id)
+    camera_source = camera["url"]
+    path_name = f"{MEDIA_MTX_PATH_PREFIX}{camera_id}"
+
+    if _is_local_file_source(camera_source):
+        local_source = Path(camera_source)
+        source_version = int(local_source.stat().st_mtime)
+        return {
+            "camera_id": camera_id,
+            "mode": "file",
+            "fallback_mode": None,
+            "label": camera["name"],
+            "file_url": f"/api/stream/dev-file/{camera_id}?v={source_version}",
+            "hls_url": None,
+            "whep_url": None,
+            "rtsp_url": None,
+            "metadata_ws_url": f"/ws/metadata/{camera_id}",
+        }
+
+    return {
+        "camera_id": camera_id,
+        "mode": VIDEO_STREAM_MODE,
+        "fallback_mode": VIDEO_STREAM_FALLBACK_MODE,
+        "label": camera["name"],
+        "file_url": None,
+        "hls_url": _join_url(MEDIA_MTX_HLS_BASE_URL, f"{path_name}/index.m3u8"),
+        "whep_url": _join_url(MEDIA_MTX_WEBRTC_BASE_URL, f"{path_name}/whep"),
+        "rtsp_url": _join_url(MEDIA_MTX_RTSP_BASE_URL, path_name),
+        "metadata_ws_url": f"/ws/metadata/{camera_id}",
+    }
+
+
+@router.get("/api/stream/dev-file/{camera_id}")
+async def get_dev_file_stream(camera_id: int):
+    camera = _get_camera(camera_id)
+    source = Path(camera["url"])
+    if not source.exists() or not source.is_file():
+        raise HTTPException(status_code=404, detail="Yerel test videosu bulunamadi")
+    return FileResponse(path=str(source), media_type="video/mp4", filename=source.name)
+
+
 @router.websocket("/ws/stream/{camera_id}")
 async def ws_stream(ws: WebSocket, camera_id: int):
-    """
-    Kamera stream WebSocket.
-    Binary JPEG frame gönderir (960×540, quality=80).
-    Annotated: bbox, track_id, plaka, zone.
-    Client ping gönderirse pong ile yanıt verir.
-    """
     await ws_manager.connect_stream(ws, camera_id)
     try:
         while True:
@@ -35,17 +99,27 @@ async def ws_stream(ws: WebSocket, camera_id: int):
     except WebSocketDisconnect:
         ws_manager.disconnect(ws)
     except Exception as e:
-        logger.debug(f"Stream WS kapandi (kamera {camera_id}): {e}")
+        logger.debug(f"Legacy stream WS kapandi (kamera {camera_id}): {e}")
+        ws_manager.disconnect(ws)
+
+
+@router.websocket("/ws/metadata/{camera_id}")
+async def ws_metadata(ws: WebSocket, camera_id: int):
+    await ws_manager.connect_metadata(ws, camera_id)
+    try:
+        while True:
+            msg = await ws.receive_text()
+            if msg == "ping":
+                await ws.send_text('{"type":"pong"}')
+    except WebSocketDisconnect:
+        ws_manager.disconnect(ws)
+    except Exception as e:
+        logger.debug(f"Metadata WS kapandi (kamera {camera_id}): {e}")
         ws_manager.disconnect(ws)
 
 
 @router.websocket("/ws/alarms")
 async def ws_alarms(ws: WebSocket):
-    """
-    Alarm WebSocket.
-    Yeni alarm oluştuğunda JSON gönderir.
-    Client ping gönderirse pong ile yanıt verir.
-    """
     await ws_manager.connect_alarms(ws)
     try:
         while True:
@@ -61,14 +135,10 @@ async def ws_alarms(ws: WebSocket):
 
 @router.websocket("/ws/logs")
 async def ws_logs(ws: WebSocket):
-    """
-    Log stream WebSocket.
-    İlk bağlantıda son 100 satırı gönderir, sonra her 0.5sn yeni kayıtları gönderir.
-    """
     from core.log_buffer import log_buffer
+
     await ws.accept()
     try:
-        # İlk yükleme: son kayıtları gönder
         initial = log_buffer.get_all()[-100:]
         if initial:
             await ws.send_json({"entries": initial})
@@ -88,10 +158,6 @@ async def ws_logs(ws: WebSocket):
 
 @router.websocket("/ws/stats")
 async def ws_stats(ws: WebSocket):
-    """
-    Sistem metrikleri WebSocket.
-    Her 2 saniyede JSON gönderir: fps, gpu, cpu, ram, vram.
-    """
     await ws_manager.connect_stats(ws)
     try:
         while True:
@@ -104,15 +170,13 @@ async def ws_stats(ws: WebSocket):
                 "cameras": camera_mgr.get_status_all(),
             }
 
-            try:
-                import torch
-                if torch.cuda.is_available():
-                    stats["gpu"] = round(torch.cuda.memory_allocated(0) / (1024**3), 2)
-                    stats["vram"] = round(
-                        torch.cuda.get_device_properties(0).total_memory / (1024**3), 1
-                    )
-            except ImportError:
-                pass
+            gpu_metrics = get_gpu_metrics()
+            if gpu_metrics["gpu_available"]:
+                stats["gpu"] = gpu_metrics["gpu_util_percent"]
+                stats["gpu_memory"] = gpu_metrics["gpu_memory_util_percent"]
+                stats["vram_used"] = gpu_metrics["vram_used_gb"]
+                stats["vram_total"] = gpu_metrics["vram_total_gb"]
+                stats["gpu_name"] = gpu_metrics["gpu_name"]
 
             await ws.send_text(json.dumps(stats))
             await asyncio.sleep(2)
@@ -120,5 +184,4 @@ async def ws_stats(ws: WebSocket):
     except WebSocketDisconnect:
         ws_manager.disconnect(ws)
     except Exception:
-        # Bağlantı kapandıktan sonra send çağrısı veya başka hata
         ws_manager.disconnect(ws)

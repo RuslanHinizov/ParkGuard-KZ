@@ -105,6 +105,10 @@ class CameraWorker:
         - max_delay=0: sıfır gecikme
         """
 
+        is_stream = self.url.startswith("rtsp://") or self.url.startswith("http")
+        if not is_stream:
+            return cv2.VideoCapture(self.url)
+
         os.environ["OPENCV_FFMPEG_CAPTURE_OPTIONS"] = (
             f"rtsp_transport;tcp|"
             f"buffer_size;{RTSP_BUFFER_SIZE}|"
@@ -162,6 +166,13 @@ class CameraWorker:
                 ret, frame = cap.read()
 
                 if not ret:
+                    if is_file:
+                        # Test modunda MP4 sonuna gelince yeniden baglanma yerine basa sar.
+                        cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+                        consecutive_failures = 0
+                        last_frame_time = time.time()
+                        continue
+
                     consecutive_failures += 1
                     if consecutive_failures > 10:
                         logger.warning(

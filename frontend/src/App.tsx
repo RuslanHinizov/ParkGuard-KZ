@@ -6,13 +6,10 @@ import VideoGrid from './components/VideoGrid';
 import AlarmPanel from './components/AlarmPanel';
 import AlarmSearch from './components/AlarmSearch';
 import ZoneEditor from './components/ZoneEditor';
-import StatsChart from './components/StatsChart';
 import Settings from './components/Settings';
 import LogViewer from './components/LogViewer';
-import ChatPanel from './components/ChatPanel';
 import PlateHistory from './components/PlateHistory';
 import GalleryPanel from './components/GalleryPanel';
-import ReportPanel from './components/ReportPanel';
 import WhitelistPanel from './components/WhitelistPanel';
 import CameraHealth from './components/CameraHealth';
 import QuickSearch from './components/QuickSearch';
@@ -36,12 +33,9 @@ export default function App() {
     { key: 'plates' as const,   label: t('nav.plates') },
     { key: 'gallery' as const,  label: t('nav.gallery') },
     { key: 'zones' as const,    label: t('nav.zones') },
-    { key: 'stats' as const,    label: t('nav.stats') },
-    { key: 'reports' as const,   label: t('nav.reports') },
     { key: 'penalties' as const, label: t('nav.penalties') },
     { key: 'settings' as const,  label: t('nav.settings') },
     { key: 'logs' as const,      label: t('nav.logs') },
-    { key: 'chat' as const,      label: t('nav.chat') },
   ];
 
   const LANGS: { code: Lang; flag: string }[] = [
@@ -143,27 +137,28 @@ export default function App() {
 
         {activeTab === 'zones' && <ZoneEditor />}
 
-        {activeTab === 'stats' && <StatsChart />}
-
         {activeTab === 'plates' && <PlateHistory />}
 
         {activeTab === 'gallery' && <GalleryPanel />}
-
-        {activeTab === 'reports' && <ReportPanel />}
 
         {activeTab === 'penalties' && <PenaltyPanel />}
 
         {activeTab === 'settings' && (
           <div className="space-y-6">
             <Settings />
-            <CameraHealth />
-            <WhitelistPanel />
+            <div className="grid grid-cols-1 2xl:grid-cols-12 gap-6 items-start">
+              <div className="2xl:col-span-8">
+                <CameraHealth />
+              </div>
+              <div className="2xl:col-span-4 2xl:sticky 2xl:top-4">
+                <WhitelistPanel />
+              </div>
+            </div>
           </div>
         )}
 
         {activeTab === 'logs' && <LogViewer />}
 
-        {activeTab === 'chat' && <ChatPanel />}
       </main>
     </div>
   );

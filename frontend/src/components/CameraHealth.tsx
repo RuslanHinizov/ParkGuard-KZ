@@ -39,6 +39,11 @@ export default function CameraHealth() {
     wsStatus === 'connecting'   ? t('health.ws_connecting')   :
                                   t('health.ws_disconnected');
 
+  const gpuUtil = stats?.gpu;
+  const gpuMemoryUtil = stats?.gpu_memory;
+  const vramUsed = stats?.vram_used;
+  const vramTotal = stats?.vram_total;
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -162,16 +167,21 @@ export default function CameraHealth() {
               <p className="text-xs text-gray-500 mb-0.5">RAM</p>
               <p className="text-lg font-bold text-blue-400">{stats.ram ?? 0} GB</p>
             </div>
-            {stats.gpu !== undefined && (
+            {gpuUtil !== undefined && (
               <div>
                 <p className="text-xs text-gray-500 mb-0.5">GPU</p>
-                <p className="text-lg font-bold text-green-400">{stats.gpu}%</p>
+                <p className="text-lg font-bold text-green-400">{gpuUtil}%</p>
+                {gpuMemoryUtil !== undefined && (
+                  <p className="text-xs text-gray-500 mt-1">MEM {gpuMemoryUtil}%</p>
+                )}
               </div>
             )}
-            {stats.vram !== undefined && (
+            {vramUsed !== undefined && vramTotal !== undefined && (
               <div>
                 <p className="text-xs text-gray-500 mb-0.5">VRAM</p>
-                <p className="text-lg font-bold text-purple-400">{stats.vram} GB</p>
+                <p className="text-lg font-bold text-purple-400">
+                  {vramUsed} / {vramTotal} GB
+                </p>
               </div>
             )}
           </div>

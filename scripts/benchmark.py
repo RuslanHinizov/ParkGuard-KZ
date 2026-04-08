@@ -20,15 +20,15 @@ sys.path.insert(0, str(backend_dir))
 
 
 def benchmark_yolo():
-    """YOLOv8n inference hız testi."""
+    """YOLOv8s inference hız testi."""
     import torch
     from ultralytics import YOLO
     from config import MODELS_DIR, BATCH_SIZE, IMGSZ
 
-    print("\n--- YOLOv8n Inference Benchmark ---")
+    print("\n--- YOLOv8s Inference Benchmark ---")
 
-    engine_path = MODELS_DIR / "yolov8n.engine"
-    pt_path = MODELS_DIR / "yolov8n.pt"
+    engine_path = MODELS_DIR / "yolov8s.engine"
+    pt_path = MODELS_DIR / "yolov8s.pt"
 
     if engine_path.exists():
         model = YOLO(str(engine_path))

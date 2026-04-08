@@ -1,13 +1,9 @@
 """
 detector.py — Araç Tespit Modülü
 
-AMAÇ: YOLOv8n TensorRT FP16 ile batch=3 inference.
-      3 kameranın frame'lerini aynı anda GPU'ya gönder.
+AMAÇ: YOLOv8s TensorRT FP16 ile inference.
+      Araçları tek bir generic vehicle etiketi ile işle.
       GPU warmup yap (ilk frame yavaş olmasın).
-
-Neden batch=3:
-  Sıralı: model(f1)→3ms + model(f2)→3ms + model(f3)→3ms = 9ms
-  Batch:  model([f1,f2,f3]) → 4ms (GPU parallelism)
 """
 
 import torch
@@ -18,6 +14,7 @@ from ultralytics import YOLO
 from config import (
     MODEL_PATH, MODELS_DIR, BATCH_SIZE, IMGSZ, DETECTION_CONF,
     NMS_IOU, VEHICLE_CLASSES, GPU_DEVICE, GPU_WARMUP_ITERATIONS,
+    GENERIC_VEHICLE_LABEL,
 )
 
 logger = logging.getLogger(__name__)
@@ -40,15 +37,15 @@ class VehicleDetector:
             self._export_engine()
 
         self.model = YOLO(str(engine_path))
-        logger.info("YOLOv8n TensorRT yuklendi")
+        logger.info("YOLO TensorRT yuklendi")
 
     def _export_engine(self) -> None:
-        """YOLOv8n → TensorRT FP16 export."""
+        """YOLOv8s → TensorRT FP16 export."""
 
         pt_path = ((MODELS_DIR.parent / MODEL_PATH).resolve()).with_suffix(".pt")
         if not pt_path.exists():
-            logger.info("yolov8n.pt indiriliyor...")
-            YOLO("yolov8n.pt")  # otomatik indirir
+            logger.info("yolov8s.pt indiriliyor...")
+            YOLO("yolov8s.pt")  # otomatik indirir
 
         model = YOLO(str(pt_path))
         model.export(
@@ -117,7 +114,8 @@ class VehicleDetector:
                     "bbox": [int(x1), int(y1), int(x2), int(y2)],
                     "confidence": float(box.conf[0]),
                     "class_id": int(box.cls[0]),
-                    "class_name": result.names[int(box.cls[0])],
+                    "class_name": GENERIC_VEHICLE_LABEL,
+                    "raw_class_name": result.names[int(box.cls[0])],
                     "timestamp": frames[cam_id]["timestamp"],
                     "frame": frames[cam_id]["frame"],
                 })

@@ -1,10 +1,10 @@
 """
-export_trt.py — YOLOv8n TensorRT FP16 Export
+export_trt.py — YOLOv8s TensorRT FP16 Export
 
 RTX 4060 Mobile için optimize edilmiş ayarlar:
   - FP16: 2x hız, ~%1 accuracy kaybı
-  - batch=3: 3 kamera aynı anda
-  - imgsz=640: standart YOLO giriş boyutu
+  - batch=1: kamera basi inference ile uyumlu
+  - imgsz=960: uzak arac ayrimi icin daha iyi
   - workspace=6: 6GB VRAM (8GB'ın 75%'i)
   - dynamic=False: sabit batch = daha hızlı kernel
 """
@@ -24,14 +24,14 @@ MODELS_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def main():
-    pt_path = MODELS_DIR / "yolov8n.pt"
+    pt_path = MODELS_DIR / "yolov8s.pt"
 
     # Model yoksa indir
     if not pt_path.exists():
-        print("yolov8n.pt indiriliyor...")
-        model = YOLO("yolov8n.pt")
+        print("yolov8s.pt indiriliyor...")
+        model = YOLO("yolov8s.pt")
         # İndirilen dosyayı models/ altına taşı
-        downloaded = Path("yolov8n.pt")
+        downloaded = Path("yolov8s.pt")
         if downloaded.exists():
             downloaded.rename(pt_path)
     else:
@@ -39,8 +39,8 @@ def main():
 
     print("TensorRT FP16 export baslatiliyor...")
     print(f"  Model: {pt_path}")
-    print(f"  Batch: 3 (3 kamera)")
-    print(f"  ImgSz: 640")
+    print(f"  Batch: 1")
+    print(f"  ImgSz: 960")
     print(f"  FP16:  Evet")
     print(f"  VRAM:  6GB workspace")
     print()
@@ -49,14 +49,14 @@ def main():
         format="engine",
         device=0,
         half=True,
-        batch=3,
-        imgsz=640,
+        batch=1,
+        imgsz=960,
         workspace=6,
         simplify=True,
         dynamic=False,
     )
 
-    engine_path = MODELS_DIR / "yolov8n.engine"
+    engine_path = MODELS_DIR / "yolov8s.engine"
     if engine_path.exists():
         size_mb = engine_path.stat().st_size / (1024 * 1024)
         print(f"\nExport basarili!")

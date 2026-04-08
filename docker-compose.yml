@@ -14,13 +14,28 @@ services:
   mediamtx:
     image: bluenviron/mediamtx:latest
     container_name: parkguard-mediamtx
+    env_file:
+      - .env
+    environment:
+      - MTX_PATHS_CAM1_SOURCE=${CAMERA_1_URL}
+      - MTX_PATHS_CAM1_SOURCEONDEMAND=yes
+      - MTX_PATHS_CAM1_SOURCEONDEMANDCLOSEAFTER=30s
+      - MTX_PATHS_CAM2_SOURCE=${CAMERA_2_URL}
+      - MTX_PATHS_CAM2_SOURCEONDEMAND=yes
+      - MTX_PATHS_CAM2_SOURCEONDEMANDCLOSEAFTER=30s
+      - MTX_PATHS_CAM3_SOURCE=${CAMERA_3_URL}
+      - MTX_PATHS_CAM3_SOURCEONDEMAND=yes
+      - MTX_PATHS_CAM3_SOURCEONDEMANDCLOSEAFTER=30s
     ports:
       - "8554:8554"   # RTSP
       - "8888:8888"   # HLS
       - "8889:8889"   # WebRTC
+      - "8189:8189/udp" # WebRTC ICE/UDP
     restart: unless-stopped
     volumes:
-      - ./mediamtx/mediamtx.yml:/mediamtx.yml
+      - type: bind
+        source: ./mediamtx/mediamtx.yml
+        target: /mediamtx.yml
 
   # Backend — FastAPI + GPU inference
   backend:

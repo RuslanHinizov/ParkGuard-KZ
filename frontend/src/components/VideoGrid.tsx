@@ -2,12 +2,16 @@ import VideoPlayer from './VideoPlayer';
 import { useStore } from '../store/useStore';
 import { useTranslation } from '../i18n/useTranslation';
 
-const CAMERA_IDS = [1, 2, 3];
-
 export default function VideoGrid() {
   const activeCameraId = useStore((s) => s.activeCameraId);
   const setActiveCameraId = useStore((s) => s.setActiveCameraId);
+  const stats = useStore((s) => s.stats);
   const { t } = useTranslation();
+  const cameraIds = Object.keys(stats?.cameras ?? {})
+    .map((id) => Number(id))
+    .filter((id) => Number.isFinite(id))
+    .sort((a, b) => a - b);
+  const visibleCameraIds = cameraIds.length > 0 ? cameraIds : [1];
 
   if (activeCameraId !== null) {
     return (
@@ -29,7 +33,7 @@ export default function VideoGrid() {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
-      {CAMERA_IDS.map((id) => (
+      {visibleCameraIds.map((id) => (
         <VideoPlayer
           key={id}
           cameraId={id}

@@ -19,6 +19,7 @@ export interface Alarm {
   duration_sec: number;
   status: 'active' | 'resolved';
   screenshot: string;
+  plate_screenshot?: string | null;
   created_at: string;
   resolved_at: string | null;
 }
@@ -47,9 +48,33 @@ export interface Detection {
   confidence: number;
   class_id: number;
   class_name: string;
-  track_id: number;
+  track_id: number | null;
   plate: string | null;
+  plate_conf?: number | null;
   in_violation: boolean;
+}
+
+export type VideoSourceMode = 'file' | 'webrtc' | 'hls';
+
+export interface CameraStreamSource {
+  camera_id: number;
+  mode: VideoSourceMode;
+  fallback_mode: VideoSourceMode | null;
+  label: string;
+  file_url: string | null;
+  hls_url: string | null;
+  whep_url: string | null;
+  rtsp_url: string | null;
+  metadata_ws_url: string;
+}
+
+export interface StreamMetadata {
+  camera_id: number;
+  frame_width: number;
+  frame_height: number;
+  timestamp_ms: number;
+  detections: Detection[];
+  zones: Zone[];
 }
 
 // === SİSTEM İSTATİSTİKLERİ ===
@@ -58,7 +83,10 @@ export interface SystemStats {
   cpu: number;
   ram: number;
   gpu?: number;
-  vram?: number;
+  gpu_memory?: number;
+  gpu_name?: string;
+  vram_used?: number;
+  vram_total?: number;
   cameras: Record<number, CameraStatus>;
 }
 
@@ -68,31 +96,11 @@ export interface CameraStatus {
   fps: number;
 }
 
-// === BUGÜN İSTATİSTİKLERİ ===
-export interface TodayStats {
-  total_alarms: number;
-  active: number;
-  resolved: number;
-  by_camera: Record<number, number>;
-}
-
-// === SAATLİK İSTATİSTİK ===
-export interface HourlyStat {
-  hour: number;
-  count: number;
-}
-
-// === KAMERA İSTATİSTİĞİ ===
-export interface CameraStat {
-  camera_id: number;
-  name: string;
-  alarm_count: number;
-  last_alarm: string;
-}
-
 // === SYSTEM HEALTH ===
 export interface SystemHealth {
   cpu_percent: number;
+  gpu_percent?: number;
+  gpu_memory_percent?: number;
   ram_used_gb: number;
   ram_total_gb: number;
   ram_percent: number;

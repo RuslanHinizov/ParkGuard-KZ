@@ -35,7 +35,7 @@ from core.tracker import VehicleTracker
 from core.zone_manager import ZoneManager
 from core.plate_ocr import PlateOCR
 from core.alarm_manager import AlarmManager
-from api.routes import alarms, zones, stats, stream, settings, chat, whitelist, reports, plates, gallery, anomalies, penalties
+from api.routes import alarms, zones, stats, stream, settings, whitelist, plates, gallery, anomalies, penalties
 from core.scheduler import start_scheduler, stop_scheduler
 from api.websocket import ws_manager
 from config import (
@@ -104,8 +104,11 @@ async def inference_loop() -> None:
                 await asyncio.sleep(0.01)
                 continue
 
+            # Aktif zoneleri once al. Tracker gerekirse zone ROI ustunde detect eder.
+            all_zones = zone_mgr.get_all_zones()
+
             # ByteTrack ile araç takibi (detect + track tek adımda)
-            detections = tracker.track(frames)
+            detections = tracker.track(frames, all_zones)
 
             # Her detection için zone ve OCR kontrolü
             for det in detections:
@@ -115,6 +118,7 @@ async def inference_loop() -> None:
                 zone = zone_mgr.check_violation(det)
                 det["in_violation"] = zone is not None
                 det["zone"] = zone
+                det["plate_conf"] = None
                 det["plate"] = None  # Default — aşağıda güncellenebilir
 
                 # Track ID yoksa (ByteTrack henüz onaylamadı) alarm/OCR atla.
@@ -132,27 +136,23 @@ async def inference_loop() -> None:
                 if zone is not None and plate_ocr:
                     # Önce önbellekte var mı bak (her frame'de OCR çalıştırma)
                     cached = plate_ocr.get_cached(track_id)
-                    if cached:
-                        plate = cached
-                    elif frame_counter % OCR_EVERY_N_FRAMES == 0:
-                        plate = plate_ocr.read_plate(det["frame"], det["bbox"])
-                        if plate:
-                            plate_ocr.cache_result(track_id, plate)
+                    should_sample_ocr = (frame_counter % OCR_EVERY_N_FRAMES == 0) or cached is None
+                    if should_sample_ocr:
+                        observed_plate = plate_ocr.read_plate(det["frame"], det["bbox"])
+                        if observed_plate:
+                            cached = plate_ocr.cache_result(track_id, observed_plate)
+                    plate = cached
 
-                det["plate"] = plate["text"] if plate else (
-                    plate_ocr.get_cached(track_id)["text"]
-                    if plate_ocr and plate_ocr.get_cached(track_id) else None
-                )
+                det["plate"] = plate["text"] if plate else None
+                det["plate_conf"] = plate["confidence"] if plate else None
 
                 # Alarm kontrolü
                 alarm = alarm_mgr.update(track_id, det, zone, plate)
                 if alarm:
                     await ws_manager.broadcast_alarm(alarm)
 
-            # Zone bilgisini al (annotasyon için)
-            all_zones = zone_mgr.get_all_zones()
-
             # WebSocket'e annotated frame gönder
+            await ws_manager.broadcast_metadata(frames, detections, all_zones)
             await ws_manager.broadcast_detections(frames, detections, all_zones)
 
             frame_counter += 1
@@ -182,7 +182,7 @@ async def lifespan(app: FastAPI):
     # Inference döngüsünü arka planda çalıştır
     inference_task = asyncio.create_task(inference_loop())
 
-    # Zamanlı görevleri başlat (AI rapor, anomali tarama)
+    # Zamanlı görevleri başlat (anomali tarama)
     start_scheduler()
 
     logger.info("=" * 50)
@@ -230,9 +230,7 @@ app.include_router(alarms.router, prefix="/api")
 app.include_router(zones.router, prefix="/api")
 app.include_router(stats.router, prefix="/api")
 app.include_router(settings.router, prefix="/api")
-app.include_router(chat.router, prefix="/api")
 app.include_router(whitelist.router, prefix="/api")
-app.include_router(reports.router, prefix="/api")
 app.include_router(plates.router, prefix="/api")
 app.include_router(gallery.router, prefix="/api")
 app.include_router(anomalies.router, prefix="/api")
