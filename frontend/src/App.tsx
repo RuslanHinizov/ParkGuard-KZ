@@ -1,6 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useStore } from './store/useStore';
 import { useTranslation } from './i18n/useTranslation';
+import { useWebSocket } from './hooks/useWebSocket';
+import type { SystemStats } from './types';
 import type { Lang } from './i18n/translations';
 import VideoGrid from './components/VideoGrid';
 import AlarmPanel from './components/AlarmPanel';
@@ -16,7 +18,21 @@ import QuickSearch from './components/QuickSearch';
 import AnomalyBadge from './components/AnomalyBadge';
 import PenaltyPanel from './components/PenaltyPanel';
 
+function useGlobalStats() {
+  const setStats = useStore((s) => s.setStats);
+  const onMessage = useCallback(
+    (event: MessageEvent) => {
+      try { setStats(JSON.parse(event.data) as SystemStats); }
+      catch { /* ignore parse errors */ }
+    },
+    [setStats]
+  );
+  useWebSocket({ url: '/ws/stats', onMessage });
+}
+
 export default function App() {
+  useGlobalStats();
+
   const activeTab = useStore((s) => s.activeTab);
   const setActiveTab = useStore((s) => s.setActiveTab);
   const setSelectedPlateQuery = useStore((s) => s.setSelectedPlateQuery);

@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Race Vision | Техникалық презентация</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="hud">
+    <div class="hud-brand">
+      <div class="hud-mark">RV</div>
+      <div class="hud-copy">
+        <strong>Race Vision техникалық презентациясы</strong>
+        <span id="slideTitle">Титул</span>
+      </div>
+    </div>
+    <div class="hud-right">
+      <div class="hud-chip" id="slideCount">1 / 6</div>
+      <button class="hud-button" id="prevBtn" type="button">Артқа</button>
+      <button class="hud-button" id="nextBtn" type="button">Алға</button>
+      <button class="hud-button" id="fullscreenBtn" type="button">Толық экран</button>
+      <button class="hud-button" id="printBtn" type="button">PDF / Басып шығару</button>
+    </div>
+  </div>
+
+  <main class="deck" id="deck">
+    <section class="slide" data-title="Титул">
+      <div class="slide-inner">
+        <div class="hero-layout">
+          <div>
+            <div class="eyebrow">Тікелей эфирге арналған AI реттік қозғалтқышы</div>
+            <h1 class="top-gap">Race Vision</h1>
+            <p class="lead">
+              25 аналитикалық IP камера мен 4 PTZ эфир камерасын бір архитектурада біріктіріп,
+              ат жарысындағы ретті толық автоматты есептейтін және нәтижені
+              <span class="accent-cyan">5 Гц</span> жылдамдықпен экранға шығаратын жүйе.
+            </p>
+            <div class="layer-pills">
+              <span class="pill ingest">L1 Бейне қабылдау</span>
+              <span class="pill trigger">L2 Trigger</span>
+              <span class="pill deep">L3 Терең талдау</span>
+              <span class="pill fusion">L4 Fusion</span>
+              <span class="pill live">L5 Эфирге шығару</span>
+            </div>
+            <div class="hero-kpis cols-4">
+              <div class="metric">
+                <h3>Камералар</h3>
+                <strong>25 + 4</strong>
+                <span>25 RTSP аналитикалық және 4 PTZ эфир камерасы.</span>
+              </div>
+              <div class="metric">
+                <h3>Кідіріс</h3>
+                <strong>&lt; 500 мс</strong>
+                <span>Бірінші анықтаудан frontend анимациясына дейін.</span>
+              </div>
+              <div class="metric">
+                <h3>Жаңарту</h3>
+                <strong>5 Гц</strong>
+                <span>WebSocket арқылы секунд сайын 5 рет.</span>
+              </div>
+              <div class="metric">
+                <h3>Адам қатысуы</h3>
+                <strong>0</strong>
+                <span>Жарыс кезінде жүйе толық автоматты жұмыс істейді.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="hero-track">
+              <h3>2500 м трек картасы</h3>
+              <div class="track-shell">
+                <div class="track-grid"></div>
+                <div class="track-ring"></div>
+                <div class="track-ring-inner"></div>
+                <div class="runner blue"></div>
+                <div class="runner green"></div>
+                <div class="runner red"></div>
+                <div class="runner yellow"></div>
+                <div class="runner purple"></div>
+              </div>
+              <div class="legend">
+                <span><i style="background:#2e8fff"></i> Көк</span>
+                <span><i style="background:#27d27f"></i> Жасыл</span>
+                <span><i style="background:#ff5959"></i> Қызыл</span>
+                <span><i style="background:#ffc338"></i> Сары</span>
+                <span><i style="background:#b287ff"></i> Күлгін</span>
+              </div>
+            </div>
+            <div class="hero-note">
+              <div class="panel">
+                <h3>Негізгі қағида</h3>
+                <p class="lead no-max">
+                  Эфир видеосы мен аналитика бөлек жүреді:
+                  <span class="accent-green">WebRTC эфир қабаты</span> және
+                  <span class="accent-cyan">GPU inference қабаты</span>
+                  бір-бірін тежемейді.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Мәселе және шешім">
+      <div class="slide-inner">
+        <div class="eyebrow">Неге бұл жүйе қажет?</div>
+        <h2>Қолмен бақылау тікелей эфирдегі жарыс үшін жеткіліксіз</h2>
+        <div class="cols-2 top-gap">
+          <div class="panel">
+            <h3>Мәселе</h3>
+            <div class="bullets">
+              <div class="bullet"><span>25 камера ағынын қатар қарап, лидерді адам көзімен тұрақты анықтау қиын.</span></div>
+              <div class="bullet"><span>PTZ эфир камерасы нақты ретті емес, көріністі ғана көрсетеді.</span></div>
+              <div class="bullet"><span>Бір ғана қате жаңарту эфир сапасына тікелей әсер етеді.</span></div>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Шешім</h3>
+            <div class="bullets">
+              <div class="bullet"><span>Алдымен жеңіл trigger, кейін тек белсенді камераларда deep-analysis іске қосылады.</span></div>
+              <div class="bullet"><span>Жокей түсі, камералық vote және трек метрі негізінде жалпы рет құрылады.</span></div>
+              <div class="bullet"><span>Backend үзілсе де эфир видеосы тоқтамайды.</span></div>
+            </div>
+            <div class="kpi-strip">
+              <div class="kpi-pill">25 ағын</div>
+              <div class="kpi-pill">3-8 белсенді камера</div>
+              <div class="kpi-pill">Толық автоматты</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Толық архитектура">
+      <div class="slide-inner">
+        <div class="eyebrow">Жүйе ағыны</div>
+        <h2>Бес қабатты жарыс анықтау pipeline</h2>
+        <div class="flow">
+          <div class="flow-row">
+            <div class="flow-node">
+              <div class="flow-arrow">→</div>
+              <h3>1-қабат</h3>
+              <p><strong>Бейне қабылдау</strong></p>
+              <p class="muted">RTSP камералар, NVDEC decode, go2rtc және WebRTC.</p>
+            </div>
+            <div class="flow-node">
+              <div class="flow-arrow">→</div>
+              <h3>2-қабат</h3>
+              <p><strong>Trigger</strong></p>
+              <p class="muted">YOLOv8n секунд сайын “ат бар ма?” деген сұраққа жауап береді.</p>
+            </div>
+            <div class="flow-node">
+              <div class="flow-arrow">→</div>
+              <h3>3-қабат</h3>
+              <p><strong>Терең талдау</strong></p>
+              <p class="muted">YOLOv8s, chest crop, түс жіктеуі және VoteEngine.</p>
+            </div>
+            <div class="flow-node">
+              <div class="flow-arrow">→</div>
+              <h3>4-қабат</h3>
+              <p><strong>Fusion</strong></p>
+              <p class="muted">Пиксель координатасы трек метріне ауыстырылады, EMA қолданылады.</p>
+            </div>
+            <div class="flow-node">
+              <h3>5-қабат</h3>
+              <p><strong>Эфирге шығару</strong></p>
+              <p class="muted">WebSocket 5 Гц жаңарту, viewer overlay және лидер анимациясы.</p>
+            </div>
+          </div>
+        </div>
+        <div class="cols-2 top-gap">
+          <div class="panel">
+            <h3>Бақылау ағыны</h3>
+            <p class="lead no-max">Trigger deep-analysis-ке тек қажетті камераларды өткізеді. Осы тәсіл GPU ресурсын үнемдейді.</p>
+          </div>
+          <div class="panel">
+            <h3>Дерек ағыны</h3>
+            <p class="lead no-max">Видео бөлек, metadata бөлек жүреді. Сондықтан эфир мен аналитика бір-бірін сындырмайды.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Бейімделмелі inference">
+      <div class="slide-inner">
+        <div class="eyebrow">GPU үнемділігі</div>
+        <h2>Ауыр модель тек белсенді камераларға ғана қолданылады</h2>
+        <div class="funnel">
+          <div class="panel funnel-visual">
+            <div class="funnel-stage">
+              <div class="funnel-step">
+                <h3>1-қадам</h3>
+                <p><strong>25 камера жеңіл сканнан өтеді</strong></p>
+                <p class="muted">YOLOv8n бүкіл камера пулын бақылайды.</p>
+                <div class="funnel-camera-grid">
+                  <div class="cam-dot active"></div><div class="cam-dot"></div><div class="cam-dot"></div><div class="cam-dot active"></div><div class="cam-dot"></div>
+                  <div class="cam-dot"></div><div class="cam-dot"></div><div class="cam-dot active"></div><div class="cam-dot"></div><div class="cam-dot"></div>
+                  <div class="cam-dot"></div><div class="cam-dot active"></div><div class="cam-dot"></div><div class="cam-dot"></div><div class="cam-dot"></div>
+                  <div class="cam-dot"></div><div class="cam-dot"></div><div class="cam-dot active"></div><div class="cam-dot"></div><div class="cam-dot"></div>
+                  <div class="cam-dot"></div><div class="cam-dot"></div><div class="cam-dot"></div><div class="cam-dot active"></div><div class="cam-dot"></div>
+                </div>
+              </div>
+              <div class="funnel-step">
+                <h3>2-қадам</h3>
+                <p><strong>Көбіне тек 3-8 камера deep-analysis-ке өтеді</strong></p>
+                <p class="muted">Тек нақты жарыс көрініп тұрған бұрыштар талданады.</p>
+              </div>
+              <div class="funnel-step">
+                <h3>3-қадам</h3>
+                <p><strong>YOLOv8s + color model + vote</strong></p>
+                <p class="muted">Жокей түсі камералық дауыспен бекітіледі.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>Неге тиімді?</h3>
+            <div class="bullets">
+              <div class="bullet"><span>Барлық камераға бірдей ауыр модель қолданылмайды.</span></div>
+              <div class="bullet"><span>Latency қоры сақталады, throughput жоғары болады.</span></div>
+              <div class="bullet"><span>Chest crop түс тұрақтылығын жақсартады.</span></div>
+              <div class="bullet"><span>VoteEngine жалған ауысуларды азайтады.</span></div>
+            </div>
+            <div class="top-gap vote-grid">
+              <h3>VoteEngine үлгісі</h3>
+              <div class="vote-row"><strong>Көк</strong><div class="vote-track"><div class="vote-fill blue-fill w-88"></div></div></div>
+              <div class="vote-row"><strong>Жасыл</strong><div class="vote-track"><div class="vote-fill green-fill w-76"></div></div></div>
+              <div class="vote-row"><strong>Қызыл</strong><div class="vote-track"><div class="vote-fill red-fill w-64"></div></div></div>
+              <div class="vote-row"><strong>Сары</strong><div class="vote-track"><div class="vote-fill amber-fill w-52"></div></div></div>
+              <div class="vote-row"><strong>Күлгін</strong><div class="vote-track"><div class="vote-fill purple-fill w-43"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Fusion және UI">
+      <div class="slide-inner">
+        <div class="eyebrow">Fusion және экран логикасы</div>
+        <h2>Камера анықтауы трек метріне ауысып, viewer screen-ге дайын күйге келеді</h2>
+        <div class="cols-2 top-gap">
+          <div class="panel track-panel">
+            <h3>2500 м Fusion картасы</h3>
+            <div class="fusion-track">
+              <div class="track-grid"></div>
+              <div class="fusion-runner f1"><b class="b-blue">1</b><span>Көк</span></div>
+              <div class="fusion-runner f2"><b class="b-green">2</b><span>Жасыл</span></div>
+              <div class="fusion-runner f3"><b class="b-red">3</b><span>Қызыл</span></div>
+              <div class="fusion-runner f4"><b class="b-amber">4</b><span>Сары</span></div>
+              <div class="fusion-runner f5"><b class="b-purple">5</b><span>Күлгін</span></div>
+              <div class="meter-line">
+                <span>0 м</span><span>500 м</span><span>1000 м</span><span>1500 м</span><span>2000 м</span><span>2500 м</span>
+              </div>
+            </div>
+          </div>
+          <div class="screen">
+            <div class="ptz-frame"><div class="ptz-track-lines"></div></div>
+            <div class="flash-positive">Озып кетті</div>
+            <div class="flash-negative">Орын жоғалтты</div>
+            <div class="rank-rail">
+              <div class="rank-top"><span>Лидер overlay</span><span>5 Гц жаңарту</span></div>
+              <div class="jockey-row">
+                <div class="jockey-card leader"><div class="avatar blue-bg"></div><div><strong>1. Көк</strong><br /><span class="muted">2.2x визуалды акцент</span></div></div>
+                <div class="jockey-card"><div class="avatar green-bg"></div><div><strong>2. Жасыл</strong></div></div>
+                <div class="jockey-card"><div class="avatar red-bg"></div><div><strong>3. Қызыл</strong></div></div>
+                <div class="jockey-card"><div class="avatar amber-bg"></div><div><strong>4. Сары</strong></div></div>
+                <div class="jockey-card"><div class="avatar purple-bg"></div><div><strong>5. Күлгін</strong></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Өнімділік және инфрақұрылым">
+      <div class="slide-inner">
+        <div class="eyebrow">Latency, failover, deployment</div>
+        <h2>RTX 3060 серверінде төмен кідіріс, тұрақты эфир және 50+ камера жол картасы</h2>
+        <div class="closing-layout">
+          <div class="panel">
+            <h3>Latency және failover</h3>
+            <div class="latency-row"><div class="latency-head"><span>NVDEC decode + frame availability</span><strong>40 мс</strong></div><div class="latency-bar"><div class="latency-fill blue-fill w-22"></div></div></div>
+            <div class="latency-row"><div class="latency-head"><span>YOLOv8n trigger</span><strong>70 мс</strong></div><div class="latency-bar"><div class="latency-fill amber-fill w-38"></div></div></div>
+            <div class="latency-row"><div class="latency-head"><span>YOLOv8s deep-analysis</span><strong>160 мс</strong></div><div class="latency-bar"><div class="latency-fill cyan-fill w-68"></div></div></div>
+            <div class="latency-row"><div class="latency-head"><span>Fusion + WebSocket + UI</span><strong>125 мс</strong></div><div class="latency-bar"><div class="latency-fill green-fill w-44"></div></div></div>
+            <div class="bullets top-gap">
+              <div class="bullet"><span>Backend үзілсе frontend demo mode-қа өтеді.</span></div>
+              <div class="bullet"><span>Эфир видеосы backend-тен тәуелсіз жалғасады.</span></div>
+              <div class="bullet"><span>Auto reconnect логикасы overlay қабатын қайта қосады.</span></div>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Инфрақұрылым және roadmap</h3>
+            <div class="compose-tree">
+              <div class="tree-line"><strong>docker-compose up -d</strong><span class="tree-port">GPU host</span></div>
+              <div class="tree-line"><span>├─ go2rtc</span><span class="tree-port">:1984</span></div>
+              <div class="tree-line"><span>├─ backend</span><span class="tree-port">:8000</span></div>
+              <div class="tree-line"><span>└─ frontend</span><span class="tree-port">:3000</span></div>
+            </div>
+            <div class="phase-grid">
+              <div class="phase"><div class="phase-tag">Фаза 1</div><div><strong>Калибровка</strong><br /><span class="muted">Трек метрін, түс моделін және trigger шектерін нақтылау.</span></div></div>
+              <div class="phase"><div class="phase-tag">Фаза 2</div><div><strong>Live pilot</strong><br /><span class="muted">Нақты жарыста latency мен реттік дәлдікті тексеру.</span></div></div>
+              <div class="phase"><div class="phase-tag">Фаза 3</div><div><strong>Scale-out</strong><br /><span class="muted">50+ камера үшін GPU shard және fusion broker енгізу.</span></div></div>
+            </div>
+            <p class="footnote">Race Vision — бұл тек модель емес, эфирге арналған толық видео, inference және UI оркестрация жүйесі.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>

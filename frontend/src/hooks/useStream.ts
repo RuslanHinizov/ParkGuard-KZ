@@ -86,41 +86,39 @@ export function useStream(cameraId: number, enabled: boolean = true) {
         let settled = false;
         let readyTimer: ReturnType<typeof setTimeout> | null = null;
         let saveTimer: ReturnType<typeof setInterval> | null = null;
-        let restored = false;
+
+        // Kaydedilen pozisyonu yükle (base URL ile, fragment olmadan)
         const savedPosition = loadSavedFilePosition(cameraId, url);
 
+        // HTML5 Media Fragment (#t=saniye) — tarayıcı Range request gönderir,
+        // seek beklemeden doğrudan o noktadan başlar.
+        const srcUrl = savedPosition > 1
+          ? `${url}#t=${savedPosition.toFixed(2)}`
+          : url;
+
         const finalize = () => {
-          if (settled) {
-            return;
-          }
+          if (settled) return;
           settled = true;
-          if (readyTimer) {
-            clearTimeout(readyTimer);
-            readyTimer = null;
-          }
-          if (!restored && savedPosition > 0 && Number.isFinite(video.duration)) {
-            const maxSeek = Math.max(0, video.duration - 0.25);
-            video.currentTime = Math.min(savedPosition, maxSeek);
-            restored = true;
-          }
+          if (readyTimer) { clearTimeout(readyTimer); readyTimer = null; }
+
+          // Her saniye pozisyonu kaydet (base URL ile)
           saveTimer = setInterval(() => {
             if (!video.paused && !video.ended) {
               saveFilePosition(cameraId, url, video.currentTime);
             }
           }, 1000);
+
           video.play().catch(() => undefined);
+
           resolve(() => {
             video.removeEventListener('loadedmetadata', handleReady);
             video.removeEventListener('canplay', handleReady);
             video.removeEventListener('loadeddata', handleReady);
             video.removeEventListener('error', handleError);
             video.removeEventListener('ended', handleEnded);
-            if (readyTimer) {
-              clearTimeout(readyTimer);
-            }
-            if (saveTimer) {
-              clearInterval(saveTimer);
-            }
+            if (readyTimer) clearTimeout(readyTimer);
+            if (saveTimer) clearInterval(saveTimer);
+            // Unmount/F5 anında son pozisyonu kaydet
             saveFilePosition(cameraId, url, video.currentTime);
             video.pause();
             video.removeAttribute('src');
@@ -128,23 +126,16 @@ export function useStream(cameraId: number, enabled: boolean = true) {
           });
         };
 
-        const handleReady = () => {
-          finalize();
-        };
+        const handleReady = () => { finalize(); };
 
         const handleError = () => {
-          if (readyTimer) {
-            clearTimeout(readyTimer);
-            readyTimer = null;
-          }
-          if (saveTimer) {
-            clearInterval(saveTimer);
-            saveTimer = null;
-          }
+          if (readyTimer) { clearTimeout(readyTimer); readyTimer = null; }
+          if (saveTimer) { clearInterval(saveTimer); saveTimer = null; }
           reject(new Error('Video source load failed'));
         };
 
         const handleEnded = () => {
+          // Video döngü başına döndüğünde pozisyonu sıfırla
           saveFilePosition(cameraId, url, 0);
         };
 
@@ -159,13 +150,11 @@ export function useStream(cameraId: number, enabled: boolean = true) {
         video.addEventListener('error', handleError, { once: true });
         video.addEventListener('ended', handleEnded);
         video.srcObject = null;
-        video.src = url;
+        video.src = srcUrl;  // fragment'lı URL ile yükle
         video.load();
 
         readyTimer = setTimeout(() => {
-          if (video.readyState >= HTMLMediaElement.HAVE_METADATA) {
-            finalize();
-          }
+          if (video.readyState >= HTMLMediaElement.HAVE_METADATA) finalize();
         }, 3000);
       });
 

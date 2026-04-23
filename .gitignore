@@ -47,3 +47,12 @@ desktop.ini
 
 # === CLAUDE CODE ===
 .claude/settings.local.json
+
+# === RUNTIME ARTEFAKTLARI ===
+*.log
+*.out.log
+*.err.log
+tmp_video_review*/
+videos/*.mp4
+mediamtx/*.exe
+mediamtx/LICENSE
